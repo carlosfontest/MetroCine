@@ -1,5 +1,7 @@
 package model;
 
+import view.Inicio;
+
 /**
  * MetroCine. Software de ventas.
  * Estructura de Datos 1718-2
@@ -9,7 +11,8 @@ package model;
 public class Main {
 
     public Main() {
-        
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
         
         
         
