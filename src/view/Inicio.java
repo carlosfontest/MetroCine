@@ -1,6 +1,7 @@
 package view;
 
 import controller.Controlador;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
@@ -9,6 +10,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("../images/icono.png")).getImage());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,7 +31,6 @@ public class Inicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 350));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 352));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -56,7 +57,7 @@ public class Inicio extends javax.swing.JFrame {
                 jLabelMinimizarMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabelMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, -1));
+        jPanel1.add(jLabelMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 40, -1, -1));
 
         jLabelCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Equis.png"))); // NOI18N
         jLabelCerrar.setAlignmentY(0.0F);
@@ -215,6 +216,7 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Inicio().setVisible(true);
             }
