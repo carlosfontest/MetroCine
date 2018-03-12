@@ -8,9 +8,9 @@ import view.Inicio;
  * Universidad Metropolitana (Caracas, Venezuela)
  * @author Carlos Fontes & Rafael Quintero
  */
-public class Main {
+public class MetroCine {
 
-    public Main() {
+    public MetroCine() {
         Inicio inicio = new Inicio();
         inicio.setVisible(true);
         
@@ -19,7 +19,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        Main app = new Main();
+        MetroCine app = new MetroCine();
     }
     
 }
