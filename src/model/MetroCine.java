@@ -1,7 +1,6 @@
 package model;
 
 import view.Inicio;
-
 /**
  * MetroCine. Software de ventas.
  * Estructura de Datos 1718-2
