@@ -26,11 +26,13 @@ public class Inicio extends javax.swing.JFrame {
         jButtonFantasma = new javax.swing.JButton();
         jButtonInicioSesion = new javax.swing.JButton();
         jLabelQuestion = new javax.swing.JLabel();
+        jLabelAcerca = new javax.swing.JLabel();
         jLabelImagen1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1000, 350));
+        setMinimumSize(new java.awt.Dimension(1000, 344));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1000, 344));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -39,13 +41,14 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 352));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 344));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 344));
         jPanel1.setRequestFocusEnabled(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelSeparador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Separador.png"))); // NOI18N
         jLabelSeparador2.setText("jLabel1");
-        jPanel1.add(jLabelSeparador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 348, 1000, 4));
+        jPanel1.add(jLabelSeparador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 1000, 4));
         jLabelSeparador2.getAccessibleContext().setAccessibleDescription("");
 
         jLabelSeparador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Separador.png"))); // NOI18N
@@ -114,7 +117,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(jButtonFantasma, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         jButtonInicioSesion.setBackground(new java.awt.Color(38, 38, 38));
-        jButtonInicioSesion.setFont(new java.awt.Font("Calibri Light", 1, 16)); // NOI18N
+        jButtonInicioSesion.setFont(new java.awt.Font("Yu Gothic", 1, 17)); // NOI18N
         jButtonInicioSesion.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicioSesion.setText("Acceder");
         jButtonInicioSesion.setFocusPainted(false);
@@ -123,7 +126,7 @@ public class Inicio extends javax.swing.JFrame {
                 jButtonInicioSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, -1, -1));
+        jPanel1.add(jButtonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 298, -1, 30));
 
         jLabelQuestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Question.png"))); // NOI18N
         jLabelQuestion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,10 +136,17 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel1.add(jLabelQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 310, -1, -1));
 
-        jLabelImagen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BannerMetroCine.png"))); // NOI18N
+        jLabelAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAcercaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabelAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, 50));
+
+        jLabelImagen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BannerInicio.png"))); // NOI18N
         jPanel1.add(jLabelImagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, 1000, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 352));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 344));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,6 +208,10 @@ public class Inicio extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "User: admin\nPassword: admin");
     }//GEN-LAST:event_jLabelQuestionMouseClicked
 
+    private void jLabelAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAcercaMouseClicked
+        JOptionPane.showMessageDialog(this, "Carlos Fontes & Rafael Quintero\n\t                      UNIMET\n             Ing. de Sistemas");
+    }//GEN-LAST:event_jLabelAcercaMouseClicked
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -226,6 +240,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFantasma;
     public javax.swing.JButton jButtonInicioSesion;
+    private javax.swing.JLabel jLabelAcerca;
     private javax.swing.JLabel jLabelCerrar;
     private javax.swing.JLabel jLabelImagen1;
     private javax.swing.JLabel jLabelMinimizar;
