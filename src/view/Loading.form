@@ -33,6 +33,11 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JProgressBar" name="loadingBar">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -45,7 +50,7 @@
     <Component class="javax.swing.JLabel" name="jLabelPic">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/tickett.png"/>
+          <Image iconType="3" name="/images/TicketBisel.png"/>
         </Property>
       </Properties>
       <Constraints>

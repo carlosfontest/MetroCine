@@ -25,9 +25,11 @@ public class Loading extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(536, 268));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loadingBar.setForeground(new java.awt.Color(102, 102, 102));
         getContentPane().add(loadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 154, 220, 53));
 
-        jLabelPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tickett.png"))); // NOI18N
+        jLabelPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/TicketBisel.png"))); // NOI18N
         getContentPane().add(jLabelPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 20, -1, -1));
 
         pack();

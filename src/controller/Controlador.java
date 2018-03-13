@@ -23,7 +23,7 @@ public class Controlador {
                     loading.setVisible(true);
                     for (int i = 0; i <= 100; i++) {
                         // Tiempo que tardará la carga
-                        Thread.sleep(10);
+                        Thread.sleep(13);
                         loading.loadingBar.setValue(i);
 
                         if(i==100){
