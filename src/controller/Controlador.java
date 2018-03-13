@@ -8,7 +8,7 @@ import view.Principal;
 public class Controlador {
     
     public void iniciarSesion(Inicio inicio){
-        if(inicio.jTextFieldUsuario.getText().equals("admin") && inicio.jPasswordField.getText().equals("admin")){
+        if(inicio.jTextFieldUsuario.getText().trim().equals("admin") && inicio.jPasswordField.getText().equals("admin")){
             JOptionPane.showMessageDialog(inicio, "   ¡Inicio de sesión exitoso!");
             
             // Inicio frame Loading
