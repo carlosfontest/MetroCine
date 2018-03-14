@@ -9,12 +9,11 @@ public class Controlador {
     
     public void iniciarSesion(Inicio inicio){
         if(inicio.jTextFieldUsuario.getText().trim().equals("admin") && inicio.jPasswordField.getText().equals("admin")){
-            JOptionPane.showMessageDialog(inicio, "   ¡Inicio de sesión exitoso!");
-            
             // Inicio frame Loading
             Loading loading = new Loading();
             
             Runnable miRunnable = new Runnable(){
+            @Override
             public void run(){
                 try
                 {
@@ -31,12 +30,12 @@ public class Controlador {
                         }
                     }
                     loading.dispose();
-
                     Principal principal = new Principal();
                     principal.setVisible(true);
                     principal.setTitle("MetroCine");
-                }catch (Exception e){
-                    e.printStackTrace();}
+                }catch (InterruptedException e){
+                    JOptionPane.showMessageDialog(null, e);
+                }
                 }
             };
             Thread hilo = new Thread (miRunnable);

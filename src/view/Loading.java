@@ -3,7 +3,7 @@ package view;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class Loading extends javax.swing.JFrame {
+public class Loading extends javax.swing.JFrame { 
 
     public Loading() {
         initComponents();
@@ -29,6 +29,7 @@ public class Loading extends javax.swing.JFrame {
         loadingBar.setBackground(new java.awt.Color(237, 192, 180));
         loadingBar.setForeground(new java.awt.Color(51, 51, 51));
         loadingBar.setBorderPainted(false);
+        loadingBar.setFocusable(false);
         getContentPane().add(loadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 154, 220, 53));
 
         jLabelPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/TicketBisel.png"))); // NOI18N
@@ -36,30 +37,6 @@ public class Loading extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Loading().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelPic;

@@ -41,6 +41,7 @@
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

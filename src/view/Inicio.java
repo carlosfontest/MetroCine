@@ -1,6 +1,7 @@
 package view;
 
 import controller.Controlador;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -11,6 +12,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("../images/icono.png")).getImage());
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,6 +90,11 @@ public class Inicio extends javax.swing.JFrame {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
+        jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 172, 170, 30));
 
         jPasswordField.setBackground(new java.awt.Color(43, 43, 43));
@@ -100,6 +107,11 @@ public class Inicio extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordFieldFocusLost(evt);
+            }
+        });
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyTyped(evt);
             }
         });
         jPanel1.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 235, 140, 30));
@@ -211,30 +223,15 @@ public class Inicio extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Carlos Fontes & Rafael Quintero\n\t                      UNIMET\n             Ing. de Sistemas");
     }//GEN-LAST:event_jLabelAcercaMouseClicked
 
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
+        char tecla = evt.getKeyChar();
+        if(tecla == KeyEvent.VK_ENTER){
+            jButtonInicioSesion.doClick();
         }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Inicio().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_jPasswordFieldKeyTyped
+
+    private void jTextFieldUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioKeyTyped
+    }//GEN-LAST:event_jTextFieldUsuarioKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFantasma;
