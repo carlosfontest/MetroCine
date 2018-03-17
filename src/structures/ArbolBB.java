@@ -1,7 +1,9 @@
 package structures;
 
+import model.Cliente;
 import model.Sala;
 import model.Sucursal;
+import model.Ticket;
 
 public class ArbolBB {
     private NodoABB raiz;
@@ -33,23 +35,45 @@ public class ArbolBB {
         }
     }
     
-    // Insertar nodo de tipo Sala. aux -> Raiz; nuevo -> Nodo a ingresar
-    public void insertarSala(NodoABB aux, Sala sala) {
-        NodoABB nuevo = new NodoABB(sala);
+    // Insertar nodo de tipo Ticket. aux -> Raiz; ticket -> Ticket a ingresar
+    public void insertarTicket(NodoABB aux, Ticket ticket) {
+        NodoABB nuevo = new NodoABB(ticket);
         if (aux == null) {
             this.raiz = nuevo;
         } else {
-            if ( ((Sala)nuevo.getData()).getCodigo() < ((Sala)aux.getData()).getCodigo() ) {
+            if ( ((Ticket)nuevo.getData()).getIdentificador()< ((Ticket)aux.getData()).getIdentificador() ) {
                 if (aux.getHijoIzq() == null) {
                     aux.setHijoIzq(nuevo);
                 } else {
-                    insertarSala(aux.getHijoIzq(), sala);
+                    insertarTicket(aux.getHijoIzq(), ticket);
                 }
-            } else if ( ((Sala)nuevo.getData()).getCodigo() > ((Sala)aux.getData()).getCodigo() ) {
+            } else if ( ((Ticket)nuevo.getData()).getIdentificador() > ((Ticket)aux.getData()).getIdentificador() ) {
                 if (aux.getHijoDer() == null) {
                     aux.setHijoDer(nuevo);
                 } else {
-                    insertarSala(aux.getHijoDer(), sala);
+                    insertarTicket(aux.getHijoDer(), ticket);
+                }
+            }
+        }
+    }
+    
+    // Insertar nodo de tipo Cliente. aux -> Raiz; cliente -> Cliente a ingresar
+    public void insertarCliente(NodoABB aux, Cliente cliente) {
+        NodoABB nuevo = new NodoABB(cliente);
+        if (aux == null) {
+            this.raiz = nuevo;
+        } else {
+            if ( ((Cliente)nuevo.getData()).getCedula()< ((Cliente)aux.getData()).getCedula() ) {
+                if (aux.getHijoIzq() == null) {
+                    aux.setHijoIzq(nuevo);
+                } else {
+                    insertarCliente(aux.getHijoIzq(), cliente);
+                }
+            } else if ( ((Cliente)nuevo.getData()).getCedula() > ((Cliente)aux.getData()).getCedula() ) {
+                if (aux.getHijoDer() == null) {
+                    aux.setHijoDer(nuevo);
+                } else {
+                    insertarCliente(aux.getHijoDer(), cliente);
                 }
             }
         }
@@ -71,15 +95,30 @@ public class ArbolBB {
         }
     }
     
-    // Busca una Sala en el árbol. aux -> Raiz; codigo -> código de la sucursal a buscar
-    public Sala buscarSala(NodoABB aux, int codigo) {
+    // Busca un Ticket en el árbol. aux -> Raiz; identificador -> identificador del Ticket a buscar
+    public Ticket buscarTicket(NodoABB aux, int identificador) {
         if (aux != null) {
-            if ( ((Sala)aux.getData()).getCodigo() == codigo) {
-                return (Sala)aux.getData();
-            } else if (codigo < ((Sala)aux.getData()).getCodigo() ) {
-                return buscarSala(aux.getHijoIzq(), codigo);
+            if ( ((Ticket)aux.getData()).getIdentificador()== identificador) {
+                return (Ticket)aux.getData();
+            } else if (identificador < ((Ticket)aux.getData()).getIdentificador() ) {
+                return buscarTicket(aux.getHijoIzq(), identificador);
             } else {
-                return buscarSala(aux.getHijoDer(), codigo);
+                return buscarTicket(aux.getHijoDer(), identificador);
+            }
+        } else {
+            return null;
+        }
+    }
+    
+    // Busca un Cliente en el árbol. aux -> Raiz; cedula -> cedula del cliente a buscar
+    public Cliente buscarCliente(NodoABB aux, int cedula) {
+        if (aux != null) {
+            if ( ((Cliente)aux.getData()).getCedula() == cedula) {
+                return (Cliente)aux.getData();
+            } else if (cedula < ((Cliente)aux.getData()).getCedula()) {
+                return buscarCliente(aux.getHijoIzq(), cedula);
+            } else {
+                return buscarCliente(aux.getHijoDer(), cedula);
             }
         } else {
             return null;
