@@ -10,7 +10,10 @@ package model;
  * @author Carlos Fontes
  */
 public class Cliente {
+    private Carrito carrito;
     private long cedula;
+    private String nombre;
+    private String telefono;
 
     public Cliente(long cedula) {
         this.cedula = cedula;

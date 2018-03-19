@@ -1,5 +1,6 @@
 package structures;
 
+import model.Cliente;
 import model.Sala;
 import model.Sucursal;
 
@@ -46,8 +47,10 @@ public class NodoABB {
     public void ImprimeNodo() {
         if(data instanceof Sucursal){
             System.out.println( ((Sucursal)data).getCodigo() );
-        }else{
-            System.out.println( ((Sala)data).getCodigo() );
+        }else if(data instanceof Sala){
+            System.out.println( ((Sala)data).getNumero());
+        }else if(data instanceof Cliente){
+            System.out.println( ((Cliente)data).getCedula());
         }
     }
 }

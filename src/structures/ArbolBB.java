@@ -35,23 +35,23 @@ public class ArbolBB {
         }
     }
     
-    // Insertar nodo de tipo Ticket. aux -> Raiz; ticket -> Ticket a ingresar
-    public void insertarTicket(NodoABB aux, Ticket ticket) {
-        NodoABB nuevo = new NodoABB(ticket);
+    // Insertar nodo de tipo Sala. aux -> Raiz; sala -> Sala a ingresar
+    public void insertarSala(NodoABB aux, Sala sala) {
+        NodoABB nuevo = new NodoABB(sala);
         if (aux == null) {
             this.raiz = nuevo;
         } else {
-            if ( ((Ticket)nuevo.getData()).getIdentificador()< ((Ticket)aux.getData()).getIdentificador() ) {
+            if ( ((Sala)nuevo.getData()).getNumero()< ((Sala)aux.getData()).getNumero() ) {
                 if (aux.getHijoIzq() == null) {
                     aux.setHijoIzq(nuevo);
                 } else {
-                    insertarTicket(aux.getHijoIzq(), ticket);
+                    insertarSala(aux.getHijoIzq(), sala);
                 }
-            } else if ( ((Ticket)nuevo.getData()).getIdentificador() > ((Ticket)aux.getData()).getIdentificador() ) {
+            } else if ( ((Sala)nuevo.getData()).getNumero()> ((Sala)aux.getData()).getNumero() ) {
                 if (aux.getHijoDer() == null) {
                     aux.setHijoDer(nuevo);
                 } else {
-                    insertarTicket(aux.getHijoDer(), ticket);
+                    insertarSala(aux.getHijoDer(), sala);
                 }
             }
         }
@@ -90,7 +90,6 @@ public class ArbolBB {
                 return buscarSucursal(aux.getHijoDer(), codigo);
             }
         } else {
-            System.out.println("cdcdcd");
             return null;
         }
     }

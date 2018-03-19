@@ -5,26 +5,26 @@
  */
 package model;
 
+import structures.ArbolBB;
+
 /**
  *
  * @author Carlos Fontes
  */
 public class Sucursal {
+    private ArbolBB salas;
     private int codigo;
-    private String nombre;
+    private String ubicacion;
 
-    public Sucursal(int codigo, String nombre) {
+    
+    public Sucursal(int codigo) {
         this.codigo = codigo;
-        this.nombre = nombre;
     }
     
     public int getCodigo() {
         return codigo;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
     
     
     

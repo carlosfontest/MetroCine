@@ -6,9 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
-    Controlador controlador = new Controlador();
+    Controlador controlador;
     
-    public Inicio() {
+    public Inicio(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("../images/icono.png")).getImage());
@@ -212,7 +213,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldFocusLost
 
     private void jButtonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioSesionActionPerformed
-        controlador.iniciarSesion(this);
+        this.controlador.iniciarSesion(this);
     }//GEN-LAST:event_jButtonInicioSesionActionPerformed
 
     private void jLabelQuestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelQuestionMouseClicked

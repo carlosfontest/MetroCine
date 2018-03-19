@@ -7,6 +7,17 @@ import view.Principal;
 
 public class Controlador {
     
+    public void iniciarPrograma(){
+        Principal inicio = new Principal(this);
+        inicio.setVisible(true);
+    }
+    
+    public void abrirPrincipal(){
+        Principal principal = new Principal(this);
+        principal.setVisible(true);
+        principal.setTitle("MetroCine");
+    }
+    
     public void iniciarSesion(Inicio inicio){
         if(inicio.jTextFieldUsuario.getText().trim().equals("admin") && inicio.jPasswordField.getText().equals("admin")){
             // Inicio frame Loading
@@ -30,9 +41,7 @@ public class Controlador {
                         }
                     }
                     loading.dispose();
-                    Principal principal = new Principal();
-                    principal.setVisible(true);
-                    principal.setTitle("MetroCine");
+                    abrirPrincipal();
                 }catch (InterruptedException e){
                     JOptionPane.showMessageDialog(null, e);
                 }

@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-/**
- *
- * @author Carlos Fontes
- */
-public class Sala {
-    private int codigo;
+public abstract class Sala {
+    private int numero;
     private String nombre;
     
-    public Sala(int codigo, String nombre) {
-        this.codigo = codigo;
+    public Sala(int numero, String nombre) {
+        this.numero = numero;
         this.nombre = nombre;
     }
     
-    public int getCodigo() {
-        return codigo;
+    public int getNumero() {
+        return numero;
     }
 
     public String getNombre() {
