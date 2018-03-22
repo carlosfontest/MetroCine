@@ -25,9 +25,9 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoBotones = new javax.swing.ButtonGroup();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panelVentas = new javax.swing.JPanel();
-        textFieldClienteV = new javax.swing.JTextField();
         botonBuscarClienteV = new javax.swing.JButton();
         comboClientesV = new javax.swing.JComboBox<>();
         textFieldPeliculaV = new javax.swing.JTextField();
@@ -42,11 +42,10 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecioV = new javax.swing.JTextField();
         botonAgregarCarritoV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        panelImagenPelicula = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
+        textFieldClienteV = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -61,7 +60,6 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableP = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         comboGeneroP = new javax.swing.JComboBox<>();
         comboIdiomaP = new javax.swing.JComboBox<>();
@@ -81,7 +79,6 @@ public class Principal extends javax.swing.JFrame {
         botonRegistrarC = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableC = new javax.swing.JTable();
-        jSeparator6 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jPanel8 = new javax.swing.JPanel();
@@ -93,7 +90,6 @@ public class Principal extends javax.swing.JFrame {
         panelSalas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSa = new javax.swing.JTable();
-        jSeparator7 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         comboPeliculasSa = new javax.swing.JComboBox<>();
@@ -107,7 +103,6 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarSucursalSu = new javax.swing.JButton();
         botonModificarSucursalSu = new javax.swing.JButton();
         botonAgregarSalasSu = new javax.swing.JButton();
-        jSeparator8 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -118,7 +113,6 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecio2DT = new javax.swing.JTextField();
         textFieldPrecio3DT = new javax.swing.JTextField();
         textFieldPrecio4DT = new javax.swing.JTextField();
-        jSeparator9 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         label$1T = new javax.swing.JLabel();
@@ -134,7 +128,6 @@ public class Principal extends javax.swing.JFrame {
         labelSalasFrecuentesA = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableA = new javax.swing.JTable();
-        jSeparator10 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
@@ -144,6 +137,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         fondo7 = new javax.swing.JLabel();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -156,26 +151,6 @@ public class Principal extends javax.swing.JFrame {
         panelVentas.setBackground(new java.awt.Color(255, 255, 255));
         panelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textFieldClienteV.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldClienteV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        textFieldClienteV.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldClienteV.setText("Ingrese Cédula");
-        textFieldClienteV.setBorder(null);
-        textFieldClienteV.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textFieldClienteVFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldClienteVFocusLost(evt);
-            }
-        });
-        textFieldClienteV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldClienteVActionPerformed(evt);
-            }
-        });
-        panelVentas.add(textFieldClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 76, 107, 26));
-
         botonBuscarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         botonBuscarClienteV.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,14 +162,14 @@ public class Principal extends javax.swing.JFrame {
                 botonBuscarClienteVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 80, 30));
+        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 80, 30));
 
         comboClientesV.setBackground(new java.awt.Color(153, 153, 153));
         comboClientesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboClientesV.setForeground(new java.awt.Color(255, 255, 255));
         comboClientesV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes" }));
         comboClientesV.setFocusable(false);
-        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 106, 107, 26));
+        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 137, 107, 26));
 
         textFieldPeliculaV.setBackground(new java.awt.Color(102, 102, 102));
         textFieldPeliculaV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -214,14 +189,14 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPeliculaVActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldPeliculaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 75, 107, 26));
+        panelVentas.add(textFieldPeliculaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 105, 107, 26));
 
         comboPeliculasV.setBackground(new java.awt.Color(153, 153, 153));
         comboPeliculasV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboPeliculasV.setForeground(new java.awt.Color(255, 255, 255));
         comboPeliculasV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Peliculas" }));
         comboPeliculasV.setFocusable(false);
-        panelVentas.add(comboPeliculasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 105, 107, 26));
+        panelVentas.add(comboPeliculasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 137, 107, 26));
 
         botonBuscarPeliculaV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarPeliculaV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -234,26 +209,31 @@ public class Principal extends javax.swing.JFrame {
                 botonBuscarPeliculaVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonBuscarPeliculaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 80, 30));
+        panelVentas.add(botonBuscarPeliculaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 80, 30));
 
         botonAgregarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         botonAgregarClienteV.setForeground(new java.awt.Color(255, 255, 255));
-        botonAgregarClienteV.setText("Agregar Nuevo Cliente");
+        botonAgregarClienteV.setText("Nuevo Cliente");
         botonAgregarClienteV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonAgregarClienteV.setFocusPainted(false);
-        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 180, 30));
+        botonAgregarClienteV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarClienteVActionPerformed(evt);
+            }
+        });
+        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, 50));
 
         spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-        panelVentas.add(spinnerTicketsV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 50, 26));
+        panelVentas.add(spinnerTicketsV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 50, 26));
 
         comboSalasV.setBackground(new java.awt.Color(153, 153, 153));
         comboSalasV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboSalasV.setForeground(new java.awt.Color(255, 255, 255));
         comboSalasV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Salas" }));
         comboSalasV.setFocusable(false);
-        panelVentas.add(comboSalasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 90, 26));
+        panelVentas.add(comboSalasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 90, 26));
 
         comboSucursalesV.setBackground(new java.awt.Color(153, 153, 153));
         comboSucursalesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -261,13 +241,13 @@ public class Principal extends javax.swing.JFrame {
         comboSucursalesV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursales" }));
         comboSucursalesV.setBorder(null);
         comboSucursalesV.setFocusable(false);
-        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 90, 26));
-        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 60, 10));
+        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 90, 26));
+        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
         labelPrecioV.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioV.setText("Precio Total");
-        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
         textFieldPrecioV.setEditable(false);
         textFieldPrecioV.setBackground(new java.awt.Color(102, 102, 102));
@@ -276,7 +256,7 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecioV.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         textFieldPrecioV.setText("Precio");
         textFieldPrecioV.setBorder(null);
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 326, 60, 26));
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 60, 26));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -284,44 +264,54 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarCarritoV.setText("Agregar al carrito");
         botonAgregarCarritoV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonAgregarCarritoV.setFocusPainted(false);
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 140, 30));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Ventas");
-        panelVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
-        panelVentas.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 130, 10));
-        panelVentas.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 108, 10));
-
-        javax.swing.GroupLayout panelImagenPeliculaLayout = new javax.swing.GroupLayout(panelImagenPelicula);
-        panelImagenPelicula.setLayout(panelImagenPeliculaLayout);
-        panelImagenPeliculaLayout.setHorizontalGroup(
-            panelImagenPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        panelImagenPeliculaLayout.setVerticalGroup(
-            panelImagenPeliculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
-        );
-
-        panelVentas.add(panelImagenPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 120, 170));
-        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 101, 107, 10));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ventas.png"))); // NOI18N
+        panelVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 50));
+        panelVentas.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 108, 10));
+        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 107, 10));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        textFieldClienteV.setBackground(new java.awt.Color(102, 102, 102));
+        textFieldClienteV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        textFieldClienteV.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldClienteV.setText("Ingrese Cédula");
+        textFieldClienteV.setBorder(null);
+        textFieldClienteV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldClienteVFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textFieldClienteVFocusLost(evt);
+            }
+        });
+        textFieldClienteV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldClienteVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 240, 70));
+        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 240, 70));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -337,7 +327,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 250, 70));
+        panelVentas.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 250, 70));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -353,7 +343,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 84, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, 90));
+        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 90));
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -369,7 +359,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 160, 40));
+        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 160, 40));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -392,7 +382,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 47, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 70, 70));
+        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 70, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -463,9 +453,8 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Peliculas");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peliculas.png"))); // NOI18N
         panelPeliculas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
-        panelPeliculas.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 150, 10));
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -653,12 +642,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tableC);
 
         panelClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 550, 160));
-        panelClientes.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 140, 10));
 
         jLabel5.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Clientes");
-        panelClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clientes.png"))); // NOI18N
+        panelClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
         panelClientes.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 311, 100, 10));
 
         jPanel8.setBackground(new java.awt.Color(102, 102, 102));
@@ -761,12 +749,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableSa);
 
         panelSalas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 540, 180));
-        panelSalas.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 100, 10));
 
         jLabel6.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Salas");
-        panelSalas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salas.png"))); // NOI18N
+        panelSalas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel9.setBackground(new java.awt.Color(102, 102, 102));
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -881,12 +868,11 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonAgregarSalasSu.setFocusPainted(false);
         panelSucursales.add(botonAgregarSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 100, 30));
-        panelSucursales.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 190, 10));
 
         jLabel7.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Sucursales");
-        panelSucursales.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucursales.png"))); // NOI18N
+        panelSucursales.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -956,12 +942,11 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecio4DT.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         panelTickets.add(textFieldPrecio4DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 100, 40));
-        panelTickets.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 130, 10));
 
         jLabel8.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Tickets");
-        panelTickets.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tickets.png"))); // NOI18N
+        panelTickets.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel10.setBackground(new java.awt.Color(102, 102, 102));
         jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -1104,19 +1089,18 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane6.setViewportView(tableA);
 
         panelAdministrar.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 530, 110));
-        panelAdministrar.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, 210, 10));
 
         jLabel9.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Administrar");
-        panelAdministrar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 7, -1, -1));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administrar.png"))); // NOI18N
+        panelAdministrar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
         panelAdministrar.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 80, 10));
 
         jPanel11.setBackground(new java.awt.Color(102, 102, 102));
         jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         textFieldIngresosA.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldIngresosA.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
+        textFieldIngresosA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         textFieldIngresosA.setForeground(new java.awt.Color(255, 255, 255));
         textFieldIngresosA.setText("0.0");
         textFieldIngresosA.setBorder(null);
@@ -1125,7 +1109,7 @@ public class Principal extends javax.swing.JFrame {
         labelIngresosA.setForeground(new java.awt.Color(255, 255, 255));
         labelIngresosA.setText("Ingresos");
 
-        label$1T1.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        label$1T1.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         label$1T1.setForeground(new java.awt.Color(255, 255, 255));
         label$1T1.setText("$");
 
@@ -1306,6 +1290,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textFieldCedulaCFocusLost
 
+    private void botonAgregarClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarClienteVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAgregarClienteVActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
     private javax.swing.JButton botonAgregarClienteV;
@@ -1343,6 +1331,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel fondo6;
     private javax.swing.JLabel fondo7;
     private javax.swing.ButtonGroup grupoBotones;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1381,19 +1370,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel label$1T;
     private javax.swing.JLabel label$1T1;
@@ -1405,7 +1387,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel labelSalasFrecuentesA;
     private javax.swing.JPanel panelAdministrar;
     private javax.swing.JPanel panelClientes;
-    private javax.swing.JPanel panelImagenPelicula;
     private javax.swing.JPanel panelPeliculas;
     private javax.swing.JPanel panelSalas;
     private javax.swing.JPanel panelSucursales;
