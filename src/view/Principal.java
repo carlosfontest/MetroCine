@@ -1220,7 +1220,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldPeliculaVFocusLost
 
     private void botonBuscarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPeliculaPActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_botonBuscarPeliculaPActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
