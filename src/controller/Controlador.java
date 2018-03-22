@@ -57,6 +57,22 @@ public class Controlador {
             inicio.jPasswordField.setText("jPasswordField1");
         }
     }
+    
+    public void cerrar(Principal principal){
+        try {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "¿Desea cerrar el sistema?", "Salir", dialogButton);
+            if(result == 0){
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(principal, e);
+        }
+    }
+    
+    public void minimizar(Principal principal){
+        principal.setState(view.Inicio.ICONIFIED);
+    }
 
 
     

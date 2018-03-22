@@ -132,13 +132,14 @@ public class Inicio extends javax.swing.JFrame {
         jButtonInicioSesion.setFont(new java.awt.Font("Yu Gothic", 1, 17)); // NOI18N
         jButtonInicioSesion.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicioSesion.setText("Acceder");
+        jButtonInicioSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonInicioSesion.setFocusPainted(false);
         jButtonInicioSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicioSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 298, -1, 30));
+        jPanel1.add(jButtonInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 100, 40));
 
         jLabelQuestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Question.png"))); // NOI18N
         jLabelQuestion.addMouseListener(new java.awt.event.MouseAdapter() {
