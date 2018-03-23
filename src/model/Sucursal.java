@@ -1,25 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
+import static controller.Controlador.sucursales;
+import java.util.Random;
 import structures.ArbolBB;
 
-/**
- *
- * @author Carlos Fontes
- */
-public class Sucursal {
+public class Sucursal{
     private ArbolBB salas;
     private int codigo;
     private String ubicacion;
 
-    
-    public Sucursal(int codigo) {
+    public Sucursal(String ubicacion) {
+        Random r = new Random();
+        int codigo = 1001 + r.nextInt(8999);
+        
+        //Se crea un código único
+        while(sucursales.estaCodigo(sucursales.getRoot(), codigo)){
+            codigo = 1001 + r.nextInt(8999);
+        }
+        
         this.codigo = codigo;
+        this.ubicacion = ubicacion;
+        
+        //Se inserta la nueva sucursal en el arbol de sucursales
+        sucursales.insertarSucursal(sucursales.getRoot(), this);
     }
+    
     
     public int getCodigo() {
         return codigo;

@@ -1,24 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-/**
- *
- * @author Carlos Fontes
- */
 public class Cliente {
     private Carrito carrito;
     private long cedula;
     private String nombre;
     private String telefono;
 
-    public Cliente(long cedula) {
+    public Cliente(long cedula, String nombre, String telefono) {
         this.cedula = cedula;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.carrito = new Carrito();
     }
-
+    
     public long getCedula() {
         return cedula;
     }

@@ -6,18 +6,18 @@ import model.Sucursal;
 import model.Ticket;
 
 public class ArbolBB {
-    private NodoABB raiz;
+    private NodoABB root;
 
     // Constructor
     public ArbolBB() {
-        this.raiz = null;
+        this.root = null;
     }
     
     // Insertar nodo de tipo Sucursal. aux -> Raiz; sucur -> Sucursal a ingresar
     public void insertarSucursal(NodoABB aux, Sucursal sucur) {
         NodoABB nuevo = new NodoABB(sucur);
         if (aux == null) {
-            this.raiz = nuevo;
+            this.root = nuevo;
         } else {
             if ( ((Sucursal)nuevo.getData()).getCodigo() < ((Sucursal)aux.getData()).getCodigo() ) {
                 if (aux.getHijoIzq() == null) {
@@ -39,7 +39,7 @@ public class ArbolBB {
     public void insertarSala(NodoABB aux, Sala sala) {
         NodoABB nuevo = new NodoABB(sala);
         if (aux == null) {
-            this.raiz = nuevo;
+            this.root = nuevo;
         } else {
             if ( ((Sala)nuevo.getData()).getNumero()< ((Sala)aux.getData()).getNumero() ) {
                 if (aux.getHijoIzq() == null) {
@@ -61,7 +61,7 @@ public class ArbolBB {
     public void insertarCliente(NodoABB aux, Cliente cliente) {
         NodoABB nuevo = new NodoABB(cliente);
         if (aux == null) {
-            this.raiz = nuevo;
+            this.root = nuevo;
         } else {
             if ( ((Cliente)nuevo.getData()).getCedula()< ((Cliente)aux.getData()).getCedula() ) {
                 if (aux.getHijoIzq() == null) {
@@ -124,6 +124,19 @@ public class ArbolBB {
         }
     }
     
+    // Devuelve un booleano que dice si el código de la sucursal está en el árbol o no
+    public boolean estaCodigo(NodoABB aux, int data) {
+        if (aux != null) {
+            if (((Sucursal)aux.getData()).getCodigo() == data) {
+                return true;
+            } else {
+                return (estaCodigo(aux.getHijoIzq(), data) || estaCodigo(aux.getHijoDer(), data));
+            }
+        } else {
+            return false;
+        }
+    }
+    
     // Imprime el arbol enOrden. aux -> Raiz
     public void enOrden(NodoABB aux) {
         if (aux != null) {
@@ -151,7 +164,7 @@ public class ArbolBB {
         }
     }
     
-    public NodoABB getRaiz() {
-        return raiz;
+    public NodoABB getRoot() {
+        return root;
     }
 }

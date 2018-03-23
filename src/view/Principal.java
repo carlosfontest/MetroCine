@@ -222,7 +222,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarClienteVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 130, 50));
+        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 130, 50));
 
         spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
@@ -256,7 +256,12 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecioV.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         textFieldPrecioV.setText("Precio");
         textFieldPrecioV.setBorder(null);
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 60, 26));
+        textFieldPrecioV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPrecioVActionPerformed(evt);
+            }
+        });
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 225, 60, 26));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -264,7 +269,12 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarCarritoV.setText("Agregar al carrito");
         botonAgregarCarritoV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonAgregarCarritoV.setFocusPainted(false);
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 140, 40));
+        botonAgregarCarritoV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarCarritoVActionPerformed(evt);
+            }
+        });
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -1292,6 +1302,14 @@ public class Principal extends javax.swing.JFrame {
     private void botonAgregarClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarClienteVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonAgregarClienteVActionPerformed
+
+    private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
+
+    private void textFieldPrecioVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPrecioVActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;

@@ -1,11 +1,14 @@
 package controller;
 
 import javax.swing.JOptionPane;
+import structures.ArbolBB;
 import view.Inicio;
 import view.Loading;
 import view.Principal;
 
 public class Controlador {
+    public static ArbolBB sucursales = new ArbolBB();
+    public static ArbolBB clientes = new ArbolBB();
     
     public void iniciarPrograma(){
         Principal inicio = new Principal(this);
