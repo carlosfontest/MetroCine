@@ -13,16 +13,19 @@ public class Sucursal{
         Random r = new Random();
         int codigo = 1001 + r.nextInt(8999);
         
-        //Se crea un código único
-        while(sucursales.estaCodigo(sucursales.getRoot(), codigo)){
-            codigo = 1001 + r.nextInt(8999);
+        /*Si el arbol no está vacío, se crea un código aleatorio de 4 dígitos. Si está 
+        vacío, el código de la raiz sera 5420, para intentar balancear el árbol*/
+        if(sucursales.getRoot() != null){
+            //Se crea un código único
+            while(sucursales.estaCodigo(sucursales.getRoot(), codigo)){
+                codigo = 1001 + r.nextInt(8999);
+            }
+        }else{
+            codigo = 5420;
         }
         
         this.codigo = codigo;
         this.ubicacion = ubicacion;
-        
-        //Se inserta la nueva sucursal en el arbol de sucursales
-        sucursales.insertarSucursal(sucursales.getRoot(), this);
     }
     
     
@@ -30,7 +33,12 @@ public class Sucursal{
         return codigo;
     }
 
-    
-    
+    public ArbolBB getSalas() {
+        return salas;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
     
 }

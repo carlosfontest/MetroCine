@@ -2,21 +2,22 @@ package model;
 
 public abstract class Sala {
     private int numero;
-    private String nombre;
+    private Pelicula pelicula;
     
-    public Sala(int numero, String nombre) {
+    public Sala(int numero) {
         this.numero = numero;
-        this.nombre = nombre;
     }
     
     public int getNumero() {
         return numero;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
-    
-    
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
     
 }

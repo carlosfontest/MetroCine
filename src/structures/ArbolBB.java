@@ -137,6 +137,14 @@ public class ArbolBB {
         }
     }
     
+    public int size(NodoABB aux){
+        if(aux!=null){
+            return (1 + size(aux.getHijoDer()) + size(aux.getHijoIzq()));
+        }else{
+            return 0;
+        }
+    }
+    
     // Imprime el arbol enOrden. aux -> Raiz
     public void enOrden(NodoABB aux) {
         if (aux != null) {
