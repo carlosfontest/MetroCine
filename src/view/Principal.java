@@ -51,7 +51,7 @@ public class Principal extends javax.swing.JFrame {
         textFieldClienteV = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        labelUbicacionVe = new javax.swing.JLabel();
+        textFieldUbicacion = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         labelCantidadTicketsV = new javax.swing.JLabel();
@@ -231,7 +231,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarClienteVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 120, 40));
+        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 120, 40));
 
         spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
@@ -293,7 +293,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarCarritoVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 140, 40));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -361,25 +361,33 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        labelUbicacionVe.setFont(new java.awt.Font("Calibri Light", 2, 12)); // NOI18N
-        labelUbicacionVe.setForeground(new java.awt.Color(255, 255, 255));
-        labelUbicacionVe.setText("Ubicacion");
+        textFieldUbicacion.setEditable(false);
+        textFieldUbicacion.setBackground(new java.awt.Color(102, 102, 102));
+        textFieldUbicacion.setFont(new java.awt.Font("Calibri Light", 0, 15)); // NOI18N
+        textFieldUbicacion.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldUbicacion.setText("-----------------------");
+        textFieldUbicacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ubicación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        textFieldUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldUbicacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(labelUbicacionVe, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addComponent(textFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelUbicacionVe)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(textFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 220, 90));
@@ -1217,7 +1225,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1370,11 +1378,15 @@ public class Principal extends javax.swing.JFrame {
     private void comboSucursalesVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesVItemStateChanged
         // Coloca la ubicacion de una sucursal al lado del codigo dentro del combobox en Ventas 
         if(String.valueOf(comboSucursalesV.getSelectedItem()).equals("Sucursal")){
-            labelUbicacionVe.setText("Ubicacion");
+            textFieldUbicacion.setText("-----------------------");
         }else{
-            labelUbicacionVe.setText(sucursales.buscarSucursal(sucursales.getRoot(),Integer.valueOf(String.valueOf(comboSucursalesV.getSelectedItem()))).getUbicacion());
+            textFieldUbicacion.setText(sucursales.buscarSucursal(sucursales.getRoot(),Integer.valueOf(String.valueOf(comboSucursalesV.getSelectedItem()))).getUbicacion());
         }
     }//GEN-LAST:event_comboSucursalesVItemStateChanged
+
+    private void textFieldUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUbicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldUbicacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1469,7 +1481,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel labelIngresosA;
     private javax.swing.JLabel labelPrecioV;
     private javax.swing.JLabel labelSalasFrecuentesA;
-    public javax.swing.JLabel labelUbicacionVe;
     private javax.swing.JPanel panelAdministrar;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelPeliculas;
@@ -1493,5 +1504,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldPrecio3DT;
     private javax.swing.JTextField textFieldPrecio4DT;
     private javax.swing.JTextField textFieldPrecioV;
+    private javax.swing.JTextField textFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 }

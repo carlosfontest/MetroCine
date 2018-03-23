@@ -8,6 +8,7 @@ import view.Loading;
 import view.Principal;
 
 public class Controlador {
+    // Creación de los 2 árboles principales del proyecto
     public static ArbolBB sucursales = new ArbolBB();
     public static ArbolBB clientes = new ArbolBB();
     
@@ -15,7 +16,11 @@ public class Controlador {
     public void abrirPrincipal(){
         Principal principal = new Principal(this);
         principal.setVisible(true);
-        principal.setTitle("MetroCine");
+        
+        // Creación de las sucursales iniciales
+      //  this.crearSucursal("Country Club", principal);
+      //  this.crearSucursal("Altamira Hills", principal);
+      //  this.crearSucursal("La Lagunita", principal);
     }
     
     // Metodo para cerrar el sistema
@@ -42,6 +47,11 @@ public class Controlador {
     public void iniciarPrograma(){
         Principal inicio = new Principal(this);
         inicio.setVisible(true);
+        
+        
+        this.crearSucursal("Country Club", inicio);
+        this.crearSucursal("Altamira Hills", inicio);
+        this.crearSucursal("La Lagunita", inicio);
     }
     
     // Validacion de usuario para acceder al sistema

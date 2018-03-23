@@ -1,7 +1,6 @@
 package model;
 
 import controller.Controlador;
-import static controller.Controlador.sucursales;
 /**
  * MetroCine. Software de ventas.
  * Estructura de Datos 1718-2
