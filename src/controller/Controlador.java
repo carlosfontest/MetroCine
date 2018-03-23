@@ -32,8 +32,10 @@ public class Controlador {
     }
     
     // Crea una nueva sucursal y se inserta en el arbol "salas"
-    public void crearSucursal(String ubicacion){
-        sucursales.insertarSucursal(sucursales.getRoot(), new Sucursal(ubicacion));
+    public void crearSucursal(String ubicacion, Principal principal){
+        Sucursal sucursal = new Sucursal(ubicacion);
+        sucursales.insertarSucursal(sucursales.getRoot(), sucursal);
+        principal.comboSucursalesV.addItem(String.valueOf(sucursal.getCodigo()));
     }
     
     // Inicia el sistema

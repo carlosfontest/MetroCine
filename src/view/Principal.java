@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import model.Sucursal;
 
 public class Principal extends javax.swing.JFrame {
     Controlador controlador;
@@ -50,13 +51,14 @@ public class Principal extends javax.swing.JFrame {
         textFieldClienteV = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        labelUbicacionVe = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         labelCantidadTicketsV = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         fondo1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panelPeliculas = new javax.swing.JPanel();
         botonModificarPeliculaP = new javax.swing.JButton();
         botonAgregarPeliculaP = new javax.swing.JButton();
@@ -145,7 +147,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(700, 400));
         setSize(new java.awt.Dimension(500, 400));
 
         jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
@@ -249,6 +250,16 @@ public class Principal extends javax.swing.JFrame {
         comboSucursalesV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
         comboSucursalesV.setBorder(null);
         comboSucursalesV.setFocusable(false);
+        comboSucursalesV.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboSucursalesVItemStateChanged(evt);
+            }
+        });
+        comboSucursalesV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSucursalesVActionPerformed(evt);
+            }
+        });
         panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 80, 26));
         panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 60, 10));
 
@@ -350,9 +361,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel2.setFont(new java.awt.Font("Calibri Light", 2, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Ubicacion");
+        labelUbicacionVe.setFont(new java.awt.Font("Calibri Light", 2, 12)); // NOI18N
+        labelUbicacionVe.setForeground(new java.awt.Color(255, 255, 255));
+        labelUbicacionVe.setText("Ubicacion");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -360,14 +371,14 @@ public class Principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUbicacionVe, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(labelUbicacionVe)
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
@@ -430,6 +441,10 @@ public class Principal extends javax.swing.JFrame {
 
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelVentas.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setText("jButton1");
+        panelVentas.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
         jTabbedPane2.addTab("Ventas", panelVentas);
 
@@ -1340,13 +1355,26 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldPrecioVActionPerformed
 
     private void botonAgregarSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSalasSuActionPerformed
-        sucursales.enOrden(sucursales.getRoot());
+        
     }//GEN-LAST:event_botonAgregarSalasSuActionPerformed
 
     private void botonAgregarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSucursalSuActionPerformed
         String ubicacion = JOptionPane.showInputDialog("Ingrese la ubicacion de la sucursal");
-        controlador.crearSucursal(ubicacion);
+        controlador.crearSucursal(ubicacion,this);
     }//GEN-LAST:event_botonAgregarSucursalSuActionPerformed
+
+    private void comboSucursalesVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesVActionPerformed
+       
+    }//GEN-LAST:event_comboSucursalesVActionPerformed
+
+    private void comboSucursalesVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesVItemStateChanged
+        // Coloca la ubicacion de una sucursal al lado del codigo dentro del combobox en Ventas 
+        if(String.valueOf(comboSucursalesV.getSelectedItem()).equals("Sucursal")){
+            labelUbicacionVe.setText("Ubicacion");
+        }else{
+            labelUbicacionVe.setText(sucursales.buscarSucursal(sucursales.getRoot(),Integer.valueOf(String.valueOf(comboSucursalesV.getSelectedItem()))).getUbicacion());
+        }
+    }//GEN-LAST:event_comboSucursalesVItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1368,15 +1396,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton botonRadioAZ;
     private javax.swing.JRadioButton botonRadioZA;
     private javax.swing.JButton botonRegistrarC;
-    private javax.swing.JComboBox<String> comboClientesV;
+    public javax.swing.JComboBox<String> comboClientesV;
     private javax.swing.JComboBox<String> comboGeneroP;
     private javax.swing.JComboBox<String> comboIdiomaP;
     private javax.swing.JComboBox<String> comboPeliculasSa;
-    private javax.swing.JComboBox<String> comboPeliculasV;
+    public javax.swing.JComboBox<String> comboPeliculasV;
     private javax.swing.JComboBox<String> comboSalaP;
-    private javax.swing.JComboBox<String> comboSalasV;
+    public javax.swing.JComboBox<String> comboSalasV;
     private javax.swing.JComboBox<String> comboSucursalP;
-    private javax.swing.JComboBox<String> comboSucursalesV;
+    public javax.swing.JComboBox<String> comboSucursalesV;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondo3;
@@ -1385,6 +1413,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel fondo6;
     private javax.swing.JLabel fondo7;
     private javax.swing.ButtonGroup grupoBotones;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1397,7 +1426,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1441,6 +1469,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel labelIngresosA;
     private javax.swing.JLabel labelPrecioV;
     private javax.swing.JLabel labelSalasFrecuentesA;
+    public javax.swing.JLabel labelUbicacionVe;
     private javax.swing.JPanel panelAdministrar;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelPeliculas;
