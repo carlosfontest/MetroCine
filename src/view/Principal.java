@@ -21,6 +21,9 @@ public class Principal extends javax.swing.JFrame {
         this.setResizable(false);      
         this.setSize(600, 430);
         this.setBackground(new Color(0,0,0,0));
+        
+        // Creamos la tabla de sucursales
+        this.controlador.iniciarTablaSucursales(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -63,7 +66,7 @@ public class Principal extends javax.swing.JFrame {
         botonModificarPeliculaP = new javax.swing.JButton();
         botonAgregarPeliculaP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableP = new javax.swing.JTable();
+        tablePeli = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         comboGeneroP = new javax.swing.JComboBox<>();
@@ -83,7 +86,7 @@ public class Principal extends javax.swing.JFrame {
         botonCarritoC = new javax.swing.JButton();
         botonRegistrarC = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tableC = new javax.swing.JTable();
+        tableClientes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         jPanel8 = new javax.swing.JPanel();
@@ -94,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
         fondo3 = new javax.swing.JLabel();
         panelSalas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableSa = new javax.swing.JTable();
+        tableSalas = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         comboPeliculasSa = new javax.swing.JComboBox<>();
@@ -104,9 +107,10 @@ public class Principal extends javax.swing.JFrame {
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tableSu = new javax.swing.JTable();
+        tableSucursales = new javax.swing.JTable();
         botonAgregarSucursalSu = new javax.swing.JButton();
         botonModificarSucursalSu = new javax.swing.JButton();
+        botonVerSalasSu = new javax.swing.JButton();
         botonAgregarSalasSu = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -114,7 +118,7 @@ public class Principal extends javax.swing.JFrame {
         fondo5 = new javax.swing.JLabel();
         panelTickets = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tableT = new javax.swing.JTable();
+        tableTickets = new javax.swing.JTable();
         textFieldPrecio2DT = new javax.swing.JTextField();
         textFieldPrecio3DT = new javax.swing.JTextField();
         textFieldPrecio4DT = new javax.swing.JTextField();
@@ -132,7 +136,7 @@ public class Principal extends javax.swing.JFrame {
         panelAdministrar = new javax.swing.JPanel();
         labelSalasFrecuentesA = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tableA = new javax.swing.JTable();
+        tableAdmin = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
         jPanel11 = new javax.swing.JPanel();
@@ -150,6 +154,7 @@ public class Principal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(500, 400));
 
         jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(700, 900));
 
         panelVentas.setBackground(new java.awt.Color(255, 255, 255));
@@ -479,8 +484,13 @@ public class Principal extends javax.swing.JFrame {
         });
         panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 30));
 
-        tableP.setBackground(new java.awt.Color(204, 204, 204));
-        tableP.setModel(new javax.swing.table.DefaultTableModel(
+        tablePeli = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tablePeli.setBackground(new java.awt.Color(204, 204, 204));
+        tablePeli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -498,7 +508,8 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableP);
+        tablePeli.setFocusable(false);
+        jScrollPane1.setViewportView(tablePeli);
 
         panelPeliculas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 70, 540, 120));
 
@@ -672,8 +683,13 @@ public class Principal extends javax.swing.JFrame {
         botonRegistrarC.setFocusPainted(false);
         panelClientes.add(botonRegistrarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 80, 30));
 
-        tableC.setBackground(new java.awt.Color(204, 204, 204));
-        tableC.setModel(new javax.swing.table.DefaultTableModel(
+        tableClientes = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableClientes.setBackground(new java.awt.Color(204, 204, 204));
+        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -690,7 +706,8 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(tableC);
+        tableClientes.setFocusable(false);
+        jScrollPane4.setViewportView(tableClientes);
 
         panelClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 550, 160));
 
@@ -775,8 +792,13 @@ public class Principal extends javax.swing.JFrame {
 
         panelSalas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tableSa.setBackground(new java.awt.Color(204, 204, 204));
-        tableSa.setModel(new javax.swing.table.DefaultTableModel(
+        tableSalas = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableSalas.setBackground(new java.awt.Color(204, 204, 204));
+        tableSalas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -797,7 +819,8 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tableSa);
+        tableSalas.setFocusable(false);
+        jScrollPane2.setViewportView(tableSalas);
 
         panelSalas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 540, 180));
 
@@ -867,34 +890,25 @@ public class Principal extends javax.swing.JFrame {
 
         panelSucursales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tableSu.setBackground(new java.awt.Color(204, 204, 204));
-        tableSu.setModel(new javax.swing.table.DefaultTableModel(
+        tableSucursales = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableSucursales.setBackground(new java.awt.Color(204, 204, 204));
+        tableSucursales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Ubicación"
             }
         ));
-        jScrollPane3.setViewportView(tableSu);
+        tableSucursales.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableSucursales.setFocusable(false);
+        jScrollPane3.setViewportView(tableSucursales);
 
-        panelSucursales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 530, 210));
+        panelSucursales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 530, 200));
 
         botonAgregarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -917,6 +931,19 @@ public class Principal extends javax.swing.JFrame {
         botonModificarSucursalSu.setFocusPainted(false);
         panelSucursales.add(botonModificarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 80, 30));
 
+        botonVerSalasSu.setBackground(new java.awt.Color(153, 153, 153));
+        botonVerSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonVerSalasSu.setForeground(new java.awt.Color(255, 255, 255));
+        botonVerSalasSu.setText("Ver Salas");
+        botonVerSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonVerSalasSu.setFocusPainted(false);
+        botonVerSalasSu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerSalasSuActionPerformed(evt);
+            }
+        });
+        panelSucursales.add(botonVerSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 100, 30));
+
         botonAgregarSalasSu.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         botonAgregarSalasSu.setForeground(new java.awt.Color(255, 255, 255));
@@ -928,7 +955,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarSalasSuActionPerformed(evt);
             }
         });
-        panelSucursales.add(botonAgregarSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 100, 30));
+        panelSucursales.add(botonAgregarSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 100, 30));
 
         jLabel7.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -960,8 +987,13 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane5.setBackground(new java.awt.Color(153, 153, 153));
 
-        tableT.setBackground(new java.awt.Color(204, 204, 204));
-        tableT.setModel(new javax.swing.table.DefaultTableModel(
+        tableTickets = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableTickets.setBackground(new java.awt.Color(204, 204, 204));
+        tableTickets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -982,7 +1014,8 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(tableT);
+        tableTickets.setFocusable(false);
+        jScrollPane5.setViewportView(tableTickets);
 
         panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 110));
 
@@ -1125,8 +1158,13 @@ public class Principal extends javax.swing.JFrame {
         labelSalasFrecuentesA.setText("Salas más frecuentadas");
         panelAdministrar.add(labelSalasFrecuentesA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        tableA.setBackground(new java.awt.Color(204, 204, 204));
-        tableA.setModel(new javax.swing.table.DefaultTableModel(
+        tableAdmin = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        tableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1147,7 +1185,8 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(tableA);
+        tableAdmin.setFocusable(false);
+        jScrollPane6.setViewportView(tableAdmin);
 
         panelAdministrar.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 530, 110));
 
@@ -1351,28 +1390,30 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCedulaCFocusLost
 
     private void botonAgregarClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarClienteVActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_botonAgregarClienteVActionPerformed
 
     private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
 
     private void textFieldPrecioVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioVActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_textFieldPrecioVActionPerformed
 
-    private void botonAgregarSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSalasSuActionPerformed
-        
-    }//GEN-LAST:event_botonAgregarSalasSuActionPerformed
+    private void botonVerSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerSalasSuActionPerformed
+        controlador.sucursales.enOrden(controlador.sucursales.getRoot());
+    }//GEN-LAST:event_botonVerSalasSuActionPerformed
 
     private void botonAgregarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSucursalSuActionPerformed
         String ubicacion = JOptionPane.showInputDialog("Ingrese la ubicacion de la sucursal");
-        controlador.crearSucursal(ubicacion,this);
+        // Se creal el objeto sucursal
+        if(ubicacion.length() < 4){
+            JOptionPane.showMessageDialog(this, "No ingresó una ubicación válida\n   Debe ser mayor a 4 letras", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            Sucursal sucursal = new Sucursal(ubicacion);
+            controlador.crearSucursal(sucursal, this);
+        }
     }//GEN-LAST:event_botonAgregarSucursalSuActionPerformed
 
     private void comboSucursalesVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesVActionPerformed
-       
     }//GEN-LAST:event_comboSucursalesVActionPerformed
 
     private void comboSucursalesVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesVItemStateChanged
@@ -1385,8 +1426,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboSucursalesVItemStateChanged
 
     private void textFieldUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUbicacionActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_textFieldUbicacionActionPerformed
+
+    private void botonAgregarSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSalasSuActionPerformed
+    }//GEN-LAST:event_botonAgregarSalasSuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1408,6 +1451,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton botonRadioAZ;
     private javax.swing.JRadioButton botonRadioZA;
     private javax.swing.JButton botonRegistrarC;
+    private javax.swing.JButton botonVerSalasSu;
     public javax.swing.JComboBox<String> comboClientesV;
     private javax.swing.JComboBox<String> comboGeneroP;
     private javax.swing.JComboBox<String> comboIdiomaP;
@@ -1489,12 +1533,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panelTickets;
     private javax.swing.JPanel panelVentas;
     private javax.swing.JSpinner spinnerTicketsV;
-    private javax.swing.JTable tableA;
-    private javax.swing.JTable tableC;
-    private javax.swing.JTable tableP;
-    private javax.swing.JTable tableSa;
-    private javax.swing.JTable tableSu;
-    private javax.swing.JTable tableT;
+    public javax.swing.JTable tableAdmin;
+    public javax.swing.JTable tableClientes;
+    public javax.swing.JTable tablePeli;
+    public javax.swing.JTable tableSalas;
+    public javax.swing.JTable tableSucursales;
+    public javax.swing.JTable tableTickets;
     private javax.swing.JTextField textFieldCedulaC;
     private javax.swing.JTextField textFieldClienteV;
     private javax.swing.JTextField textFieldIngresosA;
