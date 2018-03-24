@@ -59,6 +59,7 @@ public class Controlador {
         // Inserto la nueva sucursal en el árbol y lo añado al comboBox de ventas
         sucursales.insertarSucursal(sucursales.getRoot(), sucursal);
         principal.comboSucursalesV.addItem(String.valueOf(sucursal.getCodigo()));
+        principal.comboSucursalesSalas.addItem(String.valueOf(sucursal.getCodigo()));
         // Agrego la nueva sucursal a la tabla
         this.agregarATablaSucursales(principal, sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
     }
