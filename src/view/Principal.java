@@ -6,6 +6,8 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import model.Sala2D;
 import model.Sucursal;
 
 public class Principal extends javax.swing.JFrame {
@@ -22,8 +24,13 @@ public class Principal extends javax.swing.JFrame {
         this.setSize(600, 430);
         this.setBackground(new Color(0,0,0,0));
         
-        // Creamos la tabla de sucursales
+        //----------Inicializamos las tablas----------
         this.controlador.iniciarTablaSucursales(this);
+        this.controlador.iniciarTablaSalas(this);
+        this.controlador.iniciarTablaAdministrar(this);
+        this.controlador.iniciarTablaClientes(this);
+        this.controlador.iniciarTablaPeliculas(this);
+        this.controlador.iniciarTablaTickets(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,6 +38,7 @@ public class Principal extends javax.swing.JFrame {
 
         grupoBotones = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panelVentas = new javax.swing.JPanel();
         label$1T2 = new javax.swing.JLabel();
@@ -107,17 +115,22 @@ public class Principal extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         comboPeliculasSa1 = new javax.swing.JComboBox<>();
         botonCambiarPeliculaSa1 = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        comboSucursalesSalas1 = new javax.swing.JComboBox<>();
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableSucursales = new javax.swing.JTable();
         botonAgregarSucursalSu = new javax.swing.JButton();
         botonModificarSucursalSu = new javax.swing.JButton();
-        botonVerSalasSu = new javax.swing.JButton();
-        botonAgregarSalasSu = new javax.swing.JButton();
+        botonCrearSalasSu = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        radioBoton3D = new javax.swing.JRadioButton();
+        radioBoton2D = new javax.swing.JRadioButton();
+        radioBoton4DX = new javax.swing.JRadioButton();
+        jPanel14 = new javax.swing.JPanel();
         fondo5 = new javax.swing.JLabel();
         panelTickets = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -495,22 +508,14 @@ public class Principal extends javax.swing.JFrame {
         tablePeli.setBackground(new java.awt.Color(204, 204, 204));
         tablePeli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Género", "Idioma"
             }
         ));
+        tablePeli.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tablePeli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablePeli.setFocusable(false);
         jScrollPane1.setViewportView(tablePeli);
 
@@ -694,21 +699,14 @@ public class Principal extends javax.swing.JFrame {
         tableClientes.setBackground(new java.awt.Color(204, 204, 204));
         tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Cédula", "Teléfono"
             }
         ));
+        tableClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableClientes.setFocusable(false);
         jScrollPane4.setViewportView(tableClientes);
 
@@ -812,25 +810,14 @@ public class Principal extends javax.swing.JFrame {
         tableSalas.setBackground(new java.awt.Color(204, 204, 204));
         tableSalas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Número", "Tipo", "Película"
             }
         ));
+        tableSalas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableSalas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableSalas.setFocusable(false);
         jScrollPane2.setViewportView(tableSalas);
 
@@ -934,6 +921,45 @@ public class Principal extends javax.swing.JFrame {
 
         panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 320, 60));
 
+        jPanel13.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        comboSucursalesSalas1.setBackground(new java.awt.Color(153, 153, 153));
+        comboSucursalesSalas1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        comboSucursalesSalas1.setForeground(new java.awt.Color(255, 255, 255));
+        comboSucursalesSalas1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
+        comboSucursalesSalas1.setBorder(null);
+        comboSucursalesSalas1.setFocusable(false);
+        comboSucursalesSalas1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboSucursalesSalas1ItemStateChanged(evt);
+            }
+        });
+        comboSucursalesSalas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSucursalesSalas1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboSucursalesSalas1, 0, 104, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(comboSucursalesSalas1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 294, 130, 50));
+
         fondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSalas.add(fondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -956,6 +982,7 @@ public class Principal extends javax.swing.JFrame {
             }
         ));
         tableSucursales.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableSucursales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableSucursales.setFocusable(false);
         jScrollPane3.setViewportView(tableSucursales);
 
@@ -980,33 +1007,25 @@ public class Principal extends javax.swing.JFrame {
         botonModificarSucursalSu.setText("Modificar");
         botonModificarSucursalSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonModificarSucursalSu.setFocusPainted(false);
+        botonModificarSucursalSu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarSucursalSuActionPerformed(evt);
+            }
+        });
         panelSucursales.add(botonModificarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 80, 30));
 
-        botonVerSalasSu.setBackground(new java.awt.Color(153, 153, 153));
-        botonVerSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonVerSalasSu.setForeground(new java.awt.Color(255, 255, 255));
-        botonVerSalasSu.setText("Ver Salas");
-        botonVerSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonVerSalasSu.setFocusPainted(false);
-        botonVerSalasSu.addActionListener(new java.awt.event.ActionListener() {
+        botonCrearSalasSu.setBackground(new java.awt.Color(153, 153, 153));
+        botonCrearSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonCrearSalasSu.setForeground(new java.awt.Color(255, 255, 255));
+        botonCrearSalasSu.setText("Crear Sala");
+        botonCrearSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCrearSalasSu.setFocusPainted(false);
+        botonCrearSalasSu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVerSalasSuActionPerformed(evt);
+                botonCrearSalasSuActionPerformed(evt);
             }
         });
-        panelSucursales.add(botonVerSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 100, 30));
-
-        botonAgregarSalasSu.setBackground(new java.awt.Color(153, 153, 153));
-        botonAgregarSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonAgregarSalasSu.setForeground(new java.awt.Color(255, 255, 255));
-        botonAgregarSalasSu.setText("Agregar Sala");
-        botonAgregarSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonAgregarSalasSu.setFocusPainted(false);
-        botonAgregarSalasSu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarSalasSuActionPerformed(evt);
-            }
-        });
-        panelSucursales.add(botonAgregarSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 100, 30));
+        panelSucursales.add(botonCrearSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 100, 30));
 
         jLabel7.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -1029,6 +1048,58 @@ public class Principal extends javax.swing.JFrame {
         });
         panelSucursales.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
+        radioBoton3D.setBackground(new java.awt.Color(102, 102, 102));
+        grupoBotones.add(radioBoton3D);
+        radioBoton3D.setForeground(new java.awt.Color(255, 255, 255));
+        radioBoton3D.setText("3D");
+        radioBoton3D.setFocusPainted(false);
+        radioBoton3D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBoton3DActionPerformed(evt);
+            }
+        });
+        panelSucursales.add(radioBoton3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 334, -1, -1));
+
+        radioBoton2D.setBackground(new java.awt.Color(102, 102, 102));
+        grupoBotones.add(radioBoton2D);
+        radioBoton2D.setForeground(new java.awt.Color(255, 255, 255));
+        radioBoton2D.setText("2D");
+        radioBoton2D.setFocusPainted(false);
+        radioBoton2D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBoton2DActionPerformed(evt);
+            }
+        });
+        panelSucursales.add(radioBoton2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+
+        radioBoton4DX.setBackground(new java.awt.Color(102, 102, 102));
+        grupoBotones.add(radioBoton4DX);
+        radioBoton4DX.setForeground(new java.awt.Color(255, 255, 255));
+        radioBoton4DX.setText("4DX");
+        radioBoton4DX.setFocusPainted(false);
+        radioBoton4DX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBoton4DXActionPerformed(evt);
+            }
+        });
+        panelSucursales.add(radioBoton4DX, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, -1, -1));
+
+        jPanel14.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 84, Short.MAX_VALUE)
+        );
+
+        panelSucursales.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 70, 90));
+
         fondo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSucursales.add(fondo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -1046,25 +1117,14 @@ public class Principal extends javax.swing.JFrame {
         tableTickets.setBackground(new java.awt.Color(204, 204, 204));
         tableTickets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Número Ticket", "Cédula cliente", "Sucursal", "Sala", "Película"
             }
         ));
+        tableTickets.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableTickets.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableTickets.setFocusable(false);
         jScrollPane5.setViewportView(tableTickets);
 
@@ -1217,25 +1277,14 @@ public class Principal extends javax.swing.JFrame {
         tableAdmin.setBackground(new java.awt.Color(204, 204, 204));
         tableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Sucursal", "Sala", "Tickets"
             }
         ));
+        tableAdmin.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableAdmin.setFocusable(false);
         jScrollPane6.setViewportView(tableAdmin);
 
@@ -1449,14 +1498,11 @@ public class Principal extends javax.swing.JFrame {
     private void textFieldPrecioVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioVActionPerformed
     }//GEN-LAST:event_textFieldPrecioVActionPerformed
 
-    private void botonVerSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerSalasSuActionPerformed
-        controlador.sucursales.enOrden(controlador.sucursales.getRoot());
-    }//GEN-LAST:event_botonVerSalasSuActionPerformed
-
     private void botonAgregarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSucursalSuActionPerformed
         String ubicacion = JOptionPane.showInputDialog("Ingrese la ubicacion de la sucursal");
         // Se creal el objeto sucursal
-        if(ubicacion.length() < 4){
+        if(ubicacion == null){
+        }else if(ubicacion.length() < 4){
             JOptionPane.showMessageDialog(this, "No ingresó una ubicación válida\n   Debe ser mayor a 4 letras", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             Sucursal sucursal = new Sucursal(ubicacion);
@@ -1479,8 +1525,9 @@ public class Principal extends javax.swing.JFrame {
     private void textFieldUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUbicacionActionPerformed
     }//GEN-LAST:event_textFieldUbicacionActionPerformed
 
-    private void botonAgregarSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarSalasSuActionPerformed
-    }//GEN-LAST:event_botonAgregarSalasSuActionPerformed
+    private void botonCrearSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearSalasSuActionPerformed
+        controlador.crearSala(this);
+    }//GEN-LAST:event_botonCrearSalasSuActionPerformed
 
     private void comboSucursalesSalasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalasItemStateChanged
         // TODO add your handling code here:
@@ -1494,11 +1541,40 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void radioBoton3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton3DActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBoton3DActionPerformed
+
+    private void radioBoton4DXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton4DXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBoton4DXActionPerformed
+
+    private void radioBoton2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton2DActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBoton2DActionPerformed
+
+    private void comboSucursalesSalas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSucursalesSalas1ItemStateChanged
+
+    private void comboSucursalesSalas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboSucursalesSalas1ActionPerformed
+
+    private void botonModificarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarSucursalSuActionPerformed
+        // Buscamos que sucursal está seleccionada
+        int numSucursal = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableSucursales.getModel()).getValueAt(tableSucursales.getSelectedRow(), 0) ) );
+        String nuevoNombre = JOptionPane.showInputDialog("Ingrese la nueva ubicación de la Sucursal");
+        
+        controlador.modificarUbicacionSucursal(this, nuevoNombre, numSucursal);
+        
+        
+    }//GEN-LAST:event_botonModificarSucursalSuActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
     private javax.swing.JButton botonAgregarClienteV;
     private javax.swing.JButton botonAgregarPeliculaP;
-    private javax.swing.JButton botonAgregarSalasSu;
     private javax.swing.JButton botonAgregarSucursalSu;
     private javax.swing.JButton botonBuscarClienteC;
     private javax.swing.JButton botonBuscarClienteV;
@@ -1509,12 +1585,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonCambiarPrecio3DT;
     private javax.swing.JButton botonCambiarPrecio4DT;
     private javax.swing.JButton botonCarritoC;
+    private javax.swing.JButton botonCrearSalasSu;
     private javax.swing.JButton botonModificarPeliculaP;
     private javax.swing.JButton botonModificarSucursalSu;
     private javax.swing.JRadioButton botonRadioAZ;
     private javax.swing.JRadioButton botonRadioZA;
     private javax.swing.JButton botonRegistrarC;
-    private javax.swing.JButton botonVerSalasSu;
+    public javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox<String> comboClientesV;
     private javax.swing.JComboBox<String> comboGeneroP;
     private javax.swing.JComboBox<String> comboIdiomaP;
@@ -1524,6 +1601,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboSalasV;
     private javax.swing.JComboBox<String> comboSucursalP;
     public javax.swing.JComboBox<String> comboSucursalesSalas;
+    public javax.swing.JComboBox<String> comboSucursalesSalas1;
     public javax.swing.JComboBox<String> comboSucursalesV;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondo2;
@@ -1532,7 +1610,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel fondo5;
     private javax.swing.JLabel fondo6;
     private javax.swing.JLabel fondo7;
-    private javax.swing.ButtonGroup grupoBotones;
+    public javax.swing.ButtonGroup grupoBotones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -1561,6 +1639,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1598,6 +1678,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panelSucursales;
     private javax.swing.JPanel panelTickets;
     private javax.swing.JPanel panelVentas;
+    public javax.swing.JRadioButton radioBoton2D;
+    public javax.swing.JRadioButton radioBoton3D;
+    public javax.swing.JRadioButton radioBoton4DX;
     private javax.swing.JSpinner spinnerTicketsV;
     public javax.swing.JTable tableAdmin;
     public javax.swing.JTable tableClientes;

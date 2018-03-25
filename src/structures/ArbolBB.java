@@ -13,6 +13,10 @@ public class ArbolBB {
         this.root = null;
     }
     
+    public boolean isEmpty(){
+        return this.root == null;
+    }
+    
     // Insertar nodo de tipo Sucursal. aux -> Raiz; sucur -> Sucursal a ingresar
     public void insertarSucursal(NodoABB aux, Sucursal sucur) {
         NodoABB nuevo = new NodoABB(sucur);
