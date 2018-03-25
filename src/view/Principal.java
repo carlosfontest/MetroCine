@@ -1578,12 +1578,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void botonModificarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarSucursalSuActionPerformed
         // Buscamos que sucursal está seleccionada
-        int numSucursal = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableSucursales.getModel()).getValueAt(tableSucursales.getSelectedRow(), 0) ) );
-        String nuevoNombre = JOptionPane.showInputDialog("Ingrese la nueva ubicación de la Sucursal");
-        
-        controlador.modificarUbicacionSucursal(this, nuevoNombre, numSucursal);
-        
-        
+        if(tableSucursales.getSelectedRow() != -1){
+            int numSucursal = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableSucursales.getModel()).getValueAt(tableSucursales.getSelectedRow(), 0) ) );
+            if(numSucursal != -1){
+                String nuevoNombre = JOptionPane.showInputDialog("Ingrese la nueva ubicación de la Sucursal");
+                controlador.modificarUbicacionSucursal(this, nuevoNombre, numSucursal);
+            }
+        }
     }//GEN-LAST:event_botonModificarSucursalSuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
