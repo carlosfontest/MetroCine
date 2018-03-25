@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import model.Pelicula;
 import model.Sala;
 import model.Sala2D;
 import model.Sala3D;
@@ -30,42 +31,67 @@ public class Controlador {
                 this.crearSucursal(sucursal2, principal);
             Sucursal sucursal3 = new Sucursal("La Lagunita");
                 this.crearSucursal(sucursal3, principal);
+                
+        // Creacion de las Películas iniciales
+            Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
+                this.crearPelicula(pelicula1, principal);
+            Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
+                this.crearPelicula(pelicula2, principal);
+            Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
+                this.crearPelicula(pelicula3, principal);
+            Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
+                this.crearPelicula(pelicula4, principal);
+            Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
+                this.crearPelicula(pelicula5, principal);
             
         // Creacion de las Salas iniciales
             Sala2D sala1 = new Sala2D(1);
+                sala1.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala1, sucursal1, principal);
             Sala2D sala2 = new Sala2D(2);
+                sala2.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala2, sucursal1, principal);
             Sala3D sala3 = new Sala3D(3);
+                sala3.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala3, sucursal1, principal);
             Sala4DX sala4 = new Sala4DX(4);
+                sala4.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala4, sucursal1, principal);
             Sala4DX sala5 = new Sala4DX(5);
+                sala5.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala5, sucursal1, principal);
                 
             Sala4DX sala6 = new Sala4DX(1);
+                sala6.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala6, sucursal2, principal);
             Sala2D sala7 = new Sala2D(2);
+                sala7.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala7, sucursal2, principal);
             Sala3D sala8 = new Sala3D(3);
+                sala8.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala8, sucursal2, principal);
             Sala3D sala9 = new Sala3D(4);
+                sala9.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala9, sucursal2, principal);
             Sala2D sala10 = new Sala2D(5);
+                sala10.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala10, sucursal2, principal);
                 
             Sala3D sala11 = new Sala3D(1);
+                sala11.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala11, sucursal3, principal);
             Sala2D sala12 = new Sala2D(2);
+                sala12.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala12, sucursal3, principal);
             Sala4DX sala13 = new Sala4DX(3);
+                sala13.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala13, sucursal3, principal);
             Sala4DX sala14 = new Sala4DX(4);
+                sala14.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala14, sucursal3, principal);
             Sala3D sala15 = new Sala3D(5);
+                sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala15, sucursal3, principal);
-        
-        
     }
     
     private void actualizarTablaSucursales(Principal principal){
@@ -85,6 +111,29 @@ public class Controlador {
         });
     }
     
+    public void botonAgregarPelicula(Principal principal){
+        // Se pide el nombre por JOptionPane y se valida que el nombre sea adecuado (ni 0 caracteres, ni mayor a 20)
+        String nombre = JOptionPane.showInputDialog("     Ingrese el nombre de la película\n        (No más de 20 caracteres)");
+        try {
+            if(nombre.length() > 20 || nombre.length() == 0){
+                JOptionPane.showMessageDialog(principal, "Ingrese el nombre de la película siguiendo las instrucciones", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(principal, "Ingrese el nombre de la película siguiendo las instrucciones", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        // Declaramos los idiomas y los géneros
+        String[] idiomas = {"Español", "Inglés", "Francés"};
+        String[] generos = {"Acción", "Amor", "Suspenso", "Aventura"};
+        // Guardamos las variables en un JOption con ComboBox
+        String idioma = (String)JOptionPane.showInputDialog(principal, "   Elija el idioma de la Película", "Selección Idioma", JOptionPane.QUESTION_MESSAGE, null, idiomas, idiomas[0]);
+        String genero = (String)JOptionPane.showInputDialog(principal, "   Elija el género de la Película", "Selección Género", JOptionPane.QUESTION_MESSAGE, null, generos, generos[0]); 
+        
+        // Llamamos al metodo crearPelicula
+        this.crearPelicula(new Pelicula(nombre, genero, idioma), principal);
+    }
+    
     public void cerrar(Principal principal){
         // Metodo para cerrar el sistema
         
@@ -97,6 +146,11 @@ public class Controlador {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(principal, e);
         }
+    }
+    
+    private void crearPelicula(Pelicula pelicula, Principal principal){
+        // Creamos el objetos y llamamos al método mostrar en tabla
+        this.mostrarPeliculasEnTablaPeliculas(pelicula, (DefaultTableModel)principal.tablePeli.getModel() );
     }
     
     public void crearSala(Principal principal){
@@ -212,49 +266,78 @@ public class Controlador {
     public void iniciarPrograma(){
         // Inicia el sistema
         
+        // CAMBIAR Principal POR Inicio
         Principal inicio = new Principal(this);
         inicio.setVisible(true);
         
         // SOLO ESTA ACA TEMPORALMENTE, EN REALIDAD VA EN ABRIR PRINCIPAL
+            // Creación de las Sucursales iniciales
             Sucursal sucursal1 = new Sucursal("Country Club");
-            this.crearSucursal(sucursal1, inicio);
+                this.crearSucursal(sucursal1, inicio);
             Sucursal sucursal2 = new Sucursal("Altamira Hills");
-            this.crearSucursal(sucursal2, inicio);
+                this.crearSucursal(sucursal2, inicio);
             Sucursal sucursal3 = new Sucursal("La Lagunita");
-            this.crearSucursal(sucursal3, inicio);
+                this.crearSucursal(sucursal3, inicio);
+                
+        // Creacion de las Películas iniciales
+            Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
+                this.crearPelicula(pelicula1, inicio);
+            Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
+                this.crearPelicula(pelicula2, inicio);
+            Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
+                this.crearPelicula(pelicula3, inicio);
+            Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
+                this.crearPelicula(pelicula4, inicio);
+            Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
+                this.crearPelicula(pelicula5, inicio);
             
-            // Creacion de las Salas iniciales
+        // Creacion de las Salas iniciales
             Sala2D sala1 = new Sala2D(1);
+                sala1.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala1, sucursal1, inicio);
             Sala2D sala2 = new Sala2D(2);
+                sala2.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala2, sucursal1, inicio);
             Sala3D sala3 = new Sala3D(3);
+                sala3.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala3, sucursal1, inicio);
             Sala4DX sala4 = new Sala4DX(4);
+                sala4.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala4, sucursal1, inicio);
             Sala4DX sala5 = new Sala4DX(5);
+                sala5.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala5, sucursal1, inicio);
                 
             Sala4DX sala6 = new Sala4DX(1);
+                sala6.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala6, sucursal2, inicio);
             Sala2D sala7 = new Sala2D(2);
+                sala7.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala7, sucursal2, inicio);
             Sala3D sala8 = new Sala3D(3);
+                sala8.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala8, sucursal2, inicio);
             Sala3D sala9 = new Sala3D(4);
+                sala9.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala9, sucursal2, inicio);
             Sala2D sala10 = new Sala2D(5);
+                sala10.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala10, sucursal2, inicio);
                 
             Sala3D sala11 = new Sala3D(1);
+                sala11.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala11, sucursal3, inicio);
             Sala2D sala12 = new Sala2D(2);
+                sala12.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala12, sucursal3, inicio);
             Sala4DX sala13 = new Sala4DX(3);
+                sala13.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala13, sucursal3, inicio);
             Sala4DX sala14 = new Sala4DX(4);
+                sala14.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala14, sucursal3, inicio);
             Sala3D sala15 = new Sala3D(5);
+                sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala15, sucursal3, inicio);
     }
     
@@ -392,6 +475,23 @@ public class Controlador {
         this.actualizarTablaSucursales(principal);
     }
     
+    private void mostrarPeliculasEnTablaPeliculas(Pelicula pelicula, DefaultTableModel modelo){
+        modelo.addRow(new Object[]{
+            pelicula.getNombre(), pelicula.getGenero(), pelicula.getIdioma()
+        });
+    }
+    
+    public void mostrarSalasEnComboVentas(Principal principal, int numSUcursal){
+        
+        
+        
+        // POR IMPLEMENTAR
+        
+        
+        
+        
+    }
+    
     public void mostrarSalasEnTablaSalas(Principal principal, int numSucursal, boolean flag){
         // Se crea una Sucursal aux para ahorrar código
         Sucursal aux = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
@@ -404,15 +504,15 @@ public class Controlador {
         for (int i = 0; i < cantFilas; i++) {
             if( aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala2D){
                 model.addRow(new Object[]{
-                    i+1, "2D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                    i+1, "2D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
                 });  
             }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala3D){
                 model.addRow(new Object[]{
-                    i+1, "3D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                    i+1, "3D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
                 });
             }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala4DX){
                 model.addRow(new Object[]{
-                    i+1, "4DX" , aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                    i+1, "4DX" , aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
                 });
             } 
         }
