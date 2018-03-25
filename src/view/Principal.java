@@ -3,6 +3,7 @@ package view;
 import controller.Controlador;
 import static controller.Controlador.sucursales;
 import java.awt.Color;
+import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -1527,6 +1528,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void botonCrearSalasSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearSalasSuActionPerformed
         controlador.crearSala(this);
+        
+        // Volvemos a mostrar las Salas para no tener que actualizar desde la GUI
+        ((DefaultTableModel)tableSalas.getModel()).setRowCount(0);
+        
+        if(comboSucursalesSalas.getSelectedItem() != "Sucursal"){
+            int numSucursal = Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem()));
+            controlador.mostrarSalasEnTablaSalas(this, numSucursal, false);
+        }
     }//GEN-LAST:event_botonCrearSalasSuActionPerformed
 
     private void comboSucursalesSalasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalasItemStateChanged
@@ -1534,7 +1543,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboSucursalesSalasItemStateChanged
 
     private void comboSucursalesSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesSalasActionPerformed
-        // TODO add your handling code here:
+        // Se vacian las salas ya vistas
+        ((DefaultTableModel)tableSalas.getModel()).setRowCount(0);
+        
+        if(comboSucursalesSalas.getSelectedItem() != "Sucursal"){
+            int numSucursal = Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem()));
+            controlador.mostrarSalasEnTablaSalas(this, numSucursal, false);
+        }
     }//GEN-LAST:event_comboSucursalesSalasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

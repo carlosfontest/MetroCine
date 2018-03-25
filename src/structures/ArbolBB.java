@@ -98,6 +98,21 @@ public class ArbolBB {
         }
     }
     
+    // Busca una Sala en el árbol. aux -> Raiz; numero -> número de la Sala a buscar
+    public Sala buscarSala(NodoABB aux, int numero) {
+        if (aux != null) {
+            if ( ((Sala)aux.getData()).getNumero() == numero) {
+                return (Sala)aux.getData();
+            } else if (numero < ((Sala)aux.getData()).getNumero()) {
+                return buscarSala(aux.getHijoIzq(), numero);
+            } else {
+                return buscarSala(aux.getHijoDer(), numero);
+            }
+        } else {
+            return null;
+        }
+    }
+    
     // Busca un Ticket en el árbol. aux -> Raiz; identificador -> identificador del Ticket a buscar
     public Ticket buscarTicket(NodoABB aux, int identificador) {
         if (aux != null) {
@@ -174,7 +189,7 @@ public class ArbolBB {
             postOrden(aux.getHijoDer());
             aux.ImprimeNodo();
         }
-    }
+    } 
     
     public NodoABB getRoot() {
         return root;

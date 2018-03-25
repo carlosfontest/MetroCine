@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import model.Sala;
 import model.Sala2D;
 import model.Sala3D;
 import model.Sala4DX;
@@ -22,13 +23,47 @@ public class Controlador {
         Principal principal = new Principal(this);
         principal.setVisible(true);
         
-        // Creación de las sucursales iniciales
+        // Creación de las Sucursales iniciales
             Sucursal sucursal1 = new Sucursal("Country Club");
-            this.crearSucursal(sucursal1, principal);
+                this.crearSucursal(sucursal1, principal);
             Sucursal sucursal2 = new Sucursal("Altamira Hills");
-            this.crearSucursal(sucursal2, principal);
+                this.crearSucursal(sucursal2, principal);
             Sucursal sucursal3 = new Sucursal("La Lagunita");
-            this.crearSucursal(sucursal3, principal);
+                this.crearSucursal(sucursal3, principal);
+            
+        // Creacion de las Salas iniciales
+            Sala2D sala1 = new Sala2D(1);
+                this.crearSalaInicio(sala1, sucursal1, principal);
+            Sala2D sala2 = new Sala2D(2);
+                this.crearSalaInicio(sala2, sucursal1, principal);
+            Sala3D sala3 = new Sala3D(3);
+                this.crearSalaInicio(sala3, sucursal1, principal);
+            Sala4DX sala4 = new Sala4DX(4);
+                this.crearSalaInicio(sala4, sucursal1, principal);
+            Sala4DX sala5 = new Sala4DX(5);
+                this.crearSalaInicio(sala5, sucursal1, principal);
+                
+            Sala4DX sala6 = new Sala4DX(1);
+                this.crearSalaInicio(sala6, sucursal2, principal);
+            Sala2D sala7 = new Sala2D(2);
+                this.crearSalaInicio(sala7, sucursal2, principal);
+            Sala3D sala8 = new Sala3D(3);
+                this.crearSalaInicio(sala8, sucursal2, principal);
+            Sala3D sala9 = new Sala3D(4);
+                this.crearSalaInicio(sala9, sucursal2, principal);
+            Sala2D sala10 = new Sala2D(5);
+                this.crearSalaInicio(sala10, sucursal2, principal);
+                
+            Sala3D sala11 = new Sala3D(1);
+                this.crearSalaInicio(sala11, sucursal3, principal);
+            Sala2D sala12 = new Sala2D(2);
+                this.crearSalaInicio(sala12, sucursal3, principal);
+            Sala4DX sala13 = new Sala4DX(3);
+                this.crearSalaInicio(sala13, sucursal3, principal);
+            Sala4DX sala14 = new Sala4DX(4);
+                this.crearSalaInicio(sala14, sucursal3, principal);
+            Sala3D sala15 = new Sala3D(5);
+                this.crearSalaInicio(sala15, sucursal3, principal);
         
         
     }
@@ -155,6 +190,14 @@ public class Controlador {
         
     }
     
+    // Método que solo se utiliza para crear las salas que vienen desde el inicio del programa
+    private void crearSalaInicio(Sala sala, Sucursal sucursal, Principal principal){
+        // Se inserta la Sala en el árbol respectivo
+        sucursal.getSalas().insertarSala(sucursal.getSalas().getRoot(), sala);
+        // Se muestra las Salas en la tabla
+        this.mostrarSalasEnTablaSalas(principal, sucursal.getCodigo(), true);
+    }
+    
     public void crearSucursal(Sucursal sucursal, Principal principal){
         // Crea una nueva sucursal y se inserta en el arbol "salas"
         
@@ -169,18 +212,50 @@ public class Controlador {
     public void iniciarPrograma(){
         // Inicia el sistema
         
-        Principal inicio = new Principal(this);
+        Inicio inicio = new Inicio(this);
         inicio.setVisible(true);
         
         // SOLO ESTA ACA TEMPORALMENTE, EN REALIDAD VA EN ABRIR PRINCIPAL
-            Sucursal sucursal1 = new Sucursal("Country Club");
-            this.crearSucursal(sucursal1, inicio);
-            Sucursal sucursal2 = new Sucursal("Altamira Hills");
-            this.crearSucursal(sucursal2, inicio);
-            Sucursal sucursal3 = new Sucursal("La Lagunita");
-            this.crearSucursal(sucursal3, inicio);
-        
-        
+//            Sucursal sucursal1 = new Sucursal("Country Club");
+//            this.crearSucursal(sucursal1, inicio);
+//            Sucursal sucursal2 = new Sucursal("Altamira Hills");
+//            this.crearSucursal(sucursal2, inicio);
+//            Sucursal sucursal3 = new Sucursal("La Lagunita");
+//            this.crearSucursal(sucursal3, inicio);
+            
+            // Creacion de las Salas iniciales
+//            Sala2D sala1 = new Sala2D(1);
+//                this.crearSalaInicio(sala1, sucursal1, inicio);
+//            Sala2D sala2 = new Sala2D(2);
+//                this.crearSalaInicio(sala2, sucursal1, inicio);
+//            Sala3D sala3 = new Sala3D(3);
+//                this.crearSalaInicio(sala3, sucursal1, inicio);
+//            Sala4DX sala4 = new Sala4DX(4);
+//                this.crearSalaInicio(sala4, sucursal1, inicio);
+//            Sala4DX sala5 = new Sala4DX(5);
+//                this.crearSalaInicio(sala5, sucursal1, inicio);
+//                
+//            Sala4DX sala6 = new Sala4DX(1);
+//                this.crearSalaInicio(sala6, sucursal2, inicio);
+//            Sala2D sala7 = new Sala2D(2);
+//                this.crearSalaInicio(sala7, sucursal2, inicio);
+//            Sala3D sala8 = new Sala3D(3);
+//                this.crearSalaInicio(sala8, sucursal2, inicio);
+//            Sala3D sala9 = new Sala3D(4);
+//                this.crearSalaInicio(sala9, sucursal2, inicio);
+//            Sala2D sala10 = new Sala2D(5);
+//                this.crearSalaInicio(sala10, sucursal2, inicio);
+//                
+//            Sala3D sala11 = new Sala3D(1);
+//                this.crearSalaInicio(sala11, sucursal3, inicio);
+//            Sala2D sala12 = new Sala2D(2);
+//                this.crearSalaInicio(sala12, sucursal3, inicio);
+//            Sala4DX sala13 = new Sala4DX(3);
+//                this.crearSalaInicio(sala13, sucursal3, inicio);
+//            Sala4DX sala14 = new Sala4DX(4);
+//                this.crearSalaInicio(sala14, sucursal3, inicio);
+//            Sala3D sala15 = new Sala3D(5);
+//                this.crearSalaInicio(sala15, sucursal3, inicio);
     }
     
     public void iniciarSesion(Inicio inicio){
@@ -265,6 +340,7 @@ public class Controlador {
         principal.tablePeli.setRowHeight(20);
     }
     public void iniciarTablaSalas(Principal principal){
+        ((DefaultTableModel)principal.tableSalas.getModel()).setRowCount(0);
         // Permitir la selección de solo una fila
         principal.tableSalas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Denegar el acceso a modificar
@@ -315,4 +391,38 @@ public class Controlador {
         sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).setUbicacion(nuevaUbicacion);
         this.actualizarTablaSucursales(principal);
     }
+    
+    public void mostrarSalasEnTablaSalas(Principal principal, int numSucursal, boolean flag){
+        // Se crea una Sucursal aux para ahorrar código
+        Sucursal aux = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
+        // Se determina la cantidad de salas que hay en la sucursal seleccionada para así saber cuantas filas habrán
+        int cantFilas = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().size(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot());
+        DefaultTableModel model = (DefaultTableModel)principal.tableSalas.getModel();
+        
+        
+        // Agregamos las salas a la Tabla
+        for (int i = 0; i < cantFilas; i++) {
+            if( aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala2D){
+                model.addRow(new Object[]{
+                    i+1, "2D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                });  
+            }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala3D){
+                model.addRow(new Object[]{
+                    i+1, "3D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                });
+            }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala4DX){
+                model.addRow(new Object[]{
+                    i+1, "4DX" , aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula()
+                });
+            } 
+        }
+        
+        if(flag){
+            this.iniciarTablaSalas(principal);
+        }
+        
+        
+    }
+    
+    
 }
