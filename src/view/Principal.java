@@ -439,6 +439,11 @@ public class Principal extends javax.swing.JFrame {
         botonModificarPeliculaP.setText("Modificar");
         botonModificarPeliculaP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonModificarPeliculaP.setFocusPainted(false);
+        botonModificarPeliculaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarPeliculaPActionPerformed(evt);
+            }
+        });
         panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 80, 30));
 
         botonAgregarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
@@ -843,7 +848,7 @@ public class Principal extends javax.swing.JFrame {
         comboPeliculasSa1.setBackground(new java.awt.Color(153, 153, 153));
         comboPeliculasSa1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboPeliculasSa1.setForeground(new java.awt.Color(255, 255, 255));
-        comboPeliculasSa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPeliculasSa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Películas" }));
 
         botonCambiarPeliculaSa1.setBackground(new java.awt.Color(153, 153, 153));
         botonCambiarPeliculaSa1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -851,6 +856,11 @@ public class Principal extends javax.swing.JFrame {
         botonCambiarPeliculaSa1.setText("Cambiar Película");
         botonCambiarPeliculaSa1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonCambiarPeliculaSa1.setFocusPainted(false);
+        botonCambiarPeliculaSa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambiarPeliculaSa1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -858,10 +868,10 @@ public class Principal extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(comboPeliculasSa1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(comboPeliculasSa1, 0, 136, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botonCambiarPeliculaSa1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1525,6 +1535,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldSalaActionPerformed
 
+    private void botonCambiarPeliculaSa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPeliculaSa1ActionPerformed
+        controlador.botonCambiarPeliculasSalas(this);
+    }//GEN-LAST:event_botonCambiarPeliculaSa1ActionPerformed
+
+    private void botonModificarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarPeliculaPActionPerformed
+        controlador.peliculas.printPeliculas();
+    }//GEN-LAST:event_botonModificarPeliculaPActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
     private javax.swing.JButton botonAgregarClienteV;
@@ -1548,7 +1566,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboClientesV;
     private javax.swing.JComboBox<String> comboGeneroP;
     private javax.swing.JComboBox<String> comboIdiomaP;
-    private javax.swing.JComboBox<String> comboPeliculasSa1;
+    public javax.swing.JComboBox<String> comboPeliculasSa1;
     private javax.swing.JComboBox<String> comboSalaP;
     public javax.swing.JComboBox<String> comboSalasV;
     private javax.swing.JComboBox<String> comboSucursalP;

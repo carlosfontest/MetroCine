@@ -1,5 +1,8 @@
 package structures;
 
+import javax.swing.JOptionPane;
+import model.Pelicula;
+
 public class ListaDoble <T>{
     private NodoDoble<T> head;
     private NodoDoble<T> tail;
@@ -157,6 +160,35 @@ public class ListaDoble <T>{
                 aux = aux.getNext();
             }
         }
+    }
+    
+    // Imprime lista de Peliculas
+    public void printPeliculas(){
+        if (isEmpty()) {
+            System.out.println("Vacia");
+        } else {
+            NodoDoble<T> aux = this.head;
+            while (aux != null) {
+                System.out.println( ((Pelicula)aux.getData()).getNombre() );
+                aux = aux.getNext();
+            }
+        }
+    }
+    
+    // Devuelve una pelicula
+    public Pelicula buscarPelicula(String nombre){
+        Pelicula peli = null;
+        
+        NodoDoble<T> aux = this.head;
+        while(aux != null){
+            if( ((Pelicula)aux.getData()).getNombre().equals(nombre) ){
+                peli = (Pelicula)aux.getData();
+                aux = aux.getNext();
+            }else{
+                aux = aux.getNext();
+            }
+        }
+        return peli;
     }
     
     

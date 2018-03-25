@@ -10,12 +10,14 @@ import model.Sala3D;
 import model.Sala4DX;
 import model.Sucursal;
 import structures.ArbolBB;
+import structures.ListaDoble;
 import view.*;
 
 public class Controlador {
     // Creación de los 2 árboles principales del proyecto
     public static ArbolBB sucursales = new ArbolBB();
     public static ArbolBB clientes = new ArbolBB();
+    public static ListaDoble<Pelicula> peliculas = new ListaDoble<>();
     
     
     public void abrirPrincipal(){
@@ -34,14 +36,19 @@ public class Controlador {
                 
         // Creacion de las Películas iniciales
             Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
+                peliculas.addLast(pelicula1);
                 this.crearPelicula(pelicula1, principal);
             Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
+                peliculas.addLast(pelicula2);
                 this.crearPelicula(pelicula2, principal);
             Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
+                peliculas.addLast(pelicula3);
                 this.crearPelicula(pelicula3, principal);
             Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
+                peliculas.addLast(pelicula4);
                 this.crearPelicula(pelicula4, principal);
             Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
+                peliculas.addLast(pelicula5);
                 this.crearPelicula(pelicula5, principal);
             
         // Creacion de las Salas iniciales
@@ -130,8 +137,35 @@ public class Controlador {
         String idioma = (String)JOptionPane.showInputDialog(principal, "   Elija el idioma de la Película", "Selección Idioma", JOptionPane.QUESTION_MESSAGE, null, idiomas, idiomas[0]);
         String genero = (String)JOptionPane.showInputDialog(principal, "   Elija el género de la Película", "Selección Género", JOptionPane.QUESTION_MESSAGE, null, generos, generos[0]); 
         
-        // Llamamos al metodo crearPelicula
-        this.crearPelicula(new Pelicula(nombre, genero, idioma), principal);
+        // Llamamos al metodo crearPelicula y añadimos la pelicula a la lista de peliculas
+        Pelicula pelicula = new Pelicula(nombre, genero, idioma);
+        peliculas.addLast(pelicula);
+        this.crearPelicula(pelicula, principal);
+    }
+    
+    public void botonCambiarPeliculasSalas(Principal principal){
+        // Se verifica en que sucursal está
+        if(String.valueOf(principal.comboSucursalesSalas.getSelectedItem()).equals("Sucursal")){
+            JOptionPane.showMessageDialog(principal, "No se encuentra en ninguna Sucursal.\n             Seleccione una.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else if(principal.tableSalas.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(principal, "No seleccionó ninguna Sala.\n           Seleccione una.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else if(String.valueOf(principal.comboPeliculasSa1.getSelectedItem()).equals("Películas") ){
+            JOptionPane.showMessageDialog(principal, "Seleccione la película que desea poner.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else{
+            Sucursal sucursal = sucursales.buscarSucursal( sucursales.getRoot(), Integer.parseInt( String.valueOf( principal.comboSucursalesSalas.getSelectedItem() ) ) );
+            Sala sala = sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), principal.tableSalas.getSelectedRow() + 1);
+            Pelicula pelicula = peliculas.buscarPelicula(String.valueOf(principal.comboPeliculasSa1.getSelectedItem()));
+            // Modificamos la pelicula
+            sala.setPelicula(pelicula);
+            // Modificamos el valor en la tabla
+            principal.tableSalas.setValueAt(sala.getPelicula().getNombre(), sala.getNumero() - 1, 2);
+            
+            principal.tableSalas.clearSelection();
+        }
+        
     }
     
     public void cerrar(Principal principal){
@@ -151,10 +185,11 @@ public class Controlador {
     private void crearPelicula(Pelicula pelicula, Principal principal){
         // Creamos el objetos y llamamos al método mostrar en tabla
         this.mostrarPeliculasEnTablaPeliculas(pelicula, (DefaultTableModel)principal.tablePeli.getModel() );
+        // Mostramos las peliculas en el comboBox de peliculas en la pestaña Salas
+        principal.comboPeliculasSa1.addItem(pelicula.getNombre());
     }
     
     public void crearSala(Principal principal){
-        
         // Si es una sala 2D
         if(principal.radioBoton2D.isSelected()){
             if(principal.tableSucursales.getSelectedRow() != -1){
@@ -170,12 +205,14 @@ public class Controlador {
                     // Se inserta en el árbol
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
                 }else{
                     // Lo mismo que arriba
                     Sala2D sala = new Sala2D(1);
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
-                }       
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
+                }        
             }else{
                 JOptionPane.showMessageDialog(principal, "Seleccione a que sucursal va a pertenecer la sala", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -197,11 +234,13 @@ public class Controlador {
                     // Se inserta en el árbol
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
                 }else{
                     // Lo mismo que arriba
                     Sala3D sala = new Sala3D(1);
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
                 }
                 
             }else{
@@ -224,11 +263,13 @@ public class Controlador {
                     // Se inserta en el árbol
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
                 }else{
                     // Lo mismo que arriba
                     Sala4DX sala = new Sala4DX(1);
                     sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().insertarSala(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot(), sala);
                     JOptionPane.showMessageDialog(principal, "Sala número " + sala.getNumero() + " creada con éxito", "Sala creada", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(principal, "Recuerde indicar la película que se verá en la Sala.\n                  Vaya a la pestaña Salas");
                 }
                 
             }else{
@@ -281,14 +322,19 @@ public class Controlador {
                 
         // Creacion de las Películas iniciales
             Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
+                peliculas.addLast(pelicula1);
                 this.crearPelicula(pelicula1, inicio);
             Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
+                peliculas.addLast(pelicula2);
                 this.crearPelicula(pelicula2, inicio);
             Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
+                peliculas.addLast(pelicula3);
                 this.crearPelicula(pelicula3, inicio);
             Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
+                peliculas.addLast(pelicula4);
                 this.crearPelicula(pelicula4, inicio);
             Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
+                peliculas.addLast(pelicula5);
                 this.crearPelicula(pelicula5, inicio);
             
         // Creacion de las Salas iniciales
@@ -502,19 +548,36 @@ public class Controlador {
         
         // Agregamos las salas a la Tabla
         for (int i = 0; i < cantFilas; i++) {
-            if( aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala2D){
-                model.addRow(new Object[]{
-                    i+1, "2D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
-                });  
-            }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala3D){
-                model.addRow(new Object[]{
-                    i+1, "3D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
-                });
-            }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala4DX){
-                model.addRow(new Object[]{
-                    i+1, "4DX" , aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
-                });
-            } 
+            // Si ya tienen nombre puesto
+            if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula() != null){
+                if( aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala2D){
+                    model.addRow(new Object[]{
+                        i+1, "2D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                    });  
+                }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala3D){
+                    model.addRow(new Object[]{
+                        i+1, "3D", aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                    });
+                }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala4DX){
+                    model.addRow(new Object[]{
+                        i+1, "4DX" , aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                    });
+                }
+            }else{
+                if( aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala2D){
+                    model.addRow(new Object[]{
+                        i+1, "2D", "--------------------------------"
+                    });  
+                }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala3D){
+                    model.addRow(new Object[]{
+                        i+1, "3D", "--------------------------------"
+                    });
+                }else if(aux.getSalas().buscarSala(aux.getSalas().getRoot(), i+1) instanceof Sala4DX){
+                    model.addRow(new Object[]{
+                        i+1, "4DX" , "--------------------------------"
+                    });
+                }
+            }
         }
         
         if(flag){
