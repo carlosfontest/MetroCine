@@ -77,7 +77,7 @@ public class Controlador {
         principal.tableSucursales.setValueAt(sucursales.buscarSucursal(sucursales.getRoot(), aux).getUbicacion(), principal.tableSucursales.getSelectedRow(), 1);        
     }
     
-    private void agregarATablaSucursales(Principal principal, Sucursal sucursal, DefaultTableModel model){
+    private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
         // Agrega la sala creada en la tabla
         
         model.addRow(new Object[]{
@@ -206,56 +206,56 @@ public class Controlador {
         principal.comboSucursalesV.addItem(String.valueOf(sucursal.getCodigo()));
         principal.comboSucursalesSalas.addItem(String.valueOf(sucursal.getCodigo()));
         // Agrego la nueva sucursal a la tabla
-        this.agregarATablaSucursales(principal, sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
+        this.agregarATablaSucursales(sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
     }
     
     public void iniciarPrograma(){
         // Inicia el sistema
         
-        Inicio inicio = new Inicio(this);
+        Principal inicio = new Principal(this);
         inicio.setVisible(true);
         
         // SOLO ESTA ACA TEMPORALMENTE, EN REALIDAD VA EN ABRIR PRINCIPAL
-//            Sucursal sucursal1 = new Sucursal("Country Club");
-//            this.crearSucursal(sucursal1, inicio);
-//            Sucursal sucursal2 = new Sucursal("Altamira Hills");
-//            this.crearSucursal(sucursal2, inicio);
-//            Sucursal sucursal3 = new Sucursal("La Lagunita");
-//            this.crearSucursal(sucursal3, inicio);
+            Sucursal sucursal1 = new Sucursal("Country Club");
+            this.crearSucursal(sucursal1, inicio);
+            Sucursal sucursal2 = new Sucursal("Altamira Hills");
+            this.crearSucursal(sucursal2, inicio);
+            Sucursal sucursal3 = new Sucursal("La Lagunita");
+            this.crearSucursal(sucursal3, inicio);
             
             // Creacion de las Salas iniciales
-//            Sala2D sala1 = new Sala2D(1);
-//                this.crearSalaInicio(sala1, sucursal1, inicio);
-//            Sala2D sala2 = new Sala2D(2);
-//                this.crearSalaInicio(sala2, sucursal1, inicio);
-//            Sala3D sala3 = new Sala3D(3);
-//                this.crearSalaInicio(sala3, sucursal1, inicio);
-//            Sala4DX sala4 = new Sala4DX(4);
-//                this.crearSalaInicio(sala4, sucursal1, inicio);
-//            Sala4DX sala5 = new Sala4DX(5);
-//                this.crearSalaInicio(sala5, sucursal1, inicio);
-//                
-//            Sala4DX sala6 = new Sala4DX(1);
-//                this.crearSalaInicio(sala6, sucursal2, inicio);
-//            Sala2D sala7 = new Sala2D(2);
-//                this.crearSalaInicio(sala7, sucursal2, inicio);
-//            Sala3D sala8 = new Sala3D(3);
-//                this.crearSalaInicio(sala8, sucursal2, inicio);
-//            Sala3D sala9 = new Sala3D(4);
-//                this.crearSalaInicio(sala9, sucursal2, inicio);
-//            Sala2D sala10 = new Sala2D(5);
-//                this.crearSalaInicio(sala10, sucursal2, inicio);
-//                
-//            Sala3D sala11 = new Sala3D(1);
-//                this.crearSalaInicio(sala11, sucursal3, inicio);
-//            Sala2D sala12 = new Sala2D(2);
-//                this.crearSalaInicio(sala12, sucursal3, inicio);
-//            Sala4DX sala13 = new Sala4DX(3);
-//                this.crearSalaInicio(sala13, sucursal3, inicio);
-//            Sala4DX sala14 = new Sala4DX(4);
-//                this.crearSalaInicio(sala14, sucursal3, inicio);
-//            Sala3D sala15 = new Sala3D(5);
-//                this.crearSalaInicio(sala15, sucursal3, inicio);
+            Sala2D sala1 = new Sala2D(1);
+                this.crearSalaInicio(sala1, sucursal1, inicio);
+            Sala2D sala2 = new Sala2D(2);
+                this.crearSalaInicio(sala2, sucursal1, inicio);
+            Sala3D sala3 = new Sala3D(3);
+                this.crearSalaInicio(sala3, sucursal1, inicio);
+            Sala4DX sala4 = new Sala4DX(4);
+                this.crearSalaInicio(sala4, sucursal1, inicio);
+            Sala4DX sala5 = new Sala4DX(5);
+                this.crearSalaInicio(sala5, sucursal1, inicio);
+                
+            Sala4DX sala6 = new Sala4DX(1);
+                this.crearSalaInicio(sala6, sucursal2, inicio);
+            Sala2D sala7 = new Sala2D(2);
+                this.crearSalaInicio(sala7, sucursal2, inicio);
+            Sala3D sala8 = new Sala3D(3);
+                this.crearSalaInicio(sala8, sucursal2, inicio);
+            Sala3D sala9 = new Sala3D(4);
+                this.crearSalaInicio(sala9, sucursal2, inicio);
+            Sala2D sala10 = new Sala2D(5);
+                this.crearSalaInicio(sala10, sucursal2, inicio);
+                
+            Sala3D sala11 = new Sala3D(1);
+                this.crearSalaInicio(sala11, sucursal3, inicio);
+            Sala2D sala12 = new Sala2D(2);
+                this.crearSalaInicio(sala12, sucursal3, inicio);
+            Sala4DX sala13 = new Sala4DX(3);
+                this.crearSalaInicio(sala13, sucursal3, inicio);
+            Sala4DX sala14 = new Sala4DX(4);
+                this.crearSalaInicio(sala14, sucursal3, inicio);
+            Sala3D sala15 = new Sala3D(5);
+                this.crearSalaInicio(sala15, sucursal3, inicio);
     }
     
     public void iniciarSesion(Inicio inicio){

@@ -3,12 +3,10 @@ package view;
 import controller.Controlador;
 import static controller.Controlador.sucursales;
 import java.awt.Color;
-import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import model.Sala2D;
 import model.Sucursal;
 
 public class Principal extends javax.swing.JFrame {
@@ -1553,27 +1551,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboSucursalesSalasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void radioBoton3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton3DActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioBoton3DActionPerformed
 
     private void radioBoton4DXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton4DXActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioBoton4DXActionPerformed
 
     private void radioBoton2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton2DActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_radioBoton2DActionPerformed
 
     private void comboSucursalesSalas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ItemStateChanged
-        // TODO add your handling code here:
     }//GEN-LAST:event_comboSucursalesSalas1ItemStateChanged
 
     private void comboSucursalesSalas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_comboSucursalesSalas1ActionPerformed
 
     private void botonModificarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarSucursalSuActionPerformed
