@@ -198,7 +198,13 @@ public class Controlador {
             Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
             int numSala = Integer.parseInt(String.valueOf(principal.comboSalasV.getSelectedItem()));
             
-            principal.labelPelicula.setText(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), numSala).getPelicula().getNombre());
+            //Se verifica que la película sea diferente de null
+            try {
+                principal.labelPelicula.setText(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), numSala).getPelicula().getNombre());
+            } catch (Exception e) {
+                 principal.labelPelicula.setText("-----------------------");
+            }
+            
         }else{
             principal.labelPelicula.setText("-----------------------");
         }

@@ -1,0 +1,6 @@
+Falta:
+
+-Ordenar por Sala.
+-Error al cancelar "agregar película".
+-Eliminar película
+-Ordenar películas por orden alfabético, género e idioma.

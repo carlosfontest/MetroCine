@@ -79,12 +79,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         comboGeneroP = new javax.swing.JComboBox<>();
         comboIdiomaP = new javax.swing.JComboBox<>();
-        comboSucursalP = new javax.swing.JComboBox<>();
-        comboSalaP = new javax.swing.JComboBox<>();
         botonRadioAZ = new javax.swing.JRadioButton();
         botonRadioZA = new javax.swing.JRadioButton();
         comboModificarPelicula = new javax.swing.JComboBox<>();
         textFieldPeliculaP = new javax.swing.JTextField();
+        botonEliminarPeliculaP = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         botonBuscarPeliculaP = new javax.swing.JButton();
@@ -117,7 +116,7 @@ public class Principal extends javax.swing.JFrame {
         comboPeliculasSa1 = new javax.swing.JComboBox<>();
         botonCambiarPeliculaSa1 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
-        comboSucursalesSalas1 = new javax.swing.JComboBox<>();
+        comboTipoDeSalaS = new javax.swing.JComboBox<>();
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -510,7 +509,7 @@ public class Principal extends javax.swing.JFrame {
                 botonModificarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 80, 30));
+        panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 80, 30));
 
         botonAgregarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -523,7 +522,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 130, 30));
+        panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 130, 30));
 
         tablePeli = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -564,16 +563,6 @@ public class Principal extends javax.swing.JFrame {
         comboIdiomaP.setForeground(new java.awt.Color(255, 255, 255));
         comboIdiomaP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        comboSucursalP.setBackground(new java.awt.Color(153, 153, 153));
-        comboSucursalP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboSucursalP.setForeground(new java.awt.Color(255, 255, 255));
-        comboSucursalP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboSalaP.setBackground(new java.awt.Color(153, 153, 153));
-        comboSalaP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboSalaP.setForeground(new java.awt.Color(255, 255, 255));
-        comboSalaP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         botonRadioAZ.setBackground(new java.awt.Color(102, 102, 102));
         grupoBotones.add(botonRadioAZ);
         botonRadioAZ.setForeground(new java.awt.Color(255, 255, 255));
@@ -589,19 +578,15 @@ public class Principal extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboSucursalP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(comboSalaP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonRadioAZ)
                     .addComponent(botonRadioZA))
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,20 +598,18 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboSalaP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboSucursalP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 450, 60));
+        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 340, 60));
 
         comboModificarPelicula.setBackground(new java.awt.Color(153, 153, 153));
         comboModificarPelicula.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
         comboModificarPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modificar", "Género", "Idioma" }));
-        panelPeliculas.add(comboModificarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 100, 26));
+        panelPeliculas.add(comboModificarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 100, 26));
 
         textFieldPeliculaP.setBackground(new java.awt.Color(102, 102, 102));
         textFieldPeliculaP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -647,6 +630,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelPeliculas.add(textFieldPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 315, 110, 26));
+
+        botonEliminarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
+        botonEliminarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonEliminarPeliculaP.setForeground(new java.awt.Color(255, 255, 255));
+        botonEliminarPeliculaP.setText("Eliminar Película");
+        botonEliminarPeliculaP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonEliminarPeliculaP.setFocusPainted(false);
+        botonEliminarPeliculaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarPeliculaPActionPerformed(evt);
+            }
+        });
+        panelPeliculas.add(botonEliminarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 130, 30));
         panelPeliculas.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 90, -1));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
@@ -669,16 +665,16 @@ public class Principal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addComponent(botonBuscarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonBuscarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelPeliculas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, 60));
@@ -896,7 +892,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 294, 130, 50));
+        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -960,20 +956,20 @@ public class Principal extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        comboSucursalesSalas1.setBackground(new java.awt.Color(153, 153, 153));
-        comboSucursalesSalas1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboSucursalesSalas1.setForeground(new java.awt.Color(255, 255, 255));
-        comboSucursalesSalas1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
-        comboSucursalesSalas1.setBorder(null);
-        comboSucursalesSalas1.setFocusable(false);
-        comboSucursalesSalas1.addItemListener(new java.awt.event.ItemListener() {
+        comboTipoDeSalaS.setBackground(new java.awt.Color(153, 153, 153));
+        comboTipoDeSalaS.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        comboTipoDeSalaS.setForeground(new java.awt.Color(255, 255, 255));
+        comboTipoDeSalaS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de Sala" }));
+        comboTipoDeSalaS.setBorder(null);
+        comboTipoDeSalaS.setFocusable(false);
+        comboTipoDeSalaS.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboSucursalesSalas1ItemStateChanged(evt);
+                comboTipoDeSalaSItemStateChanged(evt);
             }
         });
-        comboSucursalesSalas1.addActionListener(new java.awt.event.ActionListener() {
+        comboTipoDeSalaS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboSucursalesSalas1ActionPerformed(evt);
+                comboTipoDeSalaSActionPerformed(evt);
             }
         });
 
@@ -983,18 +979,18 @@ public class Principal extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comboSucursalesSalas1, 0, 104, Short.MAX_VALUE)
+                .addComponent(comboTipoDeSalaS, 0, 104, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(comboSucursalesSalas1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboTipoDeSalaS, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 294, 130, 50));
+        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 130, 50));
 
         fondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSalas.add(fondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1587,11 +1583,11 @@ public class Principal extends javax.swing.JFrame {
     private void radioBoton2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton2DActionPerformed
     }//GEN-LAST:event_radioBoton2DActionPerformed
 
-    private void comboSucursalesSalas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ItemStateChanged
-    }//GEN-LAST:event_comboSucursalesSalas1ItemStateChanged
+    private void comboTipoDeSalaSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTipoDeSalaSItemStateChanged
+    }//GEN-LAST:event_comboTipoDeSalaSItemStateChanged
 
-    private void comboSucursalesSalas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesSalas1ActionPerformed
-    }//GEN-LAST:event_comboSucursalesSalas1ActionPerformed
+    private void comboTipoDeSalaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoDeSalaSActionPerformed
+    }//GEN-LAST:event_comboTipoDeSalaSActionPerformed
 
     private void botonModificarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarSucursalSuActionPerformed
         // Buscamos que sucursal está seleccionada
@@ -1633,6 +1629,10 @@ public class Principal extends javax.swing.JFrame {
         controlador.cambiarSalaVentas(this);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void botonEliminarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPeliculaPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEliminarPeliculaPActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
     private javax.swing.JButton botonAgregarClienteV;
@@ -1647,6 +1647,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonCambiarPrecio4DT;
     private javax.swing.JButton botonCarritoC;
     private javax.swing.JButton botonCrearSalasSu;
+    private javax.swing.JButton botonEliminarPeliculaP;
     private javax.swing.JButton botonModificarPeliculaP;
     private javax.swing.JButton botonModificarSucursalSu;
     private javax.swing.JRadioButton botonRadioAZ;
@@ -1658,12 +1659,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboIdiomaP;
     public javax.swing.JComboBox<String> comboModificarPelicula;
     public javax.swing.JComboBox<String> comboPeliculasSa1;
-    private javax.swing.JComboBox<String> comboSalaP;
     public javax.swing.JComboBox<String> comboSalasV;
-    private javax.swing.JComboBox<String> comboSucursalP;
     public javax.swing.JComboBox<String> comboSucursalesSalas;
-    public javax.swing.JComboBox<String> comboSucursalesSalas1;
     public javax.swing.JComboBox<String> comboSucursalesV;
+    public javax.swing.JComboBox<String> comboTipoDeSalaS;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondo3;
