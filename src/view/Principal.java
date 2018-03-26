@@ -3,6 +3,7 @@ package view;
 import controller.Controlador;
 import static controller.Controlador.sucursales;
 import java.awt.Color;
+import javax.swing.DefaultButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -23,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
         this.setResizable(false);      
         this.setSize(600, 430);
         this.setBackground(new Color(0,0,0,0));
+        jRadioButton4.setSelected(true);
         
         //----------Inicializamos las tablas----------
         this.controlador.iniciarTablaSucursales(this);
@@ -31,6 +33,8 @@ public class Principal extends javax.swing.JFrame {
         this.controlador.iniciarTablaClientes(this);
         this.controlador.iniciarTablaPeliculas(this);
         this.controlador.iniciarTablaTickets(this);
+        
+        this.controlador.iniciarRadioButons(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         grupoBotones = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panelVentas = new javax.swing.JPanel();
         label$1T2 = new javax.swing.JLabel();
@@ -116,7 +121,10 @@ public class Principal extends javax.swing.JFrame {
         comboPeliculasSa1 = new javax.swing.JComboBox<>();
         botonCambiarPeliculaSa1 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
-        comboTipoDeSalaS = new javax.swing.JComboBox<>();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -881,7 +889,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comboSucursalesSalas, 0, 104, Short.MAX_VALUE)
+                .addComponent(comboSucursalesSalas, 0, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -892,7 +900,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, 50));
+        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 180, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -951,25 +959,52 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 320, 60));
+        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 320, 60));
 
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        comboTipoDeSalaS.setBackground(new java.awt.Color(153, 153, 153));
-        comboTipoDeSalaS.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboTipoDeSalaS.setForeground(new java.awt.Color(255, 255, 255));
-        comboTipoDeSalaS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de Sala" }));
-        comboTipoDeSalaS.setBorder(null);
-        comboTipoDeSalaS.setFocusable(false);
-        comboTipoDeSalaS.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboTipoDeSalaSItemStateChanged(evt);
+        jRadioButton1.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(jRadioButton1);
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setText("2D");
+        jRadioButton1.setFocusPainted(false);
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
             }
         });
-        comboTipoDeSalaS.addActionListener(new java.awt.event.ActionListener() {
+
+        jRadioButton2.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(jRadioButton2);
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("3D");
+        jRadioButton2.setFocusPainted(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTipoDeSalaSActionPerformed(evt);
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton3.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(jRadioButton3);
+        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton3.setText("4DX");
+        jRadioButton3.setFocusPainted(false);
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton4.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(jRadioButton4);
+        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton4.setText("All");
+        jRadioButton4.setFocusPainted(false);
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
             }
         });
 
@@ -979,18 +1014,28 @@ public class Principal extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comboTipoDeSalaS, 0, 104, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton4)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(comboTipoDeSalaS, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3)
+                    .addComponent(jRadioButton4))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 130, 50));
+        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 180, 50));
 
         fondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSalas.add(fondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1558,7 +1603,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCrearSalasSuActionPerformed
 
     private void comboSucursalesSalasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalasItemStateChanged
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_comboSucursalesSalasItemStateChanged
 
     private void comboSucursalesSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursalesSalasActionPerformed
@@ -1569,6 +1614,27 @@ public class Principal extends javax.swing.JFrame {
             int numSucursal = Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem()));
             controlador.mostrarSalasEnTablaSalas(this, numSucursal, false);
         }
+        
+        if(comboSucursalesSalas.getSelectedItem() == "Sucursal"){
+            this.jRadioButton1.setEnabled(false);
+            this.jRadioButton2.setEnabled(false);
+            this.jRadioButton3.setEnabled(false);
+            this.jRadioButton4.setEnabled(false);
+            this.jRadioButton1.setSelected(false);
+            this.jRadioButton2.setSelected(false);
+            this.jRadioButton3.setSelected(false);
+            this.jRadioButton4.setSelected(true);
+        }else{
+            this.jRadioButton1.setEnabled(true);
+            this.jRadioButton2.setEnabled(true);
+            this.jRadioButton3.setEnabled(true);
+            this.jRadioButton4.setEnabled(true);
+            this.jRadioButton1.setSelected(false);
+            this.jRadioButton2.setSelected(false);
+            this.jRadioButton3.setSelected(false);
+            this.jRadioButton4.setSelected(true);
+        }
+        
     }//GEN-LAST:event_comboSucursalesSalasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1582,12 +1648,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void radioBoton2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoton2DActionPerformed
     }//GEN-LAST:event_radioBoton2DActionPerformed
-
-    private void comboTipoDeSalaSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTipoDeSalaSItemStateChanged
-    }//GEN-LAST:event_comboTipoDeSalaSItemStateChanged
-
-    private void comboTipoDeSalaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoDeSalaSActionPerformed
-    }//GEN-LAST:event_comboTipoDeSalaSActionPerformed
 
     private void botonModificarSucursalSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarSucursalSuActionPerformed
         // Buscamos que sucursal está seleccionada
@@ -1630,8 +1690,25 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void botonEliminarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPeliculaPActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_botonEliminarPeliculaPActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        controlador.mostrarSoloSalas2D(this);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        controlador.mostrarSoloSalas3D(this);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        controlador.mostrarSoloSalas4DX(this);
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel)tableSalas.getModel();
+        modelo.setRowCount(0);
+        controlador.mostrarSalasEnTablaSalas(this, Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem())), false);
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1654,6 +1731,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton botonRadioZA;
     private javax.swing.JButton botonRegistrarC;
     public javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JComboBox<String> comboClientesV;
     private javax.swing.JComboBox<String> comboGeneroP;
     private javax.swing.JComboBox<String> comboIdiomaP;
@@ -1662,7 +1740,6 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboSalasV;
     public javax.swing.JComboBox<String> comboSucursalesSalas;
     public javax.swing.JComboBox<String> comboSucursalesV;
-    public javax.swing.JComboBox<String> comboTipoDeSalaS;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondo3;
@@ -1709,6 +1786,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    public javax.swing.JRadioButton jRadioButton1;
+    public javax.swing.JRadioButton jRadioButton2;
+    public javax.swing.JRadioButton jRadioButton3;
+    public javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

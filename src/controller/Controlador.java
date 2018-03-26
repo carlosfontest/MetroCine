@@ -224,6 +224,7 @@ public class Controlador {
         }
     }
     
+    
     private void crearPelicula(Pelicula pelicula, Principal principal){
         // Creamos el objetos y llamamos al método mostrar en tabla
         this.mostrarPeliculasEnTablaPeliculas(pelicula, (DefaultTableModel)principal.tablePeli.getModel() );
@@ -427,6 +428,17 @@ public class Controlador {
             Sala3D sala15 = new Sala3D(5);
                 sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala15, sucursal3, inicio);
+    }
+    
+    public void iniciarRadioButons(Principal principal){
+            principal.jRadioButton1.setEnabled(false);
+            principal.jRadioButton2.setEnabled(false);
+            principal.jRadioButton3.setEnabled(false);
+            principal.jRadioButton4.setEnabled(false);
+            principal.jRadioButton1.setSelected(false);
+            principal.jRadioButton2.setSelected(false);
+            principal.jRadioButton3.setSelected(false);
+            principal.jRadioButton4.setSelected(true);
     }
     
     public void iniciarSesion(Inicio inicio){
@@ -667,6 +679,55 @@ public class Controlador {
         }
         
         
+    }
+    
+    public void mostrarSoloSalas2D(Principal principal){
+        Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
+        int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
+        
+        DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i = 0; i < numSalas; i++) {
+            if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala2D){
+                modelo.addRow(new Object[]{
+                    sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getNumero(), "2D", sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                });
+            }
+        }
+    }
+            
+    public void mostrarSoloSalas3D(Principal principal){
+        Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
+        int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
+        
+        DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i = 0; i < numSalas; i++) {
+            if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala3D){
+                modelo.addRow(new Object[]{
+                    sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getNumero(), "3D", sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                });
+            }
+        }
+        
+    }
+            
+    public void mostrarSoloSalas4DX(Principal principal){
+        Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
+        int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
+        
+        DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i = 0; i < numSalas; i++) {
+            if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala4DX){
+                modelo.addRow(new Object[]{
+                    sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getNumero(), "4DX", sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1).getPelicula().getNombre()
+                });
+            }
+        }
     }
     
     
