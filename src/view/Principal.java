@@ -53,8 +53,9 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarCarritoV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         textFieldUbicacion = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        textFieldSala = new javax.swing.JTextField();
+        comboSalasV1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         textFieldClienteV = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -188,14 +189,14 @@ public class Principal extends javax.swing.JFrame {
                 botonBuscarClienteVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 80, 30));
+        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 80, 30));
 
         comboClientesV.setBackground(new java.awt.Color(153, 153, 153));
         comboClientesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboClientesV.setForeground(new java.awt.Color(255, 255, 255));
         comboClientesV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes" }));
         comboClientesV.setFocusable(false);
-        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 137, 107, 26));
+        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 137, 107, 26));
 
         botonAgregarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -215,7 +216,7 @@ public class Principal extends javax.swing.JFrame {
         comboSalasV.setForeground(new java.awt.Color(255, 255, 255));
         comboSalasV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Película" }));
         comboSalasV.setFocusable(false);
-        panelVentas.add(comboSalasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 148, 130, 26));
+        panelVentas.add(comboSalasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 148, 130, 26));
 
         comboSucursalesV.setBackground(new java.awt.Color(153, 153, 153));
         comboSucursalesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -233,7 +234,7 @@ public class Principal extends javax.swing.JFrame {
                 comboSucursalesVActionPerformed(evt);
             }
         });
-        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 100, 130, 26));
+        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 100, 130, 26));
         panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 254, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
@@ -285,21 +286,18 @@ public class Principal extends javax.swing.JFrame {
                 textFieldUbicacionActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 86, 103, -1));
-        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 107, 10));
+        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 86, 130, -1));
 
-        textFieldSala.setEditable(false);
-        textFieldSala.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldSala.setFont(new java.awt.Font("Calibri Light", 0, 15)); // NOI18N
-        textFieldSala.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldSala.setText("-----------------------");
-        textFieldSala.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sala", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        textFieldSala.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldSalaActionPerformed(evt);
-            }
-        });
-        panelVentas.add(textFieldSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 140, 103, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Next.png"))); // NOI18N
+        panelVentas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 148, -1, -1));
+        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 107, 10));
+
+        comboSalasV1.setBackground(new java.awt.Color(153, 153, 153));
+        comboSalasV1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        comboSalasV1.setForeground(new java.awt.Color(255, 255, 255));
+        comboSalasV1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sala" }));
+        comboSalasV1.setFocusable(false);
+        panelVentas.add(comboSalasV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 148, 81, 26));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -339,7 +337,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 38, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 240, 70));
+        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 70));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -348,14 +346,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 104, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 280, 110));
+        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 300, 110));
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -1531,10 +1529,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonModificarSucursalSuActionPerformed
 
-    private void textFieldSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSalaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldSalaActionPerformed
-
     private void botonCambiarPeliculaSa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPeliculaSa1ActionPerformed
         controlador.botonCambiarPeliculasSalas(this);
     }//GEN-LAST:event_botonCambiarPeliculaSa1ActionPerformed
@@ -1569,6 +1563,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboPeliculasSa1;
     private javax.swing.JComboBox<String> comboSalaP;
     public javax.swing.JComboBox<String> comboSalasV;
+    public javax.swing.JComboBox<String> comboSalasV1;
     private javax.swing.JComboBox<String> comboSucursalP;
     public javax.swing.JComboBox<String> comboSucursalesSalas;
     public javax.swing.JComboBox<String> comboSucursalesSalas1;
@@ -1595,6 +1590,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1664,7 +1660,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldPrecio3DT;
     private javax.swing.JTextField textFieldPrecio4DT;
     private javax.swing.JTextField textFieldPrecioV;
-    private javax.swing.JTextField textFieldSala;
     private javax.swing.JTextField textFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 }
