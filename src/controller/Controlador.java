@@ -168,6 +168,42 @@ public class Controlador {
         
     }
     
+    public void buscarPelicula(Principal principal){
+        // Se verifica si se ingresó algún nombre
+        if(principal.textFieldPeliculaP.getText().equals("Ingrese Película")){
+            JOptionPane.showMessageDialog(principal, "Ingrese el nombre de la Película que desee buscar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Se verifica si el nombre ingresado pertenece al de alguna película
+        String nombreBuscar = principal.textFieldPeliculaP.getText();
+        if(peliculas.buscarPelicula(nombreBuscar) == null){
+            JOptionPane.showMessageDialog(principal, "La Película que ingresó no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            principal.textFieldPeliculaP.setText("Ingrese Película");
+            return;
+        }
+        
+        for (int i = 0; i < principal.tablePeli.getRowCount(); i++) {
+            if(String.valueOf(principal.tablePeli.getValueAt(i, 0)).equals(nombreBuscar)){
+                principal.tablePeli.changeSelection(i, 1, false, false);
+                principal.textFieldPeliculaP.setText("Ingrese Película");
+                break;
+            }
+        }
+    }
+    
+    public void cambiarSalaVentas(Principal principal){
+        if(!String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala")){
+            int numSucursal = Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem()));
+            Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
+            int numSala = Integer.parseInt(String.valueOf(principal.comboSalasV.getSelectedItem()));
+            
+            principal.labelPelicula.setText(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), numSala).getPelicula().getNombre());
+        }else{
+            principal.labelPelicula.setText("-----------------------");
+        }
+    }
+    
     public void cerrar(Principal principal){
         // Metodo para cerrar el sistema
         
@@ -516,26 +552,66 @@ public class Controlador {
         principal.setState(view.Inicio.ICONIFIED);
     }
     
+    public void modificarPelicula(Principal principal){
+        // Se crea los Strings para los combosBox del JOption con comboBox
+        String[] idiomas = {"Español", "Inglés", "Francés"};
+        String[] generos = {"Acción", "Amor", "Suspenso", "Aventura"};
+        
+        // Se valida si no se seleccionó ninguna pelicula, si no se seleccionó que se va a modificar y finalmente se cambia
+        String modificar = String.valueOf(principal.comboModificarPelicula.getSelectedItem());
+        if(principal.tablePeli.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(principal, "Seleccione la Película que desea modificar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if(modificar.equals("Modificar")){
+            JOptionPane.showMessageDialog(principal, "Seleccione que desea modificar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if(modificar.equals("Género")){
+            String peliculaModificar = String.valueOf( ((DefaultTableModel)principal.tablePeli.getModel()).getValueAt(principal.tablePeli.getSelectedRow(), 0) );
+            String genero = (String)JOptionPane.showInputDialog(principal, "Seleccione el nuevo género de la Película", "Modificación Género", JOptionPane.QUESTION_MESSAGE, null, generos, generos[0]);
+            peliculas.buscarPelicula(peliculaModificar).setGenero(genero);
+            principal.tablePeli.setValueAt(peliculas.buscarPelicula(peliculaModificar).getGenero() , principal.tablePeli.getSelectedRow(), 1);
+            principal.tablePeli.clearSelection();
+            principal.comboModificarPelicula.setSelectedIndex(0);
+        }else if(modificar.equals("Idioma")){
+            String peliculaModificar = String.valueOf( ((DefaultTableModel)principal.tablePeli.getModel()).getValueAt(principal.tablePeli.getSelectedRow(), 0) );
+            String idioma = (String)JOptionPane.showInputDialog(principal, "Seleccione el nuevo idioma de la Película", "Modificación Idioma", JOptionPane.QUESTION_MESSAGE, null, idiomas, idiomas[0]);
+            peliculas.buscarPelicula(peliculaModificar).setIdioma(idioma);
+            principal.tablePeli.setValueAt(peliculas.buscarPelicula(peliculaModificar).getIdioma(), principal.tablePeli.getSelectedRow(), 2);
+            principal.tablePeli.clearSelection();
+            principal.comboModificarPelicula.setSelectedIndex(0);
+        }
+    }
+    
     public void modificarUbicacionSucursal(Principal principal, String nuevaUbicacion, int numSucursal){
         sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).setUbicacion(nuevaUbicacion);
         this.actualizarTablaSucursales(principal);
+    }
+    
+    public void mostrarPeliculasEnComboPeliculas(Principal principal){
+        // Valida todo lo necesario para mostar las salas y peliculas
+        principal.comboSalasV.removeAllItems();
+        principal.comboSalasV.addItem("Sala");
+        if(String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal")){
+            principal.comboSalasV.removeAllItems();
+            principal.comboSalasV.addItem("Sala");
+            principal.labelPelicula.setText("-----------------------");
+        }else if(String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala") && String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal")){
+            principal.labelPelicula.setText("-----------------------");
+        }else if(!String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal") && String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala")){
+            principal.comboSalasV.removeAllItems();
+            principal.comboSalasV.addItem("Sala");
+            principal.labelPelicula.setText("-----------------------");
+            int numSucursal = Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem()));
+            Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
+            
+            for (int i = 0; i < sucursal.getSalas().size(sucursal.getSalas().getRoot()); i++) {
+                principal.comboSalasV.addItem(String.valueOf(i+1));
+            }
+        }
     }
     
     private void mostrarPeliculasEnTablaPeliculas(Pelicula pelicula, DefaultTableModel modelo){
         modelo.addRow(new Object[]{
             pelicula.getNombre(), pelicula.getGenero(), pelicula.getIdioma()
         });
-    }
-    
-    public void mostrarSalasEnComboVentas(Principal principal, int numSUcursal){
-        
-        
-        
-        // POR IMPLEMENTAR
-        
-        
-        
-        
     }
     
     public void mostrarSalasEnTablaSalas(Principal principal, int numSucursal, boolean flag){

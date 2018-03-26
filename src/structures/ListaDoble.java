@@ -1,6 +1,5 @@
 package structures;
 
-import javax.swing.JOptionPane;
 import model.Pelicula;
 
 public class ListaDoble <T>{

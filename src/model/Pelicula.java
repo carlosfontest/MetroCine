@@ -27,5 +27,15 @@ public class Pelicula {
     public String getIdioma() {
         return idioma;
     }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+    
+    
     
 }
