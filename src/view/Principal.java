@@ -3,12 +3,10 @@ package view;
 import controller.Controlador;
 import static controller.Controlador.sucursales;
 import java.awt.Color;
-import javax.swing.DefaultButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import model.Pelicula;
 import model.Sucursal;
 import java.lang.Object;
 
@@ -84,6 +82,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         comboGeneroP = new javax.swing.JComboBox<>();
         comboIdiomaP = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
         comboModificarPelicula = new javax.swing.JComboBox<>();
         textFieldPeliculaP = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
@@ -571,6 +570,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel23.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Filtros");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -578,7 +581,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -588,7 +593,8 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -1841,6 +1847,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
