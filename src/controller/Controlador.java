@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
 import model.Pelicula;
 import model.Sala;
 import model.Sala2D;
@@ -99,13 +100,25 @@ public class Controlador {
             Sala3D sala15 = new Sala3D(5);
                 sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala15, sucursal3, principal);
+                
+            // Creación de los Clientes iniciales
+            Cliente cliente1 = new Cliente(26476344, "Carlos Fontes", "04122569675");
+                this.mostrarClienteEnTablaClientes(cliente1, principal);
+            Cliente cliente2 = new Cliente(21688326, "Rafael Quintero", "04243659125");
+                this.mostrarClienteEnTablaClientes(cliente2, principal);
+            Cliente cliente3 = new Cliente(12561795, "Armando Paredes", "04269517596");
+                this.mostrarClienteEnTablaClientes(cliente3, principal);
+            Cliente cliente4 = new Cliente(2916256, "Pedro Picapiedra", "04164206969");
+                this.mostrarClienteEnTablaClientes(cliente4, principal);
+            Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
+                this.mostrarClienteEnTablaClientes(cliente5, principal);
     }
     
     private void actualizarTablaSucursales(Principal principal){
         // Obtenemos la cantidad de filas que hay en la tabla
         int filas = principal.tableSucursales.getRowCount();
         int aux = 0;
-        // Modificamos el valos en la tabla
+        // Modificamos el valor en la tabla
         aux = Integer.parseInt(String.valueOf( ((DefaultTableModel)principal.tableSucursales.getModel()).getValueAt(principal.tableSucursales.getSelectedRow(), 0) ) );
         principal.tableSucursales.setValueAt(sucursales.buscarSucursal(sucursales.getRoot(), aux).getUbicacion(), principal.tableSucursales.getSelectedRow(), 1);        
     }
@@ -168,6 +181,53 @@ public class Controlador {
         
     }
     
+    public void buscarCliente(Principal principal){
+        // Se verifica si se ingresó alguna cédula
+        if(principal.textFieldCedulaC.getText().equals("Ingrese Cédula")){
+            JOptionPane.showMessageDialog(principal, "Ingrese la cédula del Cliente que desee buscar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Se verifica si la cédula ingresada pertenece al de algun Cliente
+        long cedulaBuscar = Long.parseLong(String.valueOf(principal.textFieldCedulaC.getText()));
+        if(clientes.buscarCliente(clientes.getRoot(), cedulaBuscar) == null){
+            JOptionPane.showMessageDialog(principal, "La Cédula que ingresó no pertenece a la de ningún Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            principal.textFieldCedulaC.setText("Ingrese Cédula");
+            return;
+        }
+        
+        for (int i = 0; i < principal.tableClientes.getRowCount(); i++) {
+            if(Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1))) == cedulaBuscar){
+                principal.tableClientes.changeSelection(i, 1, false, false);
+                principal.textFieldCedulaC.setText("Ingrese Cédula");
+                break;
+            }
+        }
+    }
+    
+    public void buscarClienteVentas(Principal principal){
+        // Se verifica si se ingresó alguna cédula
+        if(principal.textFieldClienteV.getText().equals("Ingrese Cédula")){
+            JOptionPane.showMessageDialog(principal, "Ingrese la cédula del Cliente que desee buscar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Se verifica si la cédula ingresada pertenece al de algun Cliente
+        long cedulaBuscar = Long.parseLong(String.valueOf(principal.textFieldClienteV.getText()));
+        if(clientes.buscarCliente(clientes.getRoot(), cedulaBuscar) == null){
+            JOptionPane.showMessageDialog(principal, "La Cédula que ingresó no pertenece a la de ningún Cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            principal.textFieldClienteV.setText("Ingrese Cédula");
+            return;
+        }
+        
+        for (int i = 0; i < principal.comboClientesV.getItemCount(); i++) {
+            if(String.valueOf(principal.comboClientesV.getItemAt(i)).equals(String.valueOf(cedulaBuscar)) ){
+                principal.comboClientesV.setSelectedIndex(i);
+            }
+        }
+        
+    }
+    
     public void buscarPelicula(Principal principal){
         // Se verifica si se ingresó algún nombre
         if(principal.textFieldPeliculaP.getText().equals("Ingrese Película")){
@@ -224,6 +284,71 @@ public class Controlador {
         }
     }
     
+    public void crearCliente(Principal principal){
+        boolean flag1, flag2; flag1=flag2=false;
+        
+        // Validamos la cédula
+        long cedula = 0;
+        
+        do{
+            flag1 = flag2 = false;
+            try {
+                    cedula = Integer.parseInt(JOptionPane.showInputDialog(principal, "        Ingrese la cédula del cliente\n          (De 1 millon a 30millones)", "Ingrese cédula", JOptionPane.QUESTION_MESSAGE));
+                    if(!String.valueOf(cedula).matches("[0-9]*$")){
+                        JOptionPane.showMessageDialog(principal, "Ingresó una cédula inválida\n  (No ingrese ni letras ni símbolos)", "Error", JOptionPane.ERROR_MESSAGE);
+                        flag1= true;
+                    }
+                    if(cedula < 1000000 || cedula > 30000000){
+                        JOptionPane.showMessageDialog(principal, "Ingresó un número inválido\n  (De 1 millon a 30millones)", "Error", JOptionPane.ERROR_MESSAGE);
+                        flag2 = true;
+                    }
+            } catch (Exception e) {
+                return;
+            }
+        }while(flag1 == true || flag2 == true);
+        
+        // Validamos el nombre
+        String nombre = "";
+        
+        do{
+            flag1 = false;
+            try {
+                nombre = JOptionPane.showInputDialog(principal, "    Ingrese el nombre del Cliente", "Ingrese nombre", JOptionPane.QUESTION_MESSAGE);
+                if(!nombre.matches("[a-zA-Z ]*$")){
+                    JOptionPane.showMessageDialog(principal, "Ingresó un nombre inválido\n  (No ingrese números ni símbolos)", "Error", JOptionPane.ERROR_MESSAGE);
+                    flag1 = true;
+                    System.out.println(flag1);
+                }
+            } catch (Exception e) {
+                return;
+            }
+        }while(flag1 == true);
+        
+        // Validamos el teléfono
+        String telefono = "";
+        
+        do{
+            flag1 = flag2 = false;
+            try {
+                telefono = JOptionPane.showInputDialog(principal, "        Ingrese el teléfono del cliente", "Ingrese teléfono", JOptionPane.QUESTION_MESSAGE);
+                if(!telefono.matches("[0-9]*$")){
+                    JOptionPane.showMessageDialog(principal, "Ingresó un formato de teléfono incorrecto\n   No ponga ni letras ni símbolos", "Error", JOptionPane.ERROR_MESSAGE);
+                    flag1 = true;
+                }
+                if(telefono.length() != 11){
+                    JOptionPane.showMessageDialog(principal, "Su teléfono tiene más/menos números de los que debería", "Error", JOptionPane.ERROR_MESSAGE);
+                    flag2 = true;
+                }
+            } catch (Exception e) {
+                return;
+            }
+        }while(flag1 == true || flag2 == true);
+        
+        Cliente cliente = new Cliente(cedula, nombre, telefono);
+        
+        
+        this.mostrarClienteEnTablaClientes(cliente, principal);
+    }
     
     private void crearPelicula(Pelicula pelicula, Principal principal){
         // Creamos el objetos y llamamos al método mostrar en tabla
@@ -428,6 +553,17 @@ public class Controlador {
             Sala3D sala15 = new Sala3D(5);
                 sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
                 this.crearSalaInicio(sala15, sucursal3, inicio);
+                
+            Cliente cliente1 = new Cliente(26476344, "Carlos Fontes", "04122569675");
+                this.mostrarClienteEnTablaClientes(cliente1, inicio);
+            Cliente cliente2 = new Cliente(21688326, "Rafael Quintero", "04243659125");
+                this.mostrarClienteEnTablaClientes(cliente2, inicio);
+            Cliente cliente3 = new Cliente(12561795, "Armando Paredes", "04269517596");
+                this.mostrarClienteEnTablaClientes(cliente3, inicio);
+            Cliente cliente4 = new Cliente(2916256, "Pedro Picapiedra", "04164206969");
+                this.mostrarClienteEnTablaClientes(cliente4, inicio);
+            Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
+                this.mostrarClienteEnTablaClientes(cliente5, inicio);
     }
     
     public void iniciarRadioButons(Principal principal){
@@ -598,9 +734,34 @@ public class Controlador {
         }
     }
     
+    public void modificarTelefonoCliente(Principal principal, String nuevoTelefono, long cedula){
+        // Modificamos el teléfono en el árbol de CLientes
+        clientes.buscarCliente(clientes.getRoot(), cedula).setTelefono(nuevoTelefono);
+        
+        // Modificamos la tabla de CLientes
+        for (int i = 0; i < principal.tableClientes.getRowCount(); i++) {
+            if(cedula == Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))){
+                principal.tableClientes.setValueAt(nuevoTelefono, i, 2);
+            }
+        }
+    }
+    
     public void modificarUbicacionSucursal(Principal principal, String nuevaUbicacion, int numSucursal){
         sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).setUbicacion(nuevaUbicacion);
         this.actualizarTablaSucursales(principal);
+    }
+    
+    private void mostrarClienteEnTablaClientes(Cliente cliente, Principal principal){
+        clientes.insertarCliente(clientes.getRoot(), cliente);
+        
+        // Se agrega el cliente al comboBox de Ventas
+        principal.comboClientesV.addItem(String.valueOf(cliente.getCedula()));
+        
+        DefaultTableModel modelo = (DefaultTableModel)principal.tableClientes.getModel();
+        
+        modelo.addRow(new Object[]{
+            cliente.getNombre(), cliente.getCedula(), cliente.getTelefono()
+        });
     }
     
     public void mostrarPeliculasEnComboPeliculas(Principal principal){

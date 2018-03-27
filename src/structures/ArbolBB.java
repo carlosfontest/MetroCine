@@ -129,7 +129,7 @@ public class ArbolBB {
     }
     
     // Busca un Cliente en el árbol. aux -> Raiz; cedula -> cedula del cliente a buscar
-    public Cliente buscarCliente(NodoABB aux, int cedula) {
+    public Cliente buscarCliente(NodoABB aux, long cedula) {
         if (aux != null) {
             if ( ((Cliente)aux.getData()).getCedula() == cedula) {
                 return (Cliente)aux.getData();

@@ -49,7 +49,6 @@ public class Principal extends javax.swing.JFrame {
         label$1T2 = new javax.swing.JLabel();
         botonBuscarClienteV = new javax.swing.JButton();
         comboClientesV = new javax.swing.JComboBox<>();
-        botonAgregarClienteV = new javax.swing.JButton();
         comboSucursalesV = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JSeparator();
         labelPrecioV = new javax.swing.JLabel();
@@ -64,6 +63,7 @@ public class Principal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         textFieldClienteV = new javax.swing.JTextField();
+        labelNombreCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         comboSalasV = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -97,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
         fondo2 = new javax.swing.JLabel();
         panelClientes = new javax.swing.JPanel();
         botonCarritoC = new javax.swing.JButton();
-        botonRegistrarC = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -105,6 +105,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         textFieldCedulaC = new javax.swing.JTextField();
         botonBuscarClienteC = new javax.swing.JButton();
+        botonRegistrarC1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -187,7 +188,7 @@ public class Principal extends javax.swing.JFrame {
         label$1T2.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$1T2.setForeground(new java.awt.Color(255, 255, 255));
         label$1T2.setText("$");
-        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
 
         botonBuscarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -207,20 +208,12 @@ public class Principal extends javax.swing.JFrame {
         comboClientesV.setForeground(new java.awt.Color(255, 255, 255));
         comboClientesV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes" }));
         comboClientesV.setFocusable(false);
-        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 137, 107, 26));
-
-        botonAgregarClienteV.setBackground(new java.awt.Color(153, 153, 153));
-        botonAgregarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonAgregarClienteV.setForeground(new java.awt.Color(255, 255, 255));
-        botonAgregarClienteV.setText("Nuevo Cliente");
-        botonAgregarClienteV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonAgregarClienteV.setFocusPainted(false);
-        botonAgregarClienteV.addActionListener(new java.awt.event.ActionListener() {
+        comboClientesV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarClienteVActionPerformed(evt);
+                comboClientesVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 120, 40));
+        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 137, 107, 26));
 
         comboSucursalesV.setBackground(new java.awt.Color(153, 153, 153));
         comboSucursalesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -239,12 +232,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 100, 130, 26));
-        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 275, 60, 10));
+        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 355, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
         labelPrecioV.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioV.setText("Precio Total");
-        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
+        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         textFieldPrecioV.setEditable(false);
         textFieldPrecioV.setBackground(new java.awt.Color(102, 102, 102));
@@ -258,7 +251,7 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPrecioVActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 60, 26));
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 60, 26));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -271,7 +264,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarCarritoVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 140, 40));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -347,6 +340,16 @@ public class Principal extends javax.swing.JFrame {
                 textFieldClienteVActionPerformed(evt);
             }
         });
+        textFieldClienteV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldClienteVKeyTyped(evt);
+            }
+        });
+
+        labelNombreCliente.setFont(new java.awt.Font("Calibri Light", 3, 13)); // NOI18N
+        labelNombreCliente.setForeground(new java.awt.Color(255, 255, 255));
+        labelNombreCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNombreCliente.setText("Nombre Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -356,15 +359,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(117, Short.MAX_VALUE))
+            .addComponent(labelNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(labelNombreCliente))
         );
 
-        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 70));
+        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 90));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -444,7 +449,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 180, 50));
+        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 180, 50));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -477,7 +482,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 170, 50));
+        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 170, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -716,15 +721,20 @@ public class Principal extends javax.swing.JFrame {
         botonCarritoC.setText("Carrito");
         botonCarritoC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonCarritoC.setFocusPainted(false);
-        panelClientes.add(botonCarritoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 70, 30));
+        panelClientes.add(botonCarritoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 80, 30));
 
-        botonRegistrarC.setBackground(new java.awt.Color(153, 153, 153));
-        botonRegistrarC.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonRegistrarC.setForeground(new java.awt.Color(255, 255, 255));
-        botonRegistrarC.setText("Registrar");
-        botonRegistrarC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonRegistrarC.setFocusPainted(false);
-        panelClientes.add(botonRegistrarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 80, 30));
+        botonModificar.setBackground(new java.awt.Color(153, 153, 153));
+        botonModificar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(255, 255, 255));
+        botonModificar.setText("Modificar");
+        botonModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonModificar.setFocusPainted(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        panelClientes.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 90, 30));
 
         tableClientes = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -774,6 +784,11 @@ public class Principal extends javax.swing.JFrame {
                 textFieldCedulaCActionPerformed(evt);
             }
         });
+        textFieldCedulaC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldCedulaCKeyTyped(evt);
+            }
+        });
 
         botonBuscarClienteC.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteC.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -781,6 +796,11 @@ public class Principal extends javax.swing.JFrame {
         botonBuscarClienteC.setText("Buscar");
         botonBuscarClienteC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonBuscarClienteC.setFocusPainted(false);
+        botonBuscarClienteC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarClienteCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -800,10 +820,23 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldCedulaC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscarClienteC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelClientes.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 220, 60));
+
+        botonRegistrarC1.setBackground(new java.awt.Color(153, 153, 153));
+        botonRegistrarC1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonRegistrarC1.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrarC1.setText("Registrar");
+        botonRegistrarC1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonRegistrarC1.setFocusPainted(false);
+        botonRegistrarC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarC1ActionPerformed(evt);
+            }
+        });
+        panelClientes.add(botonRegistrarC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 80, 30));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -959,7 +992,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 320, 60));
+        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 320, 60));
 
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -1076,7 +1109,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarSucursalSuActionPerformed(evt);
             }
         });
-        panelSucursales.add(botonAgregarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 130, 30));
+        panelSucursales.add(botonAgregarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 130, 30));
 
         botonModificarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
         botonModificarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -1089,7 +1122,7 @@ public class Principal extends javax.swing.JFrame {
                 botonModificarSucursalSuActionPerformed(evt);
             }
         });
-        panelSucursales.add(botonModificarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 80, 30));
+        panelSucursales.add(botonModificarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 80, 30));
 
         botonCrearSalasSu.setBackground(new java.awt.Color(153, 153, 153));
         botonCrearSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -1454,6 +1487,7 @@ public class Principal extends javax.swing.JFrame {
     private void textFieldClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldClienteVActionPerformed
     }//GEN-LAST:event_textFieldClienteVActionPerformed
     private void botonBuscarClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteVActionPerformed
+        controlador.buscarClienteVentas(this);
     }//GEN-LAST:event_botonBuscarClienteVActionPerformed
     private void textFieldPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPeliculaPActionPerformed
     }//GEN-LAST:event_textFieldPeliculaPActionPerformed
@@ -1551,9 +1585,6 @@ public class Principal extends javax.swing.JFrame {
             textFieldCedulaC.setText("Ingrese Cédula");
         }
     }//GEN-LAST:event_textFieldCedulaCFocusLost
-
-    private void botonAgregarClienteVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarClienteVActionPerformed
-    }//GEN-LAST:event_botonAgregarClienteVActionPerformed
 
     private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
     }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
@@ -1710,9 +1741,70 @@ public class Principal extends javax.swing.JFrame {
         controlador.mostrarSalasEnTablaSalas(this, Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem())), false);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        // Buscamos que CLiente está seleccionado
+        if(tableClientes.getSelectedRow() != -1){
+            long cedula = Long.parseLong(String.valueOf( ((DefaultTableModel)tableClientes.getModel()).getValueAt(tableClientes.getSelectedRow(), 1) ) );
+            
+            String nuevoTelefono = "";
+            try {
+            nuevoTelefono = JOptionPane.showInputDialog(this, "        Ingrese el teléfono del cliente", "Ingrese teléfono", JOptionPane.QUESTION_MESSAGE);
+            if(!nuevoTelefono.matches("[0-9]*$")){
+                JOptionPane.showMessageDialog(this, "Ingresó un formato de teléfono incorrecto\n   No ponga ni letras ni símbolos", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if(nuevoTelefono.length() != 11){
+                JOptionPane.showMessageDialog(this, "Su teléfono tiene más/menos números de los que debería", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            } catch (Exception e) {
+                return;
+            }
+                controlador.modificarTelefonoCliente(this, nuevoTelefono, cedula);
+                tableClientes.clearSelection();
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione el Cliente que quiere modificar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void botonRegistrarC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarC1ActionPerformed
+        controlador.crearCliente(this);
+    }//GEN-LAST:event_botonRegistrarC1ActionPerformed
+
+    private void comboClientesVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClientesVActionPerformed
+        if(String.valueOf(comboClientesV.getSelectedItem()).equals("Cédula")){
+            labelNombreCliente.setText("Nombre Cliente");
+            return;
+        }
+        
+        long cedula = Long.parseLong(String.valueOf(comboClientesV.getSelectedItem()));
+        labelNombreCliente.setText(controlador.clientes.buscarCliente(controlador.clientes.getRoot(), cedula).getNombre());
+    }//GEN-LAST:event_comboClientesVActionPerformed
+
+    private void botonBuscarClienteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteCActionPerformed
+        controlador.buscarCliente(this);
+    }//GEN-LAST:event_botonBuscarClienteCActionPerformed
+
+    private void textFieldClienteVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldClienteVKeyTyped
+        char validar = evt.getKeyChar();
+        
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldClienteVKeyTyped
+
+    private void textFieldCedulaCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldCedulaCKeyTyped
+        char validar = evt.getKeyChar();
+        
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldCedulaCKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
-    private javax.swing.JButton botonAgregarClienteV;
     private javax.swing.JButton botonAgregarPeliculaP;
     private javax.swing.JButton botonAgregarSucursalSu;
     private javax.swing.JButton botonBuscarClienteC;
@@ -1725,11 +1817,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonCarritoC;
     private javax.swing.JButton botonCrearSalasSu;
     private javax.swing.JButton botonEliminarPeliculaP;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonModificarPeliculaP;
     private javax.swing.JButton botonModificarSucursalSu;
     private javax.swing.JRadioButton botonRadioAZ;
     private javax.swing.JRadioButton botonRadioZA;
-    private javax.swing.JButton botonRegistrarC;
+    private javax.swing.JButton botonRegistrarC1;
     public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JComboBox<String> comboClientesV;
@@ -1812,6 +1905,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel label$3T;
     private javax.swing.JLabel labelCantidadTicketsV;
     private javax.swing.JLabel labelIngresosA;
+    private javax.swing.JLabel labelNombreCliente;
     public javax.swing.JLabel labelPelicula;
     private javax.swing.JLabel labelPrecioV;
     private javax.swing.JLabel labelSalasFrecuentesA;
@@ -1832,8 +1926,8 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JTable tableSalas;
     public javax.swing.JTable tableSucursales;
     public javax.swing.JTable tableTickets;
-    private javax.swing.JTextField textFieldCedulaC;
-    private javax.swing.JTextField textFieldClienteV;
+    public javax.swing.JTextField textFieldCedulaC;
+    public javax.swing.JTextField textFieldClienteV;
     private javax.swing.JTextField textFieldIngresosA;
     public javax.swing.JTextField textFieldPeliculaP;
     private javax.swing.JTextField textFieldPrecio2DT;

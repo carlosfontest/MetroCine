@@ -16,9 +16,17 @@ public class Cliente {
     public long getCedula() {
         return cedula;
     }
-    
-    
-    
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     
 }
