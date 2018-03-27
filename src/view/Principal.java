@@ -84,17 +84,15 @@ public class Principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         comboGeneroP = new javax.swing.JComboBox<>();
         comboIdiomaP = new javax.swing.JComboBox<>();
-        botonRadioAZ = new javax.swing.JRadioButton();
-        botonRadioZA = new javax.swing.JRadioButton();
         comboModificarPelicula = new javax.swing.JComboBox<>();
         textFieldPeliculaP = new javax.swing.JTextField();
-        botonEliminarPeliculaP = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         botonBuscarPeliculaP = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         fondo2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         panelClientes = new javax.swing.JPanel();
         botonCarritoC = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
@@ -522,7 +520,7 @@ public class Principal extends javax.swing.JFrame {
                 botonModificarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 80, 30));
+        panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 80, 30));
 
         botonAgregarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -535,7 +533,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 130, 30));
+        panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 130, 30));
 
         tablePeli = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -586,53 +584,34 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        botonRadioAZ.setBackground(new java.awt.Color(102, 102, 102));
-        grupoBotones.add(botonRadioAZ);
-        botonRadioAZ.setForeground(new java.awt.Color(255, 255, 255));
-        botonRadioAZ.setText("A-Z");
-
-        botonRadioZA.setBackground(new java.awt.Color(102, 102, 102));
-        grupoBotones.add(botonRadioZA);
-        botonRadioZA.setForeground(new java.awt.Color(255, 255, 255));
-        botonRadioZA.setText("Z-A");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(65, 65, 65)
                 .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonRadioAZ)
-                    .addComponent(botonRadioZA))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(botonRadioAZ)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonRadioZA)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboIdiomaP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboGeneroP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 340, 60));
+        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 250, 60));
 
         comboModificarPelicula.setBackground(new java.awt.Color(153, 153, 153));
         comboModificarPelicula.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
         comboModificarPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modificar", "Género", "Idioma" }));
-        panelPeliculas.add(comboModificarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 100, 26));
+        panelPeliculas.add(comboModificarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 100, 26));
 
         textFieldPeliculaP.setBackground(new java.awt.Color(102, 102, 102));
         textFieldPeliculaP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -652,21 +631,8 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(textFieldPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 315, 110, 26));
-
-        botonEliminarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
-        botonEliminarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonEliminarPeliculaP.setForeground(new java.awt.Color(255, 255, 255));
-        botonEliminarPeliculaP.setText("Eliminar Película");
-        botonEliminarPeliculaP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonEliminarPeliculaP.setFocusPainted(false);
-        botonEliminarPeliculaP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminarPeliculaPActionPerformed(evt);
-            }
-        });
-        panelPeliculas.add(botonEliminarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 130, 30));
-        panelPeliculas.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 90, -1));
+        panelPeliculas.add(textFieldPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 110, 26));
+        panelPeliculas.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 90, -1));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -700,7 +666,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelPeliculas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 230, 60));
+        panelPeliculas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 230, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -720,6 +686,16 @@ public class Principal extends javax.swing.JFrame {
 
         fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelPeliculas.add(fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(153, 153, 153));
+        jButton3.setText("jButton3");
+        jButton3.setBorder(null);
+        jButton3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton3FocusGained(evt);
+            }
+        });
+        panelPeliculas.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
         jTabbedPane2.addTab("Peliculas", panelPeliculas);
 
@@ -1488,7 +1464,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
         );
 
         pack();
@@ -1730,9 +1706,6 @@ public class Principal extends javax.swing.JFrame {
         controlador.cambiarSalaVentas(this);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void botonEliminarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarPeliculaPActionPerformed
-    }//GEN-LAST:event_botonEliminarPeliculaPActionPerformed
-
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         controlador.mostrarSoloSalas2D(this);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
@@ -1751,7 +1724,6 @@ public class Principal extends javax.swing.JFrame {
         controlador.mostrarSalasEnTablaSalas(this, Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem())), false);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-<<<<<<< Updated upstream
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // Buscamos que CLiente está seleccionado
         if(tableClientes.getSelectedRow() != -1){
@@ -1813,15 +1785,18 @@ public class Principal extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_textFieldCedulaCKeyTyped
-=======
-    private void comboGeneroPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroPActionPerformed
+
+    private void jButton3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton3FocusGained
         controlador.mostrarPeliculasEnTablaPeliculas(this);
-    }//GEN-LAST:event_comboGeneroPActionPerformed
+    }//GEN-LAST:event_jButton3FocusGained
 
     private void comboIdiomaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIdiomaPActionPerformed
         controlador.mostrarPeliculasEnTablaPeliculas(this);
     }//GEN-LAST:event_comboIdiomaPActionPerformed
->>>>>>> Stashed changes
+
+    private void comboGeneroPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroPActionPerformed
+        controlador.mostrarPeliculasEnTablaPeliculas(this);
+    }//GEN-LAST:event_comboGeneroPActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1836,18 +1811,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonCambiarPrecio4DT;
     private javax.swing.JButton botonCarritoC;
     private javax.swing.JButton botonCrearSalasSu;
-    private javax.swing.JButton botonEliminarPeliculaP;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonModificarPeliculaP;
     private javax.swing.JButton botonModificarSucursalSu;
-    private javax.swing.JRadioButton botonRadioAZ;
-    private javax.swing.JRadioButton botonRadioZA;
     private javax.swing.JButton botonRegistrarC1;
     public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JComboBox<String> comboClientesV;
     public javax.swing.JComboBox<String> comboGeneroP;
-    public javax.swing.JComboBox<String> comboIdiomaP;
+    public static javax.swing.JComboBox<String> comboIdiomaP;
     public javax.swing.JComboBox<String> comboModificarPelicula;
     public javax.swing.JComboBox<String> comboPeliculasSa1;
     public javax.swing.JComboBox<String> comboSalasV;
@@ -1863,6 +1835,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.ButtonGroup grupoBotones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

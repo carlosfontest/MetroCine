@@ -195,20 +195,16 @@ public class Controlador {
         }
         
         // Se verifica si la cédula ingresada pertenece al de algun Cliente
-        long cedulaBuscar = Long.parseLong(String.valueOf(principal.textFieldCedulaC.getText()));
-        if(clientes.buscarCliente(clientes.getRoot(), cedulaBuscar) == null){
-            JOptionPane.showMessageDialog(principal, "La Cédula que ingresó no pertenece a la de ningún Cliente", "Error", JOptionPane.ERROR_MESSAGE);
-            principal.textFieldCedulaC.setText("Ingrese Cédula");
-            return;
-        }
-        
+        String cedulaBuscar = String.valueOf(principal.textFieldCedulaC.getText());
         for (int i = 0; i < principal.tableClientes.getRowCount(); i++) {
-            if(Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1))) == cedulaBuscar){
+            if(String.valueOf(principal.tableClientes.getValueAt(i, 1)).contains(cedulaBuscar)){
                 principal.tableClientes.changeSelection(i, 1, false, false);
                 principal.textFieldCedulaC.setText("Ingrese Cédula");
-                break;
+                return;
             }
         }
+        
+       JOptionPane.showMessageDialog(principal, "La Cédula que ingresó no pertenece a la de ningún Cliente", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
     public void buscarClienteVentas(Principal principal){
@@ -243,19 +239,16 @@ public class Controlador {
         
         // Se verifica si el nombre ingresado pertenece al de alguna película
         String nombreBuscar = principal.textFieldPeliculaP.getText();
-        if(peliculas.buscarPelicula(nombreBuscar) == null){
-            JOptionPane.showMessageDialog(principal, "La Película que ingresó no existe", "Error", JOptionPane.ERROR_MESSAGE);
-            principal.textFieldPeliculaP.setText("Ingrese Película");
-            return;
-        }
         
         for (int i = 0; i < principal.tablePeli.getRowCount(); i++) {
-            if(String.valueOf(principal.tablePeli.getValueAt(i, 0)).equals(nombreBuscar)){
+            if(String.valueOf(principal.tablePeli.getValueAt(i, 0)).contains(nombreBuscar)){
                 principal.tablePeli.changeSelection(i, 1, false, false);
                 principal.textFieldPeliculaP.setText("Ingrese Película");
-                break;
+                return;
             }
         }
+        
+        JOptionPane.showMessageDialog(principal, "La Película que ingresó no existe", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
     public void cambiarSalaVentas(Principal principal){
@@ -932,6 +925,5 @@ public class Controlador {
             }
         }
     }
-    
     
 }
