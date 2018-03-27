@@ -14,6 +14,9 @@ import model.Sala2D;
 import model.Sala3D;
 import model.Sala4DX;
 import model.Sucursal;
+import model.Ticket2D;
+import model.Ticket3D;
+import model.Ticket4DX;
 import structures.ArbolBB;
 import structures.ListaDoble;
 import view.*;
@@ -25,6 +28,21 @@ public class Controlador {
     public static ListaDoble<Pelicula> peliculas = new ListaDoble<>();
     //Esta estructura es solo para poder filtrar las tables :D
     List<RowFilter<Object,Object>> filtros = new ArrayList<RowFilter<Object,Object>>(2);
+    
+    public void abrirCarrito(Principal principal){
+        if(principal.tableClientes.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(principal, "Seleccione un Cliente para abrir el Carrito", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf( principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1) )));
+        view.Carrito carrito = new Carrito(principal, this, cliente);
+        cliente.setCarrito(carrito);
+        principal.tableClientes.clearSelection();
+        
+        carrito.setVisible(true);
+        principal.setVisible(false);
+    }
     
     public void abrirPrincipal(){
         // Abre la ventana del JFrame Principal
@@ -117,6 +135,14 @@ public class Controlador {
                 this.mostrarClienteEnTablaClientes(cliente4, principal);
             Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
                 this.mostrarClienteEnTablaClientes(cliente5, principal);
+                
+            // Seteamos los precios iniciales de los Tickets
+            Ticket2D.setPrecio(10);
+                principal.textFieldPrecio2DT.setText("10");
+            Ticket3D.setPrecio(15);
+                principal.textFieldPrecio3DT.setText("15");
+            Ticket4DX.setPrecio(25);
+                principal.textFieldPrecio4DT.setText("25");
     }
     
     private void actualizarTablaSucursales(Principal principal){
@@ -248,6 +274,27 @@ public class Controlador {
         }
         
         JOptionPane.showMessageDialog(principal, "La Película que ingresó no existe", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void calcularPrecioVentas(Principal principal){
+        if( !String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala") && !String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal") ){
+            int numSucursal = Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem()));
+            Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
+            int numSala = Integer.parseInt(String.valueOf(principal.comboSalasV.getSelectedItem()));
+            Sala sala = sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), numSala);
+            
+            int cantidad = Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue()));
+                if(sala instanceof Sala2D){
+                    Ticket2D ticket = new Ticket2D(null, null, 0, null);
+                    principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
+                }else if(sala instanceof Sala3D){
+                    Ticket3D ticket = new Ticket3D(null, null, 0, null);
+                    principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
+                }else if(sala instanceof Sala4DX){
+                    Ticket4DX ticket = new Ticket4DX(null, null, 0, null);
+                    principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
+                }
+        }
     }
     
     public void cambiarSalaVentas(Principal principal){
@@ -471,6 +518,11 @@ public class Controlador {
         this.agregarATablaSucursales(sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
     }
     
+    public void iniciarCarrito(Carrito carrito, Cliente cliente){
+        carrito.labelNombre.setText(cliente.getNombre());
+        carrito.labelCedula.setText(String.valueOf(cliente.getCedula()));
+    }
+    
     public void iniciarPrograma(){
         // Inicia el sistema
         
@@ -563,6 +615,15 @@ public class Controlador {
                 this.mostrarClienteEnTablaClientes(cliente4, inicio);
             Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
                 this.mostrarClienteEnTablaClientes(cliente5, inicio);
+                
+                
+            // Seteamos los precios iniciales de los Tickets
+            Ticket2D.setPrecio(10);
+                inicio.textFieldPrecio2DT.setText("10");
+            Ticket3D.setPrecio(15);
+                inicio.textFieldPrecio3DT.setText("15");
+            Ticket4DX.setPrecio(25);
+                inicio.textFieldPrecio4DT.setText("25");
     }
     
     public void iniciarRadioButons(Principal principal){

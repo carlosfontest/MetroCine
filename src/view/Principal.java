@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.Sucursal;
-import java.lang.Object;
+import model.Ticket2D;
+import model.Ticket3D;
+import model.Ticket4DX;
 
 public class Principal extends javax.swing.JFrame {
     Controlador controlador;
@@ -185,7 +187,7 @@ public class Principal extends javax.swing.JFrame {
         label$1T2.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$1T2.setForeground(new java.awt.Color(255, 255, 255));
         label$1T2.setText("$");
-        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
+        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
         botonBuscarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -228,13 +230,13 @@ public class Principal extends javax.swing.JFrame {
                 comboSucursalesVActionPerformed(evt);
             }
         });
-        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 100, 130, 26));
-        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 355, 60, 10));
+        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 130, 26));
+        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 265, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
         labelPrecioV.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioV.setText("Precio Total");
-        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         textFieldPrecioV.setEditable(false);
         textFieldPrecioV.setBackground(new java.awt.Color(102, 102, 102));
@@ -248,7 +250,7 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPrecioVActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 60, 26));
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 60, 26));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -261,7 +263,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarCarritoVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 140, 40));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -280,13 +282,13 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextArea1.setFocusable(false);
         jTextArea1.setMargin(new java.awt.Insets(22, 2, 2, 2));
-        panelVentas.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 160, 20));
+        panelVentas.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 160, 20));
 
         labelPelicula.setFont(new java.awt.Font("Calibri Light", 0, 15)); // NOI18N
         labelPelicula.setForeground(new java.awt.Color(255, 255, 255));
         labelPelicula.setText("-----------------------");
         labelPelicula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Película", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelVentas.add(labelPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 140, 130, -1));
+        panelVentas.add(labelPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 130, -1));
 
         textFieldUbicacion.setEditable(false);
         textFieldUbicacion.setBackground(new java.awt.Color(102, 102, 102));
@@ -300,7 +302,7 @@ public class Principal extends javax.swing.JFrame {
                 textFieldUbicacionActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 86, 130, -1));
+        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 130, -1));
         panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 107, 10));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -417,7 +419,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 300, 110));
+        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 300, 110));
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -433,7 +435,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 180, 50));
+        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 180, 50));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -444,7 +446,12 @@ public class Principal extends javax.swing.JFrame {
         labelCantidadTicketsV.setText("Cantidad");
 
         spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+        spinnerTicketsV.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinnerTicketsVStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -700,7 +707,12 @@ public class Principal extends javax.swing.JFrame {
         botonCarritoC.setText("Carrito");
         botonCarritoC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonCarritoC.setFocusPainted(false);
-        panelClientes.add(botonCarritoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 80, 30));
+        botonCarritoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCarritoCActionPerformed(evt);
+            }
+        });
+        panelClientes.add(botonCarritoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 90, 30));
 
         botonModificar.setBackground(new java.awt.Color(153, 153, 153));
         botonModificar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -815,7 +827,7 @@ public class Principal extends javax.swing.JFrame {
                 botonRegistrarC1ActionPerformed(evt);
             }
         });
-        panelClientes.add(botonRegistrarC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 80, 30));
+        panelClientes.add(botonRegistrarC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 90, 30));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1220,21 +1232,21 @@ public class Principal extends javax.swing.JFrame {
         panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 110));
 
         textFieldPrecio2DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio2DT.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        textFieldPrecio2DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio2DT.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPrecio2DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        textFieldPrecio2DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "2D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         panelTickets.add(textFieldPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 100, 40));
 
         textFieldPrecio3DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio3DT.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        textFieldPrecio3DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio3DT.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPrecio3DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         panelTickets.add(textFieldPrecio3DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 100, 40));
 
         textFieldPrecio4DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio4DT.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        textFieldPrecio4DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio4DT.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "4DX", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         panelTickets.add(textFieldPrecio4DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 100, 40));
 
         jLabel8.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
@@ -1383,11 +1395,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administrar.png"))); // NOI18N
         panelAdministrar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        panelAdministrar.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 80, 10));
+        panelAdministrar.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 337, 80, 10));
 
         jPanel11.setBackground(new java.awt.Color(102, 102, 102));
         jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        textFieldIngresosA.setEditable(false);
         textFieldIngresosA.setBackground(new java.awt.Color(102, 102, 102));
         textFieldIngresosA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         textFieldIngresosA.setForeground(new java.awt.Color(255, 255, 255));
@@ -1457,7 +1470,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
 
         pack();
@@ -1476,10 +1489,16 @@ public class Principal extends javax.swing.JFrame {
     private void textFieldCedulaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCedulaCActionPerformed
     }//GEN-LAST:event_textFieldCedulaCActionPerformed
     private void botonCambiarPrecio4DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio4DTActionPerformed
+        Ticket4DX.setPrecio(Double.parseDouble(textFieldPrecio4DT.getText()));
+        JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio4DTActionPerformed
     private void botonCambiarPrecio3DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio3DTActionPerformed
+        Ticket3D.setPrecio(Double.parseDouble(textFieldPrecio3DT.getText()));
+        JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio3DTActionPerformed
     private void botonCambiarPrecio2DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio2DTActionPerformed
+        Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio2DT.getText()));
+        JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio2DTActionPerformed
 
     private void textFieldClienteVFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldClienteVFocusGained
@@ -1566,6 +1585,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCedulaCFocusLost
 
     private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
+        this.spinnerTicketsV.setValue(0);
+
     }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
 
     private void textFieldPrecioVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioVActionPerformed
@@ -1682,7 +1703,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarPeliculaPActionPerformed
 
     private void comboSalasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSalasVActionPerformed
-  
+
     }//GEN-LAST:event_comboSalasVActionPerformed
 
     private void comboSalasVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSalasVItemStateChanged
@@ -1792,6 +1813,14 @@ public class Principal extends javax.swing.JFrame {
     private void comboGeneroPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroPActionPerformed
         controlador.mostrarPeliculasEnTablaPeliculas(this);
     }//GEN-LAST:event_comboGeneroPActionPerformed
+
+    private void botonCarritoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCarritoCActionPerformed
+        controlador.abrirCarrito(this);
+    }//GEN-LAST:event_botonCarritoCActionPerformed
+
+    private void spinnerTicketsVStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerTicketsVStateChanged
+        controlador.calcularPrecioVentas(this);
+    }//GEN-LAST:event_spinnerTicketsVStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1907,7 +1936,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JRadioButton radioBoton2D;
     public javax.swing.JRadioButton radioBoton3D;
     public javax.swing.JRadioButton radioBoton4DX;
-    private javax.swing.JSpinner spinnerTicketsV;
+    public javax.swing.JSpinner spinnerTicketsV;
     public javax.swing.JTable tableAdmin;
     public javax.swing.JTable tableClientes;
     public javax.swing.JTable tablePeli;
@@ -1918,10 +1947,10 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JTextField textFieldClienteV;
     private javax.swing.JTextField textFieldIngresosA;
     public javax.swing.JTextField textFieldPeliculaP;
-    private javax.swing.JTextField textFieldPrecio2DT;
-    private javax.swing.JTextField textFieldPrecio3DT;
-    private javax.swing.JTextField textFieldPrecio4DT;
-    private javax.swing.JTextField textFieldPrecioV;
+    public javax.swing.JTextField textFieldPrecio2DT;
+    public javax.swing.JTextField textFieldPrecio3DT;
+    public javax.swing.JTextField textFieldPrecio4DT;
+    public javax.swing.JTextField textFieldPrecioV;
     private javax.swing.JTextField textFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 }

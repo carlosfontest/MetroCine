@@ -1,7 +1,7 @@
 package model;
 
 public class Cliente {
-    private Carrito carrito;
+    private view.Carrito carrito;
     private long cedula;
     private String nombre;
     private String telefono;
@@ -10,7 +10,6 @@ public class Cliente {
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.carrito = new Carrito();
     }
     
     public long getCedula() {
@@ -19,6 +18,10 @@ public class Cliente {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setCarrito(view.Carrito carrito) {
+        this.carrito = carrito;
     }
 
     public String getTelefono() {
