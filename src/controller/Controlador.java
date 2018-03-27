@@ -1,9 +1,14 @@
 package controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import javax.swing.table.TableRowSorter;
 import model.Pelicula;
 import model.Sala;
 import model.Sala2D;
@@ -19,7 +24,8 @@ public class Controlador {
     public static ArbolBB sucursales = new ArbolBB();
     public static ArbolBB clientes = new ArbolBB();
     public static ListaDoble<Pelicula> peliculas = new ListaDoble<>();
-    
+    //Esta estructura es solo para poder filtrar las tables :D
+    List<RowFilter<Object,Object>> filtros = new ArrayList<RowFilter<Object,Object>>(2);
     
     public void abrirPrincipal(){
         // Abre la ventana del JFrame Principal
@@ -453,6 +459,7 @@ public class Controlador {
         
     }
     
+    
     // Método que solo se utiliza para crear las salas que vienen desde el inicio del programa
     private void crearSalaInicio(Sala sala, Sucursal sucursal, Principal principal){
         // Se inserta la Sala en el árbol respectivo
@@ -785,6 +792,41 @@ public class Controlador {
                 principal.comboSalasV.addItem(String.valueOf(i+1));
             }
         }
+    }
+    
+    public void mostrarPeliculasEnTablaPeliculas(Principal principal){
+        //Se establecen variables tipo String de los combobox
+        String genero = String.valueOf(principal.comboGeneroP.getSelectedItem());
+        String idioma = String.valueOf(principal.comboIdiomaP.getSelectedItem());
+        
+        //Creando filtros
+        filtros.add(RowFilter.regexFilter(genero));
+        filtros.add(RowFilter.regexFilter(idioma));
+        
+        //Se establecen las variables y métodos para el filtro
+        DefaultTableModel dm = (DefaultTableModel) principal.tablePeli.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dm);
+        principal.tablePeli.setRowSorter(tr);
+        
+        //Se evalúan los posibles casos de filtros
+        if(genero != "Género" || idioma != "Idioma"){
+           if(idioma != "Idioma"){
+               if(genero != "Género"){   
+                tr.setRowFilter(RowFilter.andFilter(filtros));
+               }else{
+                tr.setRowFilter(RowFilter.regexFilter(idioma));
+               }
+           }else{
+               if(genero != "Género"){   
+                tr.setRowFilter(RowFilter.regexFilter(genero));
+               }
+           }
+        }else{
+           principal.tablePeli.setRowSorter(tr);
+        }
+           
+        //Se vacían los filtros
+        filtros.clear();
     }
     
     private void mostrarPeliculasEnTablaPeliculas(Pelicula pelicula, DefaultTableModel modelo){

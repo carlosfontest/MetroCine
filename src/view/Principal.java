@@ -569,12 +569,22 @@ public class Principal extends javax.swing.JFrame {
         comboGeneroP.setBackground(new java.awt.Color(153, 153, 153));
         comboGeneroP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboGeneroP.setForeground(new java.awt.Color(255, 255, 255));
-        comboGeneroP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGeneroP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Género", "Acción", "Aventura", "Suspenso", "Amor" }));
+        comboGeneroP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGeneroPActionPerformed(evt);
+            }
+        });
 
         comboIdiomaP.setBackground(new java.awt.Color(153, 153, 153));
         comboIdiomaP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         comboIdiomaP.setForeground(new java.awt.Color(255, 255, 255));
-        comboIdiomaP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboIdiomaP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Idioma", "Español", "Inglés", "Francés" }));
+        comboIdiomaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboIdiomaPActionPerformed(evt);
+            }
+        });
 
         botonRadioAZ.setBackground(new java.awt.Color(102, 102, 102));
         grupoBotones.add(botonRadioAZ);
@@ -1741,6 +1751,7 @@ public class Principal extends javax.swing.JFrame {
         controlador.mostrarSalasEnTablaSalas(this, Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem())), false);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
+<<<<<<< Updated upstream
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // Buscamos que CLiente está seleccionado
         if(tableClientes.getSelectedRow() != -1){
@@ -1802,6 +1813,15 @@ public class Principal extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_textFieldCedulaCKeyTyped
+=======
+    private void comboGeneroPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroPActionPerformed
+        controlador.mostrarPeliculasEnTablaPeliculas(this);
+    }//GEN-LAST:event_comboGeneroPActionPerformed
+
+    private void comboIdiomaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIdiomaPActionPerformed
+        controlador.mostrarPeliculasEnTablaPeliculas(this);
+    }//GEN-LAST:event_comboIdiomaPActionPerformed
+>>>>>>> Stashed changes
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1826,8 +1846,8 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JComboBox<String> comboClientesV;
-    private javax.swing.JComboBox<String> comboGeneroP;
-    private javax.swing.JComboBox<String> comboIdiomaP;
+    public javax.swing.JComboBox<String> comboGeneroP;
+    public javax.swing.JComboBox<String> comboIdiomaP;
     public javax.swing.JComboBox<String> comboModificarPelicula;
     public javax.swing.JComboBox<String> comboPeliculasSa1;
     public javax.swing.JComboBox<String> comboSalasV;
