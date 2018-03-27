@@ -10,6 +10,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.Pelicula;
 import model.Sucursal;
+import java.lang.Object;
 
 public class Principal extends javax.swing.JFrame {
     Controlador controlador;
@@ -56,7 +57,6 @@ public class Principal extends javax.swing.JFrame {
         botonAgregarCarritoV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextArea2 = new javax.swing.JTextArea();
         jTextArea1 = new javax.swing.JTextArea();
         labelPelicula = new javax.swing.JLabel();
         textFieldUbicacion = new javax.swing.JTextField();
@@ -269,19 +269,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ventas.png"))); // NOI18N
         panelVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 50));
         panelVentas.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setBackground(new java.awt.Color(153, 153, 153));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Calibri Light", 0, 11)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("  Si no se ve alguna Sala, vuelva a seleccionar la Sucursal");
-        jTextArea2.setAlignmentX(1.0F);
-        jTextArea2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextArea2.setFocusable(false);
-        jTextArea2.setMargin(new java.awt.Insets(22, 2, 2, 2));
-        panelVentas.add(jTextArea2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 246, 20));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(153, 153, 153));
@@ -1617,6 +1604,7 @@ public class Principal extends javax.swing.JFrame {
             int numSucursal = Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem()));
             controlador.mostrarSalasEnTablaSalas(this, numSucursal, false);
         }
+        comboSucursalesV.setSelectedItem("Sucursal");
     }//GEN-LAST:event_botonCrearSalasSuActionPerformed
 
     private void comboSucursalesSalasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSucursalesSalasItemStateChanged
@@ -1688,6 +1676,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarPeliculaPActionPerformed
 
     private void comboSalasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSalasVActionPerformed
+  
     }//GEN-LAST:event_comboSalasVActionPerformed
 
     private void comboSalasVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSalasVItemStateChanged
@@ -1890,7 +1879,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel label$1T;
     private javax.swing.JLabel label$1T1;
     private javax.swing.JLabel label$1T2;
