@@ -49,11 +49,18 @@ public class Controlador {
         
         for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
             aux = cliente.getCarrito().getOrdenes().getFirst().getData();
-            if(aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
-                mostrarOrdenEnTablaCarrito(cliente.getCarrito(), aux);
+            if(!aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
+                cliente.getCarrito().getOrdenes().dequeue();
+                double egreso = aux.getTickets().getHead().getData().getPrecio();
+                principal.textFieldIngresosA.setText( String.valueOf( Double.parseDouble(principal.textFieldIngresosA.getText()) - egreso ));
             }else{
-                cliente.getCarrito().getOrdenes().eliminarOrden(aux.getNumero());
+                 cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
             }
+        }
+        
+        for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
+            aux = cliente.getCarrito().getOrdenes().getFirst().getData();
+            mostrarOrdenEnTablaCarrito(cliente.getCarrito(), aux);
             cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
         }
         
