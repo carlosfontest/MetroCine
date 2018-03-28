@@ -3,8 +3,8 @@ package model;
 public class Ticket4DX extends Ticket{
     private static double precio;
 
-    public Ticket4DX(Cliente cliente, Sala sala, long identificador, String fecha) {
-        super(cliente, sala, identificador, fecha);
+    public Ticket4DX(Cliente cliente, Sucursal sucursal, Sala sala, String fecha) {
+        super(cliente, sucursal, sala, fecha);
     }
 
     @Override

@@ -3,13 +3,18 @@ package model;
 public abstract class Ticket {
     protected Cliente cliente;
     protected Sala sala;
+    protected Sucursal sucursal;
     protected long identificador;
     protected String fecha;
+    // Atributo auxiliar para poner el identificador de los Tickets
+    private static long num = 0;
 
-    public Ticket(Cliente cliente, Sala sala, long identificador, String fecha) {
+    public Ticket(Cliente cliente, Sucursal sucursal, Sala sala, String fecha) {
+        num++;
+        this.identificador = 1111111 + num;
         this.cliente = cliente;
         this.sala = sala;
-        this.identificador = identificador;
+        this.sucursal = sucursal;
         this.fecha = fecha;
     }
     

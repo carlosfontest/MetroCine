@@ -161,9 +161,9 @@ public class Controlador {
     }
     
     public void agregarAlCarrito(Principal principal){
-        // Validamos que se haya elegido un CLiente, Sucursal, Sala y una cantidad de Tickets
+        // Validamos que se haya elegido un Cliente, Sucursal, Sala y una cantidad de Tickets
         if(String.valueOf(principal.comboClientesV.getSelectedItem()).equals("Clientes")){
-            JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige un CLiente", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige un Cliente", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         if(String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal")){
@@ -179,48 +179,76 @@ public class Controlador {
             return;
         }
         
+        // Validamos la fecha
+        String fecha;
+        if(principal.fecha3.isSelected()){
+            fecha = "03/04/2018";
+        }else if(principal.fecha4.isSelected()){
+            fecha = "04/04/2018";
+        }else if(principal.fecha5.isSelected()){
+            fecha = "05/04/2018";
+        }else{
+            JOptionPane.showMessageDialog(principal, "Seleccione una fecha para la función", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        boolean pagada;
+        
+        try {
+            int resp = JOptionPane.showConfirmDialog(principal, "¿Desea pagar los Tickets de una vez?", "Pago de Tickets", JOptionPane.YES_NO_OPTION);
+            
+            if(resp == JOptionPane.YES_OPTION){
+                pagada = true;
+            }else if(resp == JOptionPane.YES_OPTION){
+                
+            }else{
+                return;
+            }
+        } catch (Exception e) {
+            return;
+        }
+        
         // Se guardan los datos de la Orden de Compra
         Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.comboClientesV.getSelectedItem())));
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem())) );
         Sala sala = sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), Integer.parseInt(String.valueOf(principal.comboSalasV.getSelectedItem())) );
         int cantidad = Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue()));
         
+        // Se crean los tickets
+        ListaDoble tickets = new ListaDoble();
+        
+        for (int i = 0; i < cantidad; i++) {
+            if(sala instanceof Sala2D){
+                tickets.addLast(new Ticket2D(cliente, sucursal, sala, fecha));
+            }else if(sala instanceof Sala3D){
+                tickets.addLast(new Ticket3D(cliente, sucursal, sala, fecha));
+            }else{
+                tickets.addLast(new Ticket4DX(cliente, sucursal, sala, fecha));
+            }
+        }
+        
+        this.mostrarTicketsAlTableTickets(tickets, principal);
+        
+        OrdenCompra orden = new OrdenCompra(tickets);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // Se retornan los valores por defecto de los campos
         principal.spinnerTicketsV.setValue(0);
         principal.comboSucursalesV.setSelectedItem("Sucursal");
         //this.cambiarSalaVentas(principal);
         principal.spinnerTicketsV.setEnabled(false);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
     }
     
     private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
@@ -356,13 +384,13 @@ public class Controlador {
             
             int cantidad = Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue()));
                 if(sala instanceof Sala2D){
-                    Ticket2D ticket = new Ticket2D(null, null, 0, null);
+                    Ticket2D ticket = new Ticket2D(null, null, null, null);
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }else if(sala instanceof Sala3D){
-                    Ticket3D ticket = new Ticket3D(null, null, 0, null);
+                    Ticket3D ticket = new Ticket3D(null, null, null, null);
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }else if(sala instanceof Sala4DX){
-                    Ticket4DX ticket = new Ticket4DX(null, null, 0, null);
+                    Ticket4DX ticket = new Ticket4DX(null, null, null, null);
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }
         }
@@ -1088,6 +1116,31 @@ public class Controlador {
                 });
             }
         }
+    }
+    
+    private void mostrarTicketsAlTableTickets(ListaDoble tickets, Principal principal){
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     public void pagarOrden(OrdenCompra orden, Carrito carrito){

@@ -45,6 +45,7 @@ public class Principal extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        botonesFecha = new javax.swing.ButtonGroup();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         panelVentas = new javax.swing.JPanel();
         label$1T2 = new javax.swing.JLabel();
@@ -67,6 +68,10 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         comboSalasV = new javax.swing.JComboBox<>();
         labelMostrarPeli = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        fecha3 = new javax.swing.JRadioButton();
+        fecha4 = new javax.swing.JRadioButton();
+        fecha5 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         labelCantidadTicketsV = new javax.swing.JLabel();
@@ -143,17 +148,19 @@ public class Principal extends javax.swing.JFrame {
         panelTickets = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableTickets = new javax.swing.JTable();
-        textFieldPrecio2DT = new javax.swing.JTextField();
-        textFieldPrecio3DT = new javax.swing.JTextField();
-        textFieldPrecio4DT = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        label$1T = new javax.swing.JLabel();
         label$2T = new javax.swing.JLabel();
         label$3T = new javax.swing.JLabel();
         botonCambiarPrecio2DT = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        textFieldPrecio3DT = new javax.swing.JTextField();
+        textFieldPrecio2DT = new javax.swing.JTextField();
+        label$1T = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         botonCambiarPrecio3DT = new javax.swing.JButton();
         botonCambiarPrecio4DT = new javax.swing.JButton();
+        textFieldPrecio4DT = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         fondo6 = new javax.swing.JLabel();
@@ -187,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
         label$1T2.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$1T2.setForeground(new java.awt.Color(255, 255, 255));
         label$1T2.setText("$");
-        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
+        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
         botonBuscarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -231,12 +238,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 130, 26));
-        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 265, 60, 10));
+        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 375, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
         labelPrecioV.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioV.setText("Precio Total");
-        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
 
         textFieldPrecioV.setEditable(false);
         textFieldPrecioV.setBackground(new java.awt.Color(102, 102, 102));
@@ -250,7 +257,7 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPrecioVActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 60, 26));
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 60, 26));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -263,7 +270,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarCarritoVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 140, 40));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -421,6 +428,68 @@ public class Principal extends javax.swing.JFrame {
 
         panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 300, 110));
 
+        jPanel16.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        fecha3.setBackground(new java.awt.Color(102, 102, 102));
+        botonesFecha.add(fecha3);
+        fecha3.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
+        fecha3.setForeground(new java.awt.Color(255, 255, 255));
+        fecha3.setText("03 / 04 / 2018");
+        fecha3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha3ActionPerformed(evt);
+            }
+        });
+
+        fecha4.setBackground(new java.awt.Color(102, 102, 102));
+        botonesFecha.add(fecha4);
+        fecha4.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
+        fecha4.setForeground(new java.awt.Color(255, 255, 255));
+        fecha4.setText("04 / 04 / 2018");
+        fecha4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha4ActionPerformed(evt);
+            }
+        });
+
+        fecha5.setBackground(new java.awt.Color(102, 102, 102));
+        botonesFecha.add(fecha5);
+        fecha5.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
+        fecha5.setForeground(new java.awt.Color(255, 255, 255));
+        fecha5.setText("05 / 04 / 2018");
+        fecha5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fecha3)
+                    .addComponent(fecha4)
+                    .addComponent(fecha5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fecha3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 110, 90));
+
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -435,7 +504,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 180, 50));
+        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 180, 50));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -474,7 +543,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 170, 50));
+        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 170, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1230,45 +1299,17 @@ public class Principal extends javax.swing.JFrame {
         tableTickets.setFocusable(false);
         jScrollPane5.setViewportView(tableTickets);
 
-        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 110));
-
-        textFieldPrecio2DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio2DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
-        textFieldPrecio2DT.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPrecio2DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "2D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelTickets.add(textFieldPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 100, 40));
-
-        textFieldPrecio3DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio3DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
-        textFieldPrecio3DT.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPrecio3DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelTickets.add(textFieldPrecio3DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 100, 40));
-
-        textFieldPrecio4DT.setBackground(new java.awt.Color(102, 102, 102));
-        textFieldPrecio4DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
-        textFieldPrecio4DT.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "4DX", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelTickets.add(textFieldPrecio4DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 100, 40));
-
-        jLabel8.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tickets.png"))); // NOI18N
-        panelTickets.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jPanel10.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        label$1T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
-        label$1T.setForeground(new java.awt.Color(255, 255, 255));
-        label$1T.setText("$");
+        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 220));
 
         label$2T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$2T.setForeground(new java.awt.Color(255, 255, 255));
         label$2T.setText("$");
+        panelTickets.add(label$2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 330, -1, -1));
 
         label$3T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$3T.setForeground(new java.awt.Color(255, 255, 255));
         label$3T.setText("$");
+        panelTickets.add(label$3T, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 330, -1, -1));
 
         botonCambiarPrecio2DT.setBackground(new java.awt.Color(153, 153, 153));
         botonCambiarPrecio2DT.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -1281,6 +1322,58 @@ public class Principal extends javax.swing.JFrame {
                 botonCambiarPrecio2DTActionPerformed(evt);
             }
         });
+        panelTickets.add(botonCambiarPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 327, 68, 30));
+
+        jLabel8.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tickets.png"))); // NOI18N
+        panelTickets.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        textFieldPrecio3DT.setBackground(new java.awt.Color(102, 102, 102));
+        textFieldPrecio3DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
+        textFieldPrecio3DT.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldPrecio3DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        panelTickets.add(textFieldPrecio3DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 50, 40));
+
+        textFieldPrecio2DT.setBackground(new java.awt.Color(102, 102, 102));
+        textFieldPrecio2DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
+        textFieldPrecio2DT.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldPrecio2DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "2D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        panelTickets.add(textFieldPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, 40));
+
+        label$1T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        label$1T.setForeground(new java.awt.Color(255, 255, 255));
+        label$1T.setText("$");
+        panelTickets.add(label$1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 330, -1, -1));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
+        );
+
+        panelTickets.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
+        );
+
+        panelTickets.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));
+
+        jPanel10.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         botonCambiarPrecio3DT.setBackground(new java.awt.Color(153, 153, 153));
         botonCambiarPrecio3DT.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -1306,42 +1399,36 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        textFieldPrecio4DT.setBackground(new java.awt.Color(102, 102, 102));
+        textFieldPrecio4DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
+        textFieldPrecio4DT.setForeground(new java.awt.Color(255, 255, 255));
+        textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "4DX", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label$1T)
-                    .addComponent(label$2T)
-                    .addComponent(label$3T))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonCambiarPrecio2DT, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .addComponent(botonCambiarPrecio3DT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonCambiarPrecio4DT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(263, 263, 263)
+                .addComponent(botonCambiarPrecio3DT, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(textFieldPrecio4DT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(botonCambiarPrecio4DT, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label$1T)
-                    .addComponent(botonCambiarPrecio2DT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label$2T)
-                    .addComponent(botonCambiarPrecio3DT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCambiarPrecio4DT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label$3T))
-                .addContainerGap())
+                    .addComponent(botonCambiarPrecio3DT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldPrecio4DT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCambiarPrecio4DT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        panelTickets.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 320, 160));
+        panelTickets.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 550, 72));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1704,7 +1791,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarPeliculaPActionPerformed
 
     private void comboSalasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSalasVActionPerformed
-        
+        this.spinnerTicketsV.setValue(0);
     }//GEN-LAST:event_comboSalasVActionPerformed
 
     private void comboSalasVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSalasVItemStateChanged
@@ -1829,6 +1916,18 @@ public class Principal extends javax.swing.JFrame {
         controlador.calcularPrecioVentas(this);
     }//GEN-LAST:event_spinnerTicketsVStateChanged
 
+    private void fecha3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha3ActionPerformed
+
+    private void fecha4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha4ActionPerformed
+
+    private void fecha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha5ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
     private javax.swing.JButton botonAgregarPeliculaP;
@@ -1846,6 +1945,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonModificarPeliculaP;
     private javax.swing.JButton botonModificarSucursalSu;
     private javax.swing.JButton botonRegistrarC1;
+    public javax.swing.ButtonGroup botonesFecha;
     public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JComboBox<String> comboClientesV;
@@ -1856,6 +1956,9 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboSalasV;
     public javax.swing.JComboBox<String> comboSucursalesSalas;
     public javax.swing.JComboBox<String> comboSucursalesV;
+    public javax.swing.JRadioButton fecha3;
+    public javax.swing.JRadioButton fecha4;
+    public javax.swing.JRadioButton fecha5;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondo3;
@@ -1896,6 +1999,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
