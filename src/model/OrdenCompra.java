@@ -6,6 +6,7 @@ public class OrdenCompra {
     private ListaDoble<Ticket> tickets;
     private boolean pagada;
     private double precioTotal;
+    private int numero;
 
     public OrdenCompra(ListaDoble<Ticket> tickets) {
         this.tickets = tickets;
@@ -33,5 +34,9 @@ public class OrdenCompra {
     public void setPagada(){
         this.pagada = true;
         this.precioTotal = calcularPrecioTotal();
+    }
+
+    public int getNumero() {
+        return numero;
     }
 }

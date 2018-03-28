@@ -8,6 +8,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import javax.swing.table.TableRowSorter;
+import model.OrdenCompra;
 import model.Pelicula;
 import model.Sala;
 import model.Sala2D;
@@ -1087,6 +1088,11 @@ public class Controlador {
                 });
             }
         }
+    }
+    
+    public void pagarOrden(OrdenCompra orden, Carrito carrito){
+        orden.setPagada();
+        carrito.tableCarrito.setValueAt("Sí",carrito.tableCarrito.getSelectedRow(), 8);
     }
     
 }

@@ -2,9 +2,12 @@ package view;
 
 import controller.Controlador;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.OrdenCompra;
 import structures.Cola;
+import structures.NodoSimple;
 
 public class Carrito extends javax.swing.JFrame {
     private Cola<OrdenCompra> ordenes;
@@ -200,7 +203,17 @@ public class Carrito extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPagarActionPerformed
-        // TODO add your handling code here:
+        // Buscamos qué orden está seleccionada
+        if(tableCarrito.getSelectedRow() != -1){
+            if(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 8) ).equals("Sí")){
+                JOptionPane.showMessageDialog(this, "Esa orden de compra ya está pagada", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int numOrden = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 0) ) );
+            controlador.pagarOrden(ordenes.buscarOrden(numOrden), this);
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccione la orden de compra que quiere pagar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonPagarActionPerformed
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked

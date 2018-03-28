@@ -1720,6 +1720,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboSalasVMouseDragged
 
     private void labelMostrarPeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMostrarPeliMouseClicked
+        this.spinnerTicketsV.setValue(0);
         if( !String.valueOf(comboSucursalesV.getSelectedItem()).equals("Sucursal") && !String.valueOf(comboSalasV.getSelectedItem()).equals("Sala") ){
             spinnerTicketsV.setEnabled(true);
         }else{
