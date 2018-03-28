@@ -78,6 +78,19 @@ public class Cola <T>{
         }
     }
     
+    //Permite eliminar una orden de compra en la cola
+    public OrdenCompra eliminarOrden(int num){
+        NodoSimple<T> aux = this.first;
+        
+        while(true){
+            if(((OrdenCompra)aux.getData()).getNumero() == num){
+                return (OrdenCompra) this.dequeue();
+            }
+            this.enqueue(this.dequeue());
+            aux = this.first;
+        }
+    }
+    
     public int size(){
         int size = 0;
         Cola<T> aux = new Cola<>();

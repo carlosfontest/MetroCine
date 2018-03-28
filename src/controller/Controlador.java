@@ -45,8 +45,16 @@ public class Controlador {
         
         ((DefaultTableModel)cliente.getCarrito().tableCarrito.getModel()).setRowCount(0);
         
+        OrdenCompra aux;
+        
         for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
-            mostrarOrdenEnTablaCarrito(cliente.getCarrito(), cliente.getCarrito().getOrdenes().buscarOrden(i+1));
+            aux = cliente.getCarrito().getOrdenes().getFirst().getData();
+            if(aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
+                mostrarOrdenEnTablaCarrito(cliente.getCarrito(), aux);
+            }else{
+                cliente.getCarrito().getOrdenes().eliminarOrden(aux.getNumero());
+            }
+            cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
         }
         
         
@@ -237,7 +245,7 @@ public class Controlador {
         this.mostrarTicketsAlTableTickets(tickets, principal);
         
         // Se crea la orden de compra con la Lista de Tickets
-        OrdenCompra orden = new OrdenCompra(tickets, cliente.getCarrito().getOrdenes().size() + 1);
+        OrdenCompra orden = new OrdenCompra(tickets);
         // Se verifica si se pago de una
         if(pagada){
             orden.setPagada();

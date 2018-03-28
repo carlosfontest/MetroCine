@@ -3,13 +3,15 @@ package model;
 import structures.ListaDoble;
 
 public class OrdenCompra {
+    private static int variable = 1;
     private ListaDoble<Ticket> tickets;
     private boolean pagada;
     private double precioTotal;
     private int numero;
 
-    public OrdenCompra(ListaDoble<Ticket> tickets, int numero) {
-        this.numero = numero;
+    public OrdenCompra(ListaDoble<Ticket> tickets) {
+        this.numero = variable;
+        variable++;
         this.tickets = tickets;
         this.pagada = false;
     }

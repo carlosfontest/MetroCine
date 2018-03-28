@@ -6,6 +6,7 @@ public abstract class Ticket {
     protected Sucursal sucursal;
     protected long identificador;
     protected String fecha;
+    protected String pelicula;
     // Atributo auxiliar para poner el identificador de los Tickets
     private static long num = 0;
 
@@ -16,6 +17,7 @@ public abstract class Ticket {
         this.sala = sala;
         this.sucursal = sucursal;
         this.fecha = fecha;
+        this.pelicula = sala.getPelicula().getNombre();
     }
 
     public Ticket() {
@@ -54,14 +56,8 @@ public abstract class Ticket {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
-    
 
-    
-   
-    
-    
-    
-    
-    
+    public String getPelicula() {
+        return pelicula;
+    }
 }
