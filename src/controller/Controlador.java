@@ -15,11 +15,13 @@ import model.Sala2D;
 import model.Sala3D;
 import model.Sala4DX;
 import model.Sucursal;
+import model.Ticket;
 import model.Ticket2D;
 import model.Ticket3D;
 import model.Ticket4DX;
 import structures.ArbolBB;
 import structures.ListaDoble;
+import structures.NodoDoble;
 import view.*;
 
 public class Controlador {
@@ -37,11 +39,15 @@ public class Controlador {
         }
         
         Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf( principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1) )));
-        view.Carrito carrito = new Carrito();
-        cliente.setCarrito(carrito);
         cliente.getCarrito().setPrincipal(principal);
         cliente.getCarrito().setControlador(this);
         cliente.getCarrito().iniciarCarrito();
+        
+        ((DefaultTableModel)cliente.getCarrito().tableCarrito.getModel()).setRowCount(0);
+        
+        for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
+            mostrarOrdenEnTablaCarrito(cliente.getCarrito(), cliente.getCarrito().getOrdenes().buscarOrden(i+1));
+        }
         
         
         principal.tableClientes.clearSelection();
@@ -192,15 +198,15 @@ public class Controlador {
             return;
         }
         
+        // Se verifica si se comprará de una vez o no
         boolean pagada;
-        
         try {
             int resp = JOptionPane.showConfirmDialog(principal, "¿Desea pagar los Tickets de una vez?", "Pago de Tickets", JOptionPane.YES_NO_OPTION);
             
             if(resp == JOptionPane.YES_OPTION){
                 pagada = true;
-            }else if(resp == JOptionPane.YES_OPTION){
-                
+            }else if(resp == JOptionPane.NO_OPTION){
+                pagada = false;
             }else{
                 return;
             }
@@ -217,6 +223,7 @@ public class Controlador {
         // Se crean los tickets
         ListaDoble tickets = new ListaDoble();
         
+        // Se llena la ListaDoble con los tickets comprados
         for (int i = 0; i < cantidad; i++) {
             if(sala instanceof Sala2D){
                 tickets.addLast(new Ticket2D(cliente, sucursal, sala, fecha));
@@ -229,18 +236,17 @@ public class Controlador {
         
         this.mostrarTicketsAlTableTickets(tickets, principal);
         
-        OrdenCompra orden = new OrdenCompra(tickets);
+        // Se crea la orden de compra con la Lista de Tickets
+        OrdenCompra orden = new OrdenCompra(tickets, cliente.getCarrito().getOrdenes().size() + 1);
+        // Se verifica si se pago de una
+        if(pagada){
+            orden.setPagada();
+        }
+        
+        cliente.getCarrito().getOrdenes().enqueue(orden);
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        this.mostrarOrdenEnTablaCarrito(cliente.getCarrito(), orden);
         
         
         // Se retornan los valores por defecto de los campos
@@ -384,13 +390,13 @@ public class Controlador {
             
             int cantidad = Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue()));
                 if(sala instanceof Sala2D){
-                    Ticket2D ticket = new Ticket2D(null, null, null, null);
+                    Ticket2D ticket = new Ticket2D();
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }else if(sala instanceof Sala3D){
-                    Ticket3D ticket = new Ticket3D(null, null, null, null);
+                    Ticket3D ticket = new Ticket3D();
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }else if(sala instanceof Sala4DX){
-                    Ticket4DX ticket = new Ticket4DX(null, null, null, null);
+                    Ticket4DX ticket = new Ticket4DX();
                     principal.textFieldPrecioV.setText(String.valueOf( (cantidad * ticket.getPrecio()) ));
                 }
         }
@@ -808,10 +814,10 @@ public class Controlador {
         carrito.tableCarrito.getTableHeader().setResizingAllowed(false);
         carrito.tableCarrito.getColumnModel().getColumn(0).setPreferredWidth(62);
         carrito.tableCarrito.getColumnModel().getColumn(1).setPreferredWidth(58);
-        carrito.tableCarrito.getColumnModel().getColumn(2).setPreferredWidth(58);
+        carrito.tableCarrito.getColumnModel().getColumn(2).setPreferredWidth(78);
         carrito.tableCarrito.getColumnModel().getColumn(3).setPreferredWidth(32);
         carrito.tableCarrito.getColumnModel().getColumn(4).setPreferredWidth(32);
-        carrito.tableCarrito.getColumnModel().getColumn(5).setPreferredWidth(205);
+        carrito.tableCarrito.getColumnModel().getColumn(5).setPreferredWidth(185);
         carrito.tableCarrito.getColumnModel().getColumn(6).setPreferredWidth(80);
         carrito.tableCarrito.getColumnModel().getColumn(7).setPreferredWidth(80);
         carrito.tableCarrito.getColumnModel().getColumn(8).setPreferredWidth(75);
@@ -877,11 +883,11 @@ public class Controlador {
         principal.tableTickets.getTableHeader().setReorderingAllowed(false);
         principal.tableTickets.getTableHeader().setResizingAllowed(false);
         // Tamaño de cada columna
-        principal.tableTickets.getColumnModel().getColumn(0).setPreferredWidth(110);
-        principal.tableTickets.getColumnModel().getColumn(1).setPreferredWidth(110);
-        principal.tableTickets.getColumnModel().getColumn(2).setPreferredWidth(75);
-        principal.tableTickets.getColumnModel().getColumn(3).setPreferredWidth(50);
-        principal.tableTickets.getColumnModel().getColumn(4).setPreferredWidth(177);
+        principal.tableTickets.getColumnModel().getColumn(0).setPreferredWidth(92);
+        principal.tableTickets.getColumnModel().getColumn(1).setPreferredWidth(92);
+        principal.tableTickets.getColumnModel().getColumn(2).setPreferredWidth(135);
+        principal.tableTickets.getColumnModel().getColumn(3).setPreferredWidth(33);
+        principal.tableTickets.getColumnModel().getColumn(4).setPreferredWidth(170);
         // Altura de cada renglón
         principal.tableTickets.setRowHeight(20);
     }
@@ -953,6 +959,33 @@ public class Controlador {
         
         modelo.addRow(new Object[]{
             cliente.getNombre(), cliente.getCedula(), cliente.getTelefono()
+        });
+    }
+    
+    private void mostrarOrdenEnTablaCarrito(Carrito carrito, OrdenCompra orden){
+        // numero orden, cant, sucursal, sala, tipo, peli, fecha, precio, pagada
+        
+        // Se verifica si la orden está pagada o no
+        String pago = "";
+        String tipo = "";
+        if(orden.isPagada()){
+            pago = "Si";
+        }else{
+            pago = "No";
+        }
+        
+        if( orden.getTickets().getHead().getData() instanceof Ticket2D ){
+            tipo = "2D";
+        }else if( orden.getTickets().getHead().getData() instanceof Ticket3D ){
+            tipo = "3D";
+        }else if( orden.getTickets().getHead().getData() instanceof Ticket4DX ){
+            tipo = "4DX";
+        }
+        
+        ((DefaultTableModel)carrito.tableCarrito.getModel()).addRow(new Object[]{
+            orden.getNumero(), orden.getTickets().size(), ((Ticket)orden.getTickets().getHead().getData()).getSucursal().getUbicacion(), 
+            ((Ticket)orden.getTickets().getHead().getData()).getSala().getNumero(), tipo, ((Ticket)orden.getTickets().getHead().getData()).getSala().getPelicula().getNombre(),
+            ((Ticket)orden.getTickets().getHead().getData()).getFecha(), orden.getPrecioTotal(), pago
         });
     }
     
@@ -1119,33 +1152,27 @@ public class Controlador {
     }
     
     private void mostrarTicketsAlTableTickets(ListaDoble tickets, Principal principal){
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // Agrega tickets en la tabla
+        NodoDoble<Ticket> aux = tickets.getHead();
+
+        while(aux!= null){
+            ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
+                ((Ticket)aux.getData()).getIdentificador(), ((Ticket)aux.getData()).getCliente().getCedula(), ((Ticket)aux.getData()).getSucursal().getUbicacion(), ((Ticket)aux.getData()).getSala().getNumero(), ((Ticket)aux.getData()).getSala().getPelicula().getNombre()
+            });
+            aux = aux.getNext();
+        }
+    }
+    
+    public void organizarTickets(Principal principal){
+        DefaultTableModel dm = (DefaultTableModel) principal.tableTickets.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dm);
+        principal.tableTickets.setRowSorter(tr);
     }
     
     public void pagarOrden(OrdenCompra orden, Carrito carrito){
         orden.setPagada();
-        carrito.tableCarrito.setValueAt("Sí",carrito.tableCarrito.getSelectedRow(), 8);
+        carrito.tableCarrito.setValueAt("Si",carrito.tableCarrito.getSelectedRow(), 8);
+        carrito.tableCarrito.setValueAt(orden.getPrecioTotal(),carrito.tableCarrito.getSelectedRow(), 7);
     }
     
 }

@@ -6,6 +6,9 @@ public class Ticket4DX extends Ticket{
     public Ticket4DX(Cliente cliente, Sucursal sucursal, Sala sala, String fecha) {
         super(cliente, sucursal, sala, fecha);
     }
+    
+    public Ticket4DX() {
+    }
 
     @Override
     public double getPrecio() {

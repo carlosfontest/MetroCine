@@ -6,7 +6,10 @@ public class Ticket3D extends Ticket {
     public Ticket3D(Cliente cliente, Sucursal sucursal, Sala sala, String fecha) {
         super(cliente, sucursal, sala, fecha);
     }
-
+    
+    public Ticket3D() {
+    }
+    
     @Override
     public double getPrecio() {
         return precio;

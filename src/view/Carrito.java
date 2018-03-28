@@ -7,7 +7,6 @@ import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.OrdenCompra;
 import structures.Cola;
-import structures.NodoSimple;
 
 public class Carrito extends javax.swing.JFrame {
     private Cola<OrdenCompra> ordenes;
@@ -33,6 +32,10 @@ public class Carrito extends javax.swing.JFrame {
 
     public void setPrincipal(Principal principal) {
         this.principal = principal;
+    }
+
+    public Cola<OrdenCompra> getOrdenes() {
+        return ordenes;
     }
 
     public void setControlador(Controlador controlador) {
@@ -73,31 +76,7 @@ public class Carrito extends javax.swing.JFrame {
         tableCarrito.setBackground(new java.awt.Color(204, 204, 204));
         tableCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Orden N°", "Cantidad", "Sucursal", "Sala", "Tipo", "Película", "Fecha", "Precio", "¿Pagada?"
@@ -205,12 +184,14 @@ public class Carrito extends javax.swing.JFrame {
     private void botonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPagarActionPerformed
         // Buscamos qué orden está seleccionada
         if(tableCarrito.getSelectedRow() != -1){
-            if(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 8) ).equals("Sí")){
+            if(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 8) ).equals("Si")){
                 JOptionPane.showMessageDialog(this, "Esa orden de compra ya está pagada", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             int numOrden = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 0) ) );
+            
             controlador.pagarOrden(ordenes.buscarOrden(numOrden), this);
+            JOptionPane.showMessageDialog(this, "¡Orden de Compra pagada exitosamente!", "Pagado", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione la orden de compra que quiere pagar", "Error", JOptionPane.ERROR_MESSAGE);
         }

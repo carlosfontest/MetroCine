@@ -12,6 +12,7 @@ public class Cliente {
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
+        this.carrito = new Carrito();
     }
     
     public long getCedula() {

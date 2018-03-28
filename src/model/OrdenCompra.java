@@ -8,7 +8,8 @@ public class OrdenCompra {
     private double precioTotal;
     private int numero;
 
-    public OrdenCompra(ListaDoble<Ticket> tickets) {
+    public OrdenCompra(ListaDoble<Ticket> tickets, int numero) {
+        this.numero = numero;
         this.tickets = tickets;
         this.pagada = false;
     }
@@ -19,6 +20,14 @@ public class OrdenCompra {
         }else{
             return calcularPrecioTotal();
         }
+    }
+
+    public ListaDoble<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public boolean isPagada() {
+        return pagada;
     }
     
     public double calcularPrecioTotal(){

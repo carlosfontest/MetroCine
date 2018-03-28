@@ -10,12 +10,15 @@ public abstract class Ticket {
     private static long num = 0;
 
     public Ticket(Cliente cliente, Sucursal sucursal, Sala sala, String fecha) {
-        num++;
         this.identificador = 1111111 + num;
+        num++;
         this.cliente = cliente;
         this.sala = sala;
         this.sucursal = sucursal;
         this.fecha = fecha;
+    }
+
+    public Ticket() {
     }
     
     public abstract double getPrecio();
@@ -42,6 +45,10 @@ public abstract class Ticket {
 
     public String getFecha() {
         return fecha;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
     }
 
     public void setFecha(String fecha) {
