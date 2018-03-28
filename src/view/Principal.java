@@ -148,6 +148,7 @@ public class Principal extends javax.swing.JFrame {
         panelTickets = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableTickets = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
         label$2T = new javax.swing.JLabel();
         label$3T = new javax.swing.JLabel();
         botonCambiarPrecio2DT = new javax.swing.JButton();
@@ -166,6 +167,7 @@ public class Principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         fondo6 = new javax.swing.JLabel();
         panelAdministrar = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
         labelSalasFrecuentesA = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableAdmin = new javax.swing.JTable();
@@ -188,6 +190,11 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(700, 900));
+        jTabbedPane2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane2FocusGained(evt);
+            }
+        });
         jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane2MouseClicked(evt);
@@ -1308,6 +1315,16 @@ public class Principal extends javax.swing.JFrame {
 
         panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 220));
 
+        jButton6.setForeground(new java.awt.Color(153, 153, 153));
+        jButton6.setText("jButton6");
+        jButton6.setBorder(null);
+        jButton6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton6FocusGained(evt);
+            }
+        });
+        panelTickets.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
+
         label$2T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$2T.setForeground(new java.awt.Color(255, 255, 255));
         label$2T.setText("$");
@@ -1469,6 +1486,16 @@ public class Principal extends javax.swing.JFrame {
 
         panelAdministrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton5.setForeground(new java.awt.Color(153, 153, 153));
+        jButton5.setText("jButton5");
+        jButton5.setBorder(null);
+        jButton5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton5FocusGained(evt);
+            }
+        });
+        panelAdministrar.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
+
         labelSalasFrecuentesA.setFont(new java.awt.Font("Calibri Light", 2, 36)); // NOI18N
         labelSalasFrecuentesA.setForeground(new java.awt.Color(255, 255, 255));
         labelSalasFrecuentesA.setText("Salas más frecuentadas");
@@ -1508,7 +1535,7 @@ public class Principal extends javax.swing.JFrame {
         textFieldIngresosA.setBackground(new java.awt.Color(102, 102, 102));
         textFieldIngresosA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         textFieldIngresosA.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldIngresosA.setText("0");
+        textFieldIngresosA.setText("0.0");
         textFieldIngresosA.setBorder(null);
 
         labelIngresosA.setFont(new java.awt.Font("Calibri Light", 3, 24)); // NOI18N
@@ -1714,6 +1741,9 @@ public class Principal extends javax.swing.JFrame {
         }else{
             textFieldUbicacion.setText(sucursales.buscarSucursal(sucursales.getRoot(),Integer.valueOf(String.valueOf(comboSucursalesV.getSelectedItem()))).getUbicacion());
         }
+        
+        spinnerTicketsV.setEnabled(false);
+        spinnerTicketsV.setValue(0);
         
         controlador.mostrarPeliculasEnComboPeliculas(this);
     }//GEN-LAST:event_comboSucursalesVActionPerformed
@@ -1948,10 +1978,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4FocusGained
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
-        controlador.calcularIngresos(this);
-        controlador.calcularIngresos(this);
-        controlador.calcularIngresos(this);
     }//GEN-LAST:event_jTabbedPane2MouseClicked
+
+    private void jButton5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton5FocusGained
+        controlador.calcularIngresos(this);
+    }//GEN-LAST:event_jButton5FocusGained
+
+    private void jButton6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton6FocusGained
+        controlador.mostrarTicketsAlTableTickets(this);
+    }//GEN-LAST:event_jButton6FocusGained
+
+    private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
+        
+    }//GEN-LAST:event_jTabbedPane2FocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -1996,6 +2035,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

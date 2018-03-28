@@ -156,6 +156,8 @@ public class ArbolBB {
         }
     }
     
+    //Llena las salas frecuentes con las salas que hayan vendido tickets
+    
     public int size(NodoABB aux){
         if(aux!=null){
             return (1 + size(aux.getHijoDer()) + size(aux.getHijoIzq()));

@@ -49,15 +49,6 @@ public class Controlador {
         
         for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
             aux = cliente.getCarrito().getOrdenes().getFirst().getData();
-            if(!aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
-                cliente.getCarrito().getOrdenes().dequeue();
-            }else{
-                 cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
-            }
-        }
-        
-        for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
-            aux = cliente.getCarrito().getOrdenes().getFirst().getData();
             mostrarOrdenEnTablaCarrito(cliente.getCarrito(), aux);
             cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
         }
@@ -248,8 +239,6 @@ public class Controlador {
             }
         }
         
-        this.mostrarTicketsAlTableTickets(tickets, principal);
-        
         // Se crea la orden de compra con la Lista de Tickets
         OrdenCompra orden = new OrdenCompra(tickets);
         // Se verifica si se pago de una
@@ -268,7 +257,10 @@ public class Controlador {
         principal.comboSucursalesV.setSelectedItem("Sucursal");
         //this.cambiarSalaVentas(principal);
         principal.spinnerTicketsV.setEnabled(false);
-
+        
+        mostrarSalasFrecuentes(principal, sala, sucursal, cantidad);
+        
+        ordenarTablaAdmin(principal);
     }
     
     private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
@@ -325,8 +317,37 @@ public class Controlador {
             principal.tableSalas.setValueAt(sala.getPelicula().getNombre(), sala.getNumero() - 1, 2);
             
             principal.tableSalas.clearSelection();
+            
+            
+            Carrito cauxrrito;
+            OrdenCompra compraux;
+            NodoDoble<Ticket> aux;
+            
+            for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+                cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
+                
+                for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                    compraux = cauxrrito.getOrdenes().getFirst().getData();
+                    aux = compraux.getTickets().getHead();
+                    if(!aux.getData().getPelicula().equals(aux.getData().getSala().getPelicula().getNombre())){
+                        cauxrrito.getOrdenes().dequeue();
+                    }else{
+                     cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());   
+                    }
+                }
+            }
+            
+            String sucursaux, salaux;
+            
+            for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
+                sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
+                salaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 1));
+                if(sucursal.getUbicacion().equals(sucursaux) && String.valueOf(sala.getNumero()).equals(salaux)){
+                    ((DefaultTableModel)principal.tableAdmin.getModel()).removeRow(i);
+                    break;
+                }
+            }
         }
-        
     }
     
     public void buscarCliente(Principal principal){
@@ -397,13 +418,12 @@ public class Controlador {
     
     public void calcularIngresos(Principal principal){
         double ingresos = 0;
-        double egresos = 0;
         Carrito cauxrrito;
+        OrdenCompra aux;
         
         for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
             cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
-            OrdenCompra aux;
-            
+                        
             for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
                 aux = cauxrrito.getOrdenes().getFirst().getData();
                 
@@ -412,22 +432,7 @@ public class Controlador {
                 }
                 cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
             }
-        
-            
-            
-            for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
-                aux = cauxrrito.getOrdenes().getFirst().getData();
-                if(!aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
-                    if(aux.isPagada()){
-                        egresos += cauxrrito.getOrdenes().dequeue().getPrecioTotal();
-                    }
-                }else{
-                     cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
-                }
-            }
         }
-        
-        ingresos = ingresos - egresos;
         
         principal.textFieldIngresosA.setText(String.valueOf(ingresos));
     }
@@ -1153,6 +1158,65 @@ public class Controlador {
         
     }
     
+    public void mostrarSalasFrecuentes(Principal principal, Sala sala, Sucursal sucursal, int size){
+        String salaux, sucursaux;
+        boolean esta = false;
+         for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
+            sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
+            salaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 1));
+            if(sucursal.getUbicacion().equals(sucursaux) && String.valueOf(sala.getNumero()).equals(salaux)){
+                esta=true;
+                break;
+            }
+         }
+         int tickets;
+         if(esta){
+             for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
+                sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
+                salaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 1));
+                if(sucursal.getUbicacion().equals(sucursaux) && String.valueOf(sala.getNumero()).equals(salaux)){
+                    tickets = Integer.parseInt(String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 2)));
+                    ((DefaultTableModel)principal.tableAdmin.getModel()).setValueAt(size+tickets, i, 2);
+                }
+            }
+         }else{
+             ((DefaultTableModel)principal.tableAdmin.getModel()).addRow(new Object[]{
+                 sucursal.getUbicacion(),String.valueOf(sala.getNumero()),String.valueOf(size)
+                 });
+         }
+         
+    }
+    
+    /*public void mostrarSalasFrecuentes(Principal principal){
+        String sucursal, sala, sucursaux, salaux;
+        int tickets;
+        
+        ((DefaultTableModel)principal.tableAdmin.getModel()).setRowCount(0);
+        
+        else
+        
+        for (int i = 0; i < ((DefaultTableModel)principal.tableTickets.getModel()).getRowCount(); i++) {
+            tickets = 0;
+            sucursal = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(i, 2));
+            sala = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(i, 3));
+            
+            for (int j = 0; j < ((DefaultTableModel)principal.tableTickets.getModel()).getRowCount(); j++) {
+                sucursaux = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(j, 2));
+                salaux = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(j, 3));
+                
+                if(salaux == sala && sucursaux == sucursal){
+                    tickets++;
+                }
+            }
+            
+            ((DefaultTableModel)principal.tableAdmin.getModel()).addRow(new Object[]{
+                    sucursal,sala,String.valueOf(tickets)
+                });
+            
+            
+        }
+    }*/
+    
     public void mostrarSoloSalas2D(Principal principal){
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
         int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
@@ -1202,15 +1266,66 @@ public class Controlador {
         }
     }
     
-    private void mostrarTicketsAlTableTickets(ListaDoble tickets, Principal principal){
+    public void mostrarTicketsAlTableTickets(Principal principal){
         // Agrega tickets en la tabla
-        NodoDoble<Ticket> aux = tickets.getHead();
-
-        while(aux!= null){
-            ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
-                ((Ticket)aux.getData()).getIdentificador(), ((Ticket)aux.getData()).getCliente().getCedula(), ((Ticket)aux.getData()).getSucursal().getUbicacion(), ((Ticket)aux.getData()).getSala().getNumero(), ((Ticket)aux.getData()).getSala().getPelicula().getNombre()
-            });
-            aux = aux.getNext();
+        Carrito cauxrrito;
+        OrdenCompra compraux;
+        NodoDoble<Ticket> aux;
+        
+        ((DefaultTableModel)principal.tableTickets.getModel()).setRowCount(0);
+        
+        try {
+           for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+            cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
+            compraux = cauxrrito.getOrdenes().getFirst().getData();
+            for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                aux = compraux.getTickets().getHead();
+                while(aux!=null){
+                    if(aux.getData().getPelicula().equals(aux.getData().getSala().getPelicula().getNombre())){
+                        ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
+                            //numT,Ced,Suc,Sala,Pel
+                            String.valueOf(aux.getData().getIdentificador()),String.valueOf(aux.getData().getCliente().getCedula()),aux.getData().getSucursal().getUbicacion(),String.valueOf(aux.getData().getSala().getNumero()),aux.getData().getPelicula()
+                        });
+                    }else{
+                        cauxrrito.getOrdenes().eliminarOrden(compraux.getNumero());
+                    }
+                    aux = aux.getNext();
+                }
+                cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
+            }
+        } 
+        } catch (Exception e) {
+        }
+    }
+    
+    public void ordenarTablaAdmin(Principal principal){
+        DefaultTableModel dm = (DefaultTableModel) principal.tableAdmin.getModel();
+        int tickets;
+        int aux;
+        String sala, sucursal, salaux, sucursaux;
+        
+        for (int i = 0; i < dm.getRowCount(); i++) {
+            tickets = Integer.parseInt(String.valueOf(dm.getValueAt(i, 2)));
+            for (int j = 0; j < dm.getRowCount(); j++) {
+                aux = Integer.parseInt(String.valueOf(dm.getValueAt(j, 2)));
+                if(aux<tickets){
+                    sucursal = String.valueOf(dm.getValueAt(i, 0));
+                    sala = String.valueOf(dm.getValueAt(i, 1));
+                    
+                    sucursaux = String.valueOf(dm.getValueAt(j, 0));
+                    salaux = String.valueOf(dm.getValueAt(j, 1));
+                    
+                    dm.setValueAt(sucursal, j, 0);
+                    dm.setValueAt(sala, j, 1);
+                    dm.setValueAt(String.valueOf(tickets), j, 2);
+                    
+                    dm.setValueAt(sucursaux, i, 0);
+                    dm.setValueAt(salaux, i, 1);
+                    dm.setValueAt(String.valueOf(aux), i, 2);
+                    
+                    tickets = aux;
+                }
+            }
         }
     }
     
