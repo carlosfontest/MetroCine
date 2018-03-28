@@ -36,11 +36,16 @@ public class Controlador {
         }
         
         Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf( principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1) )));
-        view.Carrito carrito = new Carrito(principal, this, cliente);
+        view.Carrito carrito = new Carrito();
         cliente.setCarrito(carrito);
+        cliente.getCarrito().setPrincipal(principal);
+        cliente.getCarrito().setControlador(this);
+        cliente.getCarrito().iniciarCarrito();
+        
+        
         principal.tableClientes.clearSelection();
         
-        carrito.setVisible(true);
+        cliente.getCarrito().setVisible(true);
         principal.setVisible(false);
     }
     
@@ -154,6 +159,69 @@ public class Controlador {
         principal.tableSucursales.setValueAt(sucursales.buscarSucursal(sucursales.getRoot(), aux).getUbicacion(), principal.tableSucursales.getSelectedRow(), 1);        
     }
     
+    public void agregarAlCarrito(Principal principal){
+        // Validamos que se haya elegido un CLiente, Sucursal, Sala y una cantidad de Tickets
+        if(String.valueOf(principal.comboClientesV.getSelectedItem()).equals("Clientes")){
+            JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige un CLiente", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal")){
+            JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige la Sucursal/Sala", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala")){
+            JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige la Sucursal/Sala", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue())) == 0){
+            JOptionPane.showMessageDialog(principal, "Seleccione una cantidad de Tickets distinta de cero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Se guardan los datos de la Orden de Compra
+        Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.comboClientesV.getSelectedItem())));
+        Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem())) );
+        Sala sala = sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), Integer.parseInt(String.valueOf(principal.comboSalasV.getSelectedItem())) );
+        int cantidad = Integer.parseInt(String.valueOf(principal.spinnerTicketsV.getValue()));
+        
+        // Se retornan los valores por defecto de los campos
+        principal.spinnerTicketsV.setValue(0);
+        principal.comboSucursalesV.setSelectedItem("Sucursal");
+        //this.cambiarSalaVentas(principal);
+        principal.spinnerTicketsV.setEnabled(false);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
     private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
         // Agrega la sala creada en la tabla
         
@@ -253,6 +321,8 @@ public class Controlador {
             }
         }
         
+        principal.textFieldClienteV.setText("Ingrese Cédula");
+        
     }
     
     public void buscarPelicula(Principal principal){
@@ -273,7 +343,7 @@ public class Controlador {
             }
         }
         
-        JOptionPane.showMessageDialog(principal, "La Película que ingresó no existe", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(principal, "La Película que ingresó no se encuentra en la Tabla", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
     public void calcularPrecioVentas(Principal principal){
@@ -326,6 +396,20 @@ public class Controlador {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(principal, e);
+        }
+    }
+    
+    public void cerrarCarrito(Carrito carrito){
+        // Metodo para cerrar el sistema
+        
+        try {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "¿Desea cerrar el sistema?", "Salir", dialogButton);
+            if(result == 0){
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(carrito, e);
         }
     }
     
@@ -518,11 +602,6 @@ public class Controlador {
         this.agregarATablaSucursales(sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
     }
     
-    public void iniciarCarrito(Carrito carrito, Cliente cliente){
-        carrito.labelNombre.setText(cliente.getNombre());
-        carrito.labelCedula.setText(String.valueOf(cliente.getCedula()));
-    }
-    
     public void iniciarPrograma(){
         // Inicia el sistema
         
@@ -692,6 +771,24 @@ public class Controlador {
         // Altura de cada renglón
         principal.tableAdmin.setRowHeight(20);
     }
+    public void iniciarTablaCarrito(Carrito carrito){
+        // Permitir la selección de solo una fila
+        carrito.tableCarrito.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        // Tamaño de cada columna
+        carrito.tableCarrito.getTableHeader().setReorderingAllowed(false);
+        carrito.tableCarrito.getTableHeader().setResizingAllowed(false);
+        carrito.tableCarrito.getColumnModel().getColumn(0).setPreferredWidth(62);
+        carrito.tableCarrito.getColumnModel().getColumn(1).setPreferredWidth(58);
+        carrito.tableCarrito.getColumnModel().getColumn(2).setPreferredWidth(58);
+        carrito.tableCarrito.getColumnModel().getColumn(3).setPreferredWidth(32);
+        carrito.tableCarrito.getColumnModel().getColumn(4).setPreferredWidth(32);
+        carrito.tableCarrito.getColumnModel().getColumn(5).setPreferredWidth(205);
+        carrito.tableCarrito.getColumnModel().getColumn(6).setPreferredWidth(80);
+        carrito.tableCarrito.getColumnModel().getColumn(7).setPreferredWidth(80);
+        carrito.tableCarrito.getColumnModel().getColumn(8).setPreferredWidth(75);
+        // Altura de cada renglón
+        carrito.tableCarrito.setRowHeight(20);
+    }
     public void iniciarTablaClientes(Principal principal){
         // Permitir la selección de solo una fila
         principal.tableClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -764,6 +861,12 @@ public class Controlador {
         // Permite minimizar la ventana del sistema
         
         principal.setState(view.Inicio.ICONIFIED);
+    }
+    
+    public void minimizarCarrito(Carrito carrito){
+        // Permite minimizar la ventana del sistema
+        
+        carrito.setState(view.Inicio.ICONIFIED);
     }
     
     public void modificarPelicula(Principal principal){

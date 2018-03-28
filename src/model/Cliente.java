@@ -1,5 +1,7 @@
 package model;
 
+import view.Carrito;
+
 public class Cliente {
     private view.Carrito carrito;
     private long cedula;
@@ -30,6 +32,10 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Carrito getCarrito() {
+        return carrito;
     }
     
 }

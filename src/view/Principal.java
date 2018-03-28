@@ -66,7 +66,7 @@ public class Principal extends javax.swing.JFrame {
         labelNombreCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         comboSalasV = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        labelMostrarPeli = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         labelCantidadTicketsV = new javax.swing.JLabel();
@@ -391,10 +391,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Next.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelMostrarPeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Next.png"))); // NOI18N
+        labelMostrarPeli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                labelMostrarPeliMouseClicked(evt);
             }
         });
 
@@ -406,7 +406,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(comboSalasV, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(labelMostrarPeli)
                 .addGap(158, 158, 158))
         );
         jPanel3Layout.setVerticalGroup(
@@ -415,7 +415,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboSalasV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelMostrarPeli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -447,6 +447,7 @@ public class Principal extends javax.swing.JFrame {
 
         spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+        spinnerTicketsV.setEnabled(false);
         spinnerTicketsV.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinnerTicketsVStateChanged(evt);
@@ -1585,7 +1586,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCedulaCFocusLost
 
     private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
-        this.spinnerTicketsV.setValue(0);
+        controlador.agregarAlCarrito(this);
 
     }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
 
@@ -1703,7 +1704,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarPeliculaPActionPerformed
 
     private void comboSalasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSalasVActionPerformed
-
+        
     }//GEN-LAST:event_comboSalasVActionPerformed
 
     private void comboSalasVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSalasVItemStateChanged
@@ -1718,9 +1719,14 @@ public class Principal extends javax.swing.JFrame {
     private void comboSalasVMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboSalasVMouseDragged
     }//GEN-LAST:event_comboSalasVMouseDragged
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void labelMostrarPeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMostrarPeliMouseClicked
+        if( !String.valueOf(comboSucursalesV.getSelectedItem()).equals("Sucursal") && !String.valueOf(comboSalasV.getSelectedItem()).equals("Sala") ){
+            spinnerTicketsV.setEnabled(true);
+        }else{
+            spinnerTicketsV.setEnabled(false);
+        }
         controlador.cambiarSalaVentas(this);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_labelMostrarPeliMouseClicked
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         controlador.mostrarSoloSalas2D(this);
@@ -1872,7 +1878,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1922,6 +1927,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel label$3T;
     private javax.swing.JLabel labelCantidadTicketsV;
     private javax.swing.JLabel labelIngresosA;
+    public javax.swing.JLabel labelMostrarPeli;
     private javax.swing.JLabel labelNombreCliente;
     public javax.swing.JLabel labelPelicula;
     private javax.swing.JLabel labelPrecioV;

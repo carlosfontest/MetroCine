@@ -1,6 +1,7 @@
 package view;
 
 import controller.Controlador;
+import javax.swing.ImageIcon;
 import model.Cliente;
 import model.OrdenCompra;
 import structures.Cola;
@@ -9,20 +10,32 @@ public class Carrito extends javax.swing.JFrame {
     private Cola<OrdenCompra> ordenes;
     private Principal principal;
     private Controlador controlador;
-    private Cliente cliente;
     
 
-    public Carrito(Principal principal, Controlador controlador, Cliente cliente) {
-        this.cliente = cliente;
+    public Carrito() {
         this.ordenes = new Cola<>();
-        this.principal = principal;
-        this.controlador = controlador;
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../images/icono.png")).getImage());
         this.setSize(720, 350);
         this.setLocationRelativeTo(null);
-        
-        controlador.iniciarCarrito(this, cliente);
     }
+    
+    public void iniciarCarrito(){
+        Cliente cliente = controlador.clientes.buscarCliente(controlador.clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1))));
+        labelNombre.setText(cliente.getNombre());
+        labelCedula.setText(String.valueOf(cliente.getCedula()));
+        
+        controlador.iniciarTablaCarrito(this);
+    }
+
+    public void setPrincipal(Principal principal) {
+        this.principal = principal;
+    }
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+    
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -30,15 +43,18 @@ public class Carrito extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableCarrito = new javax.swing.JTable();
         botonRegresar = new javax.swing.JButton();
         labelCedula = new javax.swing.JLabel();
         labelNombre1 = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
         botonPagar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,19 +62,49 @@ public class Carrito extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carrito.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCarrito = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tableCarrito.setBackground(new java.awt.Color(204, 204, 204));
+        tableCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "Orden N°", "Cantidad", "Sucursal", "Sala", "Tipo", "Película", "Fecha", "Precio", "¿Pagada?"
             }
         ));
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jScrollPane1.setViewportView(jTable1);
+        tableCarrito.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableCarrito.setFocusable(false);
+        jScrollPane1.setViewportView(tableCarrito);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 690, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 140));
 
         botonRegresar.setBackground(new java.awt.Color(153, 153, 153));
         botonRegresar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -71,19 +117,19 @@ public class Carrito extends javax.swing.JFrame {
                 botonRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 90, 30));
+        jPanel1.add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 90, 30));
 
         labelCedula.setFont(new java.awt.Font("Calibri Light", 2, 18)); // NOI18N
         labelCedula.setText("cedula");
-        jPanel1.add(labelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 36, 130, 30));
+        jPanel1.add(labelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 36, 130, 30));
 
-        labelNombre1.setFont(new java.awt.Font("Calibri Light", 2, 18)); // NOI18N
+        labelNombre1.setFont(new java.awt.Font("Calibri Light", 3, 18)); // NOI18N
         labelNombre1.setText("Cédula:");
-        jPanel1.add(labelNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 40, 60, -1));
+        jPanel1.add(labelNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 60, -1));
 
         labelNombre.setFont(new java.awt.Font("Calibri Light", 3, 30)); // NOI18N
         labelNombre.setText("Cliente");
-        jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 250, -1));
+        jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 220, -1));
 
         botonPagar.setBackground(new java.awt.Color(153, 153, 153));
         botonPagar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -96,10 +142,43 @@ public class Carrito extends javax.swing.JFrame {
                 botonPagarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 110, 30));
+        jPanel1.add(botonPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 110, 30));
+
+        jPanel7.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 234, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 240, 50));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Equis.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Minimizar.png"))); // NOI18N
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondoCarrito.png"))); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,16 +203,27 @@ public class Carrito extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonPagarActionPerformed
 
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        controlador.cerrarCarrito(this);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        controlador.minimizarCarrito(this);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonPagar;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JLabel labelCedula;
     public javax.swing.JLabel labelNombre;
     public javax.swing.JLabel labelNombre1;
+    public javax.swing.JTable tableCarrito;
     // End of variables declaration//GEN-END:variables
 }
