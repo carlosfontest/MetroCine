@@ -1304,7 +1304,7 @@ public class Principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Número Ticket", "Cédula cliente", "Sucursal", "Sala", "Película"
+                "Número Ticket", "Cédula cliente", "Sucursal", "Sala", "Película", "Fecha"
             }
         ));
         tableTickets.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -1313,7 +1313,7 @@ public class Principal extends javax.swing.JFrame {
         tableTickets.setRowSelectionAllowed(false);
         jScrollPane5.setViewportView(tableTickets);
 
-        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 220));
+        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 580, 220));
 
         jButton6.setForeground(new java.awt.Color(153, 153, 153));
         jButton6.setText("jButton6");
@@ -1518,6 +1518,7 @@ public class Principal extends javax.swing.JFrame {
         tableAdmin.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableAdmin.setFocusable(false);
+        tableAdmin.setRowSelectionAllowed(false);
         jScrollPane6.setViewportView(tableAdmin);
 
         panelAdministrar.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 530, 110));

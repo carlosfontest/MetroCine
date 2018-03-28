@@ -251,16 +251,15 @@ public class Controlador {
         
         this.mostrarOrdenEnTablaCarrito(cliente.getCarrito(), orden);
         
-        
         // Se retornan los valores por defecto de los campos
         principal.spinnerTicketsV.setValue(0);
         principal.comboSucursalesV.setSelectedItem("Sucursal");
         //this.cambiarSalaVentas(principal);
         principal.spinnerTicketsV.setEnabled(false);
         
-        mostrarSalasFrecuentes(principal, sala, sucursal, cantidad);
+        this.mostrarSalasFrecuentes(principal, sala, sucursal, cantidad);
         
-        ordenarTablaAdmin(principal);
+        this.ordenarTablaAdmin(principal);
     }
     
     private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
@@ -939,11 +938,12 @@ public class Controlador {
         principal.tableTickets.getTableHeader().setReorderingAllowed(false);
         principal.tableTickets.getTableHeader().setResizingAllowed(false);
         // Tamaño de cada columna
-        principal.tableTickets.getColumnModel().getColumn(0).setPreferredWidth(92);
+        principal.tableTickets.getColumnModel().getColumn(0).setPreferredWidth(100);
         principal.tableTickets.getColumnModel().getColumn(1).setPreferredWidth(92);
         principal.tableTickets.getColumnModel().getColumn(2).setPreferredWidth(135);
-        principal.tableTickets.getColumnModel().getColumn(3).setPreferredWidth(33);
+        principal.tableTickets.getColumnModel().getColumn(3).setPreferredWidth(40);
         principal.tableTickets.getColumnModel().getColumn(4).setPreferredWidth(170);
+        principal.tableTickets.getColumnModel().getColumn(5).setPreferredWidth(80);
         // Altura de cada renglón
         principal.tableTickets.setRowHeight(20);
     }
@@ -1284,7 +1284,7 @@ public class Controlador {
                     if(aux.getData().getPelicula().equals(aux.getData().getSala().getPelicula().getNombre())){
                         ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
                             //numT,Ced,Suc,Sala,Pel
-                            String.valueOf(aux.getData().getIdentificador()),String.valueOf(aux.getData().getCliente().getCedula()),aux.getData().getSucursal().getUbicacion(),String.valueOf(aux.getData().getSala().getNumero()),aux.getData().getPelicula()
+                            String.valueOf(aux.getData().getIdentificador()),String.valueOf(aux.getData().getCliente().getCedula()),aux.getData().getSucursal().getUbicacion(),String.valueOf(aux.getData().getSala().getNumero()),aux.getData().getPelicula(), aux.getData().getFecha()
                         });
                     }else{
                         cauxrrito.getOrdenes().eliminarOrden(compraux.getNumero());
@@ -1295,6 +1295,7 @@ public class Controlador {
             }
         } 
         } catch (Exception e) {
+            System.out.println("error");
         }
     }
     
