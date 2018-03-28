@@ -33,29 +33,33 @@ public class Controlador {
     List<RowFilter<Object,Object>> filtros = new ArrayList<RowFilter<Object,Object>>(2);
     
     public void abrirCarrito(Principal principal){
+        //Se verifica si se seleccionó algún cliente
         if(principal.tableClientes.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(principal, "Seleccione un Cliente para abrir el Carrito", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
+        //Se busca el cliente en el ABB "clientes" y se abre el carrito
         Cliente cliente = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf( principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1) )));
         cliente.getCarrito().setPrincipal(principal);
         cliente.getCarrito().setControlador(this);
         cliente.getCarrito().iniciarCarrito();
         
+        //Se vacía la tabla
         ((DefaultTableModel)cliente.getCarrito().tableCarrito.getModel()).setRowCount(0);
         
+        //Se declara una orden auxiliar
         OrdenCompra aux;
         
+        //Se le asigna una orden a aux y se muestra en la tabla del carrito
         for (int i = 0; i < cliente.getCarrito().getOrdenes().size(); i++) {
             aux = cliente.getCarrito().getOrdenes().getFirst().getData();
             mostrarOrdenEnTablaCarrito(cliente.getCarrito(), aux);
             cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
         }
         
-        
+        //Se limpia la selección de la tabla, se muestra en pantalla el GUI del Carrito
         principal.tableClientes.clearSelection();
-        
         cliente.getCarrito().setVisible(true);
         principal.setVisible(false);
     }
@@ -241,25 +245,27 @@ public class Controlador {
         
         // Se crea la orden de compra con la Lista de Tickets
         OrdenCompra orden = new OrdenCompra(tickets);
-        // Se verifica si se pago de una
+        // Se verifica si se pagó de una y se llama al metodo setPagada
         if(pagada){
             orden.setPagada();
         }
         
+        //Se encola la orden en la cola de ordenes del carrito del cliente
         cliente.getCarrito().getOrdenes().enqueue(orden);
         
-        
+        //Se muestra la orden en la tabla del carrito del cliente
         this.mostrarOrdenEnTablaCarrito(cliente.getCarrito(), orden);
+        
+        //Se agrega a las salas frecuentes los tickets generados a partir de la nueva orden de compra
+        this.mostrarSalasFrecuentes(principal, sala, sucursal, cantidad);
+        
+        //Se ordena la tabla de salas frecuentes de mayor a menor
+        this.ordenarTablaAdmin(principal);
         
         // Se retornan los valores por defecto de los campos
         principal.spinnerTicketsV.setValue(0);
         principal.comboSucursalesV.setSelectedItem("Sucursal");
-        //this.cambiarSalaVentas(principal);
         principal.spinnerTicketsV.setEnabled(false);
-        
-        this.mostrarSalasFrecuentes(principal, sala, sucursal, cantidad);
-        
-        this.ordenarTablaAdmin(principal);
     }
     
     private void agregarATablaSucursales(Sucursal sucursal, DefaultTableModel model){
@@ -317,30 +323,38 @@ public class Controlador {
             
             principal.tableSalas.clearSelection();
             
-            
+            //Se declaran variables auxiliares
             Carrito cauxrrito;
             OrdenCompra compraux;
             NodoDoble<Ticket> aux;
             
+            //Se recorren los clientes del arbol "clientes"
             for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+                //Se guarda el carrito del cliente
                 cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
                 
                 for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                    //Se guarda la orden de compra
                     compraux = cauxrrito.getOrdenes().getFirst().getData();
                     aux = compraux.getTickets().getHead();
+                    //Si la película cambiada, tenía una orden de compra, se elimina esa orden
                     if(!aux.getData().getPelicula().equals(aux.getData().getSala().getPelicula().getNombre())){
                         cauxrrito.getOrdenes().dequeue();
                     }else{
+                     //Se recorre la cola de ordenes   
                      cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());   
                     }
                 }
             }
             
+            //Se declaran variables auxiliares
             String sucursaux, salaux;
             
+            //Si existe una sala en una sucursal afectada por el cambio de película en las Salas Frecuentes, se borra la sala de frecuentes
             for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
                 sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
                 salaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 1));
+                //Consigue la fila donde está la sala afectada y la elimina
                 if(sucursal.getUbicacion().equals(sucursaux) && String.valueOf(sala.getNumero()).equals(salaux)){
                     ((DefaultTableModel)principal.tableAdmin.getModel()).removeRow(i);
                     break;
@@ -416,23 +430,30 @@ public class Controlador {
     }
     
     public void calcularIngresos(Principal principal){
+        //Se declaran variables auxiliares
         double ingresos = 0;
         Carrito cauxrrito;
         OrdenCompra aux;
         
+        //Recorre los clientes del arbol "clientes"
         for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+            //Guarda su carrito
             cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
                         
             for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                //Se guarda la orden de Compra
                 aux = cauxrrito.getOrdenes().getFirst().getData();
                 
+                //Se revisa si se está pagada y se suman los ingresos
                 if(aux.isPagada()){
                     ingresos += aux.getPrecioTotal();
                 }
+                //Se recorre la cola
                 cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
             }
         }
         
+        //Se coloca en el textFieldIngresos de Admin el valor de los ingresos
         principal.textFieldIngresosA.setText(String.valueOf(ingresos));
     }
     
@@ -796,14 +817,15 @@ public class Controlador {
     }
     
     public void iniciarRadioButons(Principal principal){
-            principal.jRadioButton1.setEnabled(false);
-            principal.jRadioButton2.setEnabled(false);
-            principal.jRadioButton3.setEnabled(false);
-            principal.jRadioButton4.setEnabled(false);
-            principal.jRadioButton1.setSelected(false);
-            principal.jRadioButton2.setSelected(false);
-            principal.jRadioButton3.setSelected(false);
-            principal.jRadioButton4.setSelected(true);
+        //Se inicializan los radio button
+        principal.radio2D.setEnabled(false);
+        principal.radio3D.setEnabled(false);
+        principal.radio4D.setEnabled(false);
+        principal.radioALL.setEnabled(false);
+        principal.radio2D.setSelected(false);
+        principal.radio3D.setSelected(false);
+        principal.radio4D.setSelected(false);
+        principal.radioALL.setSelected(true);
     }
     
     public void iniciarSesion(Inicio inicio){
@@ -1038,6 +1060,8 @@ public class Controlador {
             tipo = "4DX";
         }
         
+        //Se crea la orden en la tabla de Carrito
+        
         ((DefaultTableModel)carrito.tableCarrito.getModel()).addRow(new Object[]{
             orden.getNumero(), orden.getTickets().size(), ((Ticket)orden.getTickets().getHead().getData()).getSucursal().getUbicacion(), 
             ((Ticket)orden.getTickets().getHead().getData()).getSala().getNumero(), tipo, ((Ticket)orden.getTickets().getHead().getData()).getSala().getPelicula().getNombre(),
@@ -1104,6 +1128,7 @@ public class Controlador {
     }
     
     private void mostrarPeliculasEnTablaPeliculas(Pelicula pelicula, DefaultTableModel modelo){
+        //Se llena la tabla de películas
         modelo.addRow(new Object[]{
             pelicula.getNombre(), pelicula.getGenero(), pelicula.getIdioma()
         });
@@ -1161,6 +1186,8 @@ public class Controlador {
     public void mostrarSalasFrecuentes(Principal principal, Sala sala, Sucursal sucursal, int size){
         String salaux, sucursaux;
         boolean esta = false;
+        
+        //Se chequea si la tabla en la pestaña Admin contiene la sala de la sucursal enviada por parámetros
          for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
             sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
             salaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 1));
@@ -1170,6 +1197,8 @@ public class Controlador {
             }
          }
          int tickets;
+         
+         //Si está, se busca la fila en la que se encuentra y se suman los tickets con los nuevos tickets
          if(esta){
              for (int i = 0; i < ((DefaultTableModel)principal.tableAdmin.getModel()).getRowCount(); i++) {
                 sucursaux = String.valueOf(((DefaultTableModel)principal.tableAdmin.getModel()).getValueAt(i, 0));
@@ -1179,6 +1208,7 @@ public class Controlador {
                     ((DefaultTableModel)principal.tableAdmin.getModel()).setValueAt(size+tickets, i, 2);
                 }
             }
+        //Si no está, se crea un nuevo objeto en la tabla
          }else{
              ((DefaultTableModel)principal.tableAdmin.getModel()).addRow(new Object[]{
                  sucursal.getUbicacion(),String.valueOf(sala.getNumero()),String.valueOf(size)
@@ -1186,36 +1216,6 @@ public class Controlador {
          }
          
     }
-    
-    /*public void mostrarSalasFrecuentes(Principal principal){
-        String sucursal, sala, sucursaux, salaux;
-        int tickets;
-        
-        ((DefaultTableModel)principal.tableAdmin.getModel()).setRowCount(0);
-        
-        else
-        
-        for (int i = 0; i < ((DefaultTableModel)principal.tableTickets.getModel()).getRowCount(); i++) {
-            tickets = 0;
-            sucursal = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(i, 2));
-            sala = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(i, 3));
-            
-            for (int j = 0; j < ((DefaultTableModel)principal.tableTickets.getModel()).getRowCount(); j++) {
-                sucursaux = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(j, 2));
-                salaux = String.valueOf(((DefaultTableModel)principal.tableTickets.getModel()).getValueAt(j, 3));
-                
-                if(salaux == sala && sucursaux == sucursal){
-                    tickets++;
-                }
-            }
-            
-            ((DefaultTableModel)principal.tableAdmin.getModel()).addRow(new Object[]{
-                    sucursal,sala,String.valueOf(tickets)
-                });
-            
-            
-        }
-    }*/
     
     public void mostrarSoloSalas2D(Principal principal){
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
@@ -1270,52 +1270,57 @@ public class Controlador {
         // Agrega tickets en la tabla
         Carrito cauxrrito;
         OrdenCompra compraux;
-        NodoDoble<Ticket> aux;
+        NodoDoble<Ticket> ticketaux;
         
-        ((DefaultTableModel)principal.tableTickets.getModel()).setRowCount(0);
+        //Se vacía el table
+       ((DefaultTableModel)principal.tableTickets.getModel()).setRowCount(0);
         
-        try {
-           for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
-            cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
-            compraux = cauxrrito.getOrdenes().getFirst().getData();
+       //Recorremos los clientes en el arbol por cédula 
+       for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+        //Guardamos el carrito en una variable auxiliar   
+        cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
+        //Chequeamos que el carrito no esté vacío
+        if(!cauxrrito.getOrdenes().isEmpty()){
+            //Recorremos las ordenes de compra
             for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
-                aux = compraux.getTickets().getHead();
-                while(aux!=null){
-                    if(aux.getData().getPelicula().equals(aux.getData().getSala().getPelicula().getNombre())){
-                        ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
-                            //numT,Ced,Suc,Sala,Pel
-                            String.valueOf(aux.getData().getIdentificador()),String.valueOf(aux.getData().getCliente().getCedula()),aux.getData().getSucursal().getUbicacion(),String.valueOf(aux.getData().getSala().getNumero()),aux.getData().getPelicula(), aux.getData().getFecha()
-                        });
-                    }else{
-                        cauxrrito.getOrdenes().eliminarOrden(compraux.getNumero());
-                    }
-                    aux = aux.getNext();
+                compraux = cauxrrito.getOrdenes().getFirst().getData();
+                ticketaux = compraux.getTickets().getHead();
+                //Recorremos la lista de tickets y llenamos la tabla
+                while(ticketaux!=null){
+                    ((DefaultTableModel)principal.tableTickets.getModel()).addRow(new Object[]{
+                            String.valueOf(ticketaux.getData().getIdentificador()),String.valueOf(ticketaux.getData().getCliente().getCedula()),ticketaux.getData().getSucursal().getUbicacion(),String.valueOf(ticketaux.getData().getSala().getNumero()),ticketaux.getData().getPelicula(), ticketaux.getData().getFecha()
+                    });
+                    ticketaux = ticketaux.getNext();
                 }
+                //Recorremos la cola
                 cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
             }
-        } 
-        } catch (Exception e) {
-            System.out.println("error");
         }
+       }
     }
     
     public void ordenarTablaAdmin(Principal principal){
+        //Guardamos variables para fácil acceso
         DefaultTableModel dm = (DefaultTableModel) principal.tableAdmin.getModel();
         int tickets;
         int aux;
         String sala, sucursal, salaux, sucursaux;
         
+        //Recorremos la tabla 2 veces, comparando valores consigo misma
         for (int i = 0; i < dm.getRowCount(); i++) {
             tickets = Integer.parseInt(String.valueOf(dm.getValueAt(i, 2)));
             for (int j = 0; j < dm.getRowCount(); j++) {
                 aux = Integer.parseInt(String.valueOf(dm.getValueAt(j, 2)));
+                //Condición para ordenar de mayor a menor
                 if(aux<tickets){
+                    //Salvamos las variables
                     sucursal = String.valueOf(dm.getValueAt(i, 0));
                     sala = String.valueOf(dm.getValueAt(i, 1));
                     
                     sucursaux = String.valueOf(dm.getValueAt(j, 0));
                     salaux = String.valueOf(dm.getValueAt(j, 1));
                     
+                    //Cambiamos de lugar las variables
                     dm.setValueAt(sucursal, j, 0);
                     dm.setValueAt(sala, j, 1);
                     dm.setValueAt(String.valueOf(tickets), j, 2);
@@ -1324,6 +1329,7 @@ public class Controlador {
                     dm.setValueAt(salaux, i, 1);
                     dm.setValueAt(String.valueOf(aux), i, 2);
                     
+                    //Asignamos el nuevo valor de tickets
                     tickets = aux;
                 }
             }
@@ -1331,18 +1337,17 @@ public class Controlador {
     }
     
     public void organizarTickets(Principal principal){
+        //Colocamos un TableRowSorter para poder organizar los tickets en la tabla
         DefaultTableModel dm = (DefaultTableModel) principal.tableTickets.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(dm);
         principal.tableTickets.setRowSorter(tr);
     }
     
     public void pagarOrden(OrdenCompra orden, Carrito carrito, Principal principal){
+        //Se llama al metodo setPagada y se cambian los valores de precio y "¿Pagado?" en la tabla
         orden.setPagada();
         carrito.tableCarrito.setValueAt("Si",carrito.tableCarrito.getSelectedRow(), 8);
         carrito.tableCarrito.setValueAt(orden.getPrecioTotal(),carrito.tableCarrito.getSelectedRow(), 7);
-        
-        double ingresos = Double.parseDouble(principal.textFieldIngresosA.getText()) + orden.getPrecioTotal();
-        principal.textFieldIngresosA.setText(String.valueOf(ingresos));
     }
     
 }

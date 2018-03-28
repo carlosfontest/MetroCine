@@ -25,7 +25,7 @@ public class Principal extends javax.swing.JFrame {
         this.setResizable(false);      
         this.setSize(600, 430);
         this.setBackground(new Color(0,0,0,0));
-        jRadioButton4.setSelected(true);
+        radioALL.setSelected(true);
         
         //----------Inicializamos las tablas----------
         this.controlador.iniciarTablaSucursales(this);
@@ -126,10 +126,10 @@ public class Principal extends javax.swing.JFrame {
         comboPeliculasSa1 = new javax.swing.JComboBox<>();
         botonCambiarPeliculaSa1 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        radio2D = new javax.swing.JRadioButton();
+        radio3D = new javax.swing.JRadioButton();
+        radio4D = new javax.swing.JRadioButton();
+        radioALL = new javax.swing.JRadioButton();
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -1071,47 +1071,47 @@ public class Principal extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("2D");
-        jRadioButton1.setFocusPainted(false);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        radio2D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio2D);
+        radio2D.setForeground(new java.awt.Color(255, 255, 255));
+        radio2D.setText("2D");
+        radio2D.setFocusPainted(false);
+        radio2D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radio2DActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("3D");
-        jRadioButton2.setFocusPainted(false);
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        radio3D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio3D);
+        radio3D.setForeground(new java.awt.Color(255, 255, 255));
+        radio3D.setText("3D");
+        radio3D.setFocusPainted(false);
+        radio3D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radio3DActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("4DX");
-        jRadioButton3.setFocusPainted(false);
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        radio4D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio4D);
+        radio4D.setForeground(new java.awt.Color(255, 255, 255));
+        radio4D.setText("4DX");
+        radio4D.setFocusPainted(false);
+        radio4D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                radio4DActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("All");
-        jRadioButton4.setFocusPainted(false);
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        radioALL.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radioALL);
+        radioALL.setForeground(new java.awt.Color(255, 255, 255));
+        radioALL.setText("All");
+        radioALL.setFocusPainted(false);
+        radioALL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                radioALLActionPerformed(evt);
             }
         });
 
@@ -1121,13 +1121,13 @@ public class Principal extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(radio2D)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(radio3D)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(radio4D)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(radioALL)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -1135,10 +1135,10 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(radio2D)
+                    .addComponent(radio3D)
+                    .addComponent(radio4D)
+                    .addComponent(radioALL))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -1782,23 +1782,23 @@ public class Principal extends javax.swing.JFrame {
         }
         
         if(comboSucursalesSalas.getSelectedItem() == "Sucursal"){
-            this.jRadioButton1.setEnabled(false);
-            this.jRadioButton2.setEnabled(false);
-            this.jRadioButton3.setEnabled(false);
-            this.jRadioButton4.setEnabled(false);
-            this.jRadioButton1.setSelected(false);
-            this.jRadioButton2.setSelected(false);
-            this.jRadioButton3.setSelected(false);
-            this.jRadioButton4.setSelected(true);
+            this.radio2D.setEnabled(false);
+            this.radio3D.setEnabled(false);
+            this.radio4D.setEnabled(false);
+            this.radioALL.setEnabled(false);
+            this.radio2D.setSelected(false);
+            this.radio3D.setSelected(false);
+            this.radio4D.setSelected(false);
+            this.radioALL.setSelected(true);
         }else{
-            this.jRadioButton1.setEnabled(true);
-            this.jRadioButton2.setEnabled(true);
-            this.jRadioButton3.setEnabled(true);
-            this.jRadioButton4.setEnabled(true);
-            this.jRadioButton1.setSelected(false);
-            this.jRadioButton2.setSelected(false);
-            this.jRadioButton3.setSelected(false);
-            this.jRadioButton4.setSelected(true);
+            this.radio2D.setEnabled(true);
+            this.radio3D.setEnabled(true);
+            this.radio4D.setEnabled(true);
+            this.radioALL.setEnabled(true);
+            this.radio2D.setSelected(false);
+            this.radio3D.setSelected(false);
+            this.radio4D.setSelected(false);
+            this.radioALL.setSelected(true);
         }
         
     }//GEN-LAST:event_comboSucursalesSalasActionPerformed
@@ -1862,23 +1862,23 @@ public class Principal extends javax.swing.JFrame {
         controlador.cambiarSalaVentas(this);
     }//GEN-LAST:event_labelMostrarPeliMouseClicked
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radio2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio2DActionPerformed
         controlador.mostrarSoloSalas2D(this);
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radio2DActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void radio3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio3DActionPerformed
         controlador.mostrarSoloSalas3D(this);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_radio3DActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void radio4DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio4DActionPerformed
         controlador.mostrarSoloSalas4DX(this);
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_radio4DActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void radioALLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioALLActionPerformed
         DefaultTableModel modelo = (DefaultTableModel)tableSalas.getModel();
         modelo.setRowCount(0);
         controlador.mostrarSalasEnTablaSalas(this, Integer.parseInt(String.valueOf(comboSucursalesSalas.getSelectedItem())), false);
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_radioALLActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // Buscamos que CLiente está seleccionado
@@ -2077,10 +2077,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    public javax.swing.JRadioButton jRadioButton1;
-    public javax.swing.JRadioButton jRadioButton2;
-    public javax.swing.JRadioButton jRadioButton3;
-    public javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2114,6 +2110,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panelSucursales;
     private javax.swing.JPanel panelTickets;
     private javax.swing.JPanel panelVentas;
+    public javax.swing.JRadioButton radio2D;
+    public javax.swing.JRadioButton radio3D;
+    public javax.swing.JRadioButton radio4D;
+    public javax.swing.JRadioButton radioALL;
     public javax.swing.JRadioButton radioBoton2D;
     public javax.swing.JRadioButton radioBoton3D;
     public javax.swing.JRadioButton radioBoton4DX;
