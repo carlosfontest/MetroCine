@@ -51,8 +51,6 @@ public class Controlador {
             aux = cliente.getCarrito().getOrdenes().getFirst().getData();
             if(!aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
                 cliente.getCarrito().getOrdenes().dequeue();
-                double egreso = aux.getTickets().getHead().getData().getPrecio();
-                principal.textFieldIngresosA.setText( String.valueOf( Double.parseDouble(principal.textFieldIngresosA.getText()) - egreso ));
             }else{
                  cliente.getCarrito().getOrdenes().enqueue(cliente.getCarrito().getOrdenes().dequeue());
             }
@@ -221,13 +219,6 @@ public class Controlador {
             
             if(resp == JOptionPane.YES_OPTION){
                 pagada = true;
-                
-                // Sumamos los ingresos
-                if(!principal.textFieldPrecioV.getText().equals("Precio")){
-                    double ingresos = Double.parseDouble(principal.textFieldIngresosA.getText()) + Double.parseDouble(principal.textFieldPrecioV.getText());
-                    principal.textFieldIngresosA.setText(String.valueOf(ingresos));
-                }
-                
             }else if(resp == JOptionPane.NO_OPTION){
                 pagada = false;
             }else{
@@ -402,6 +393,43 @@ public class Controlador {
         }
         
         JOptionPane.showMessageDialog(principal, "La Película que ingresó no se encuentra en la Tabla", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void calcularIngresos(Principal principal){
+        double ingresos = 0;
+        double egresos = 0;
+        Carrito cauxrrito;
+        
+        for (int i = 0; i<principal.tableClientes.getModel().getRowCount(); i++) {
+            cauxrrito = clientes.buscarCliente(clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(i, 1)))).getCarrito();
+            OrdenCompra aux;
+            
+            for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                aux = cauxrrito.getOrdenes().getFirst().getData();
+                
+                if(aux.isPagada()){
+                    ingresos += aux.getPrecioTotal();
+                }
+                cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
+            }
+        
+            
+            
+            for (int j = 0; j < cauxrrito.getOrdenes().size(); j++) {
+                aux = cauxrrito.getOrdenes().getFirst().getData();
+                if(!aux.getTickets().getHead().getData().getSala().getPelicula().getNombre().equals(aux.getTickets().getHead().getData().getPelicula())){
+                    if(aux.isPagada()){
+                        egresos += cauxrrito.getOrdenes().dequeue().getPrecioTotal();
+                    }
+                }else{
+                     cauxrrito.getOrdenes().enqueue(cauxrrito.getOrdenes().dequeue());
+                }
+            }
+        }
+        
+        ingresos = ingresos - egresos;
+        
+        principal.textFieldIngresosA.setText(String.valueOf(ingresos));
     }
     
     public void calcularPrecioVentas(Principal principal){

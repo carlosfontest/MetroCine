@@ -188,6 +188,11 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane2.setFocusable(false);
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(700, 900));
+        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane2MouseClicked(evt);
+            }
+        });
 
         panelVentas.setBackground(new java.awt.Color(255, 255, 255));
         panelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1941,6 +1946,12 @@ public class Principal extends javax.swing.JFrame {
     private void jButton4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton4FocusGained
         controlador.organizarTickets(this);
     }//GEN-LAST:event_jButton4FocusGained
+
+    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+        controlador.calcularIngresos(this);
+        controlador.calcularIngresos(this);
+        controlador.calcularIngresos(this);
+    }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;

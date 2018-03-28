@@ -195,6 +195,8 @@ public class Carrito extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione la orden de compra que quiere pagar", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
+        controlador.calcularIngresos(this.principal);
     }//GEN-LAST:event_botonPagarActionPerformed
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
