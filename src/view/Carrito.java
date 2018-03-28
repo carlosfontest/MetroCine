@@ -190,7 +190,7 @@ public class Carrito extends javax.swing.JFrame {
             }
             int numOrden = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableCarrito.getModel()).getValueAt(tableCarrito.getSelectedRow(), 0) ) );
             
-            controlador.pagarOrden(ordenes.buscarOrden(numOrden), this);
+            controlador.pagarOrden(ordenes.buscarOrden(numOrden), this, this.principal);
             JOptionPane.showMessageDialog(this, "¡Orden de Compra pagada exitosamente!", "Pagado", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione la orden de compra que quiere pagar", "Error", JOptionPane.ERROR_MESSAGE);

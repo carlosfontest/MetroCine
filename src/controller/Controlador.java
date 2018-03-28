@@ -175,6 +175,7 @@ public class Controlador {
     }
     
     public void agregarAlCarrito(Principal principal){
+        
         // Validamos que se haya elegido un Cliente, Sucursal, Sala y una cantidad de Tickets
         if(String.valueOf(principal.comboClientesV.getSelectedItem()).equals("Clientes")){
             JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige un Cliente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -213,6 +214,13 @@ public class Controlador {
             
             if(resp == JOptionPane.YES_OPTION){
                 pagada = true;
+                
+                // Sumamos los ingresos
+                if(!principal.textFieldPrecioV.getText().equals("Precio")){
+                    double ingresos = Double.parseDouble(principal.textFieldIngresosA.getText()) + Double.parseDouble(principal.textFieldPrecioV.getText());
+                    principal.textFieldIngresosA.setText(String.valueOf(ingresos));
+                }
+                
             }else if(resp == JOptionPane.NO_OPTION){
                 pagada = false;
             }else{
@@ -1177,10 +1185,13 @@ public class Controlador {
         principal.tableTickets.setRowSorter(tr);
     }
     
-    public void pagarOrden(OrdenCompra orden, Carrito carrito){
+    public void pagarOrden(OrdenCompra orden, Carrito carrito, Principal principal){
         orden.setPagada();
         carrito.tableCarrito.setValueAt("Si",carrito.tableCarrito.getSelectedRow(), 8);
         carrito.tableCarrito.setValueAt(orden.getPrecioTotal(),carrito.tableCarrito.getSelectedRow(), 7);
+        
+        double ingresos = Double.parseDouble(principal.textFieldIngresosA.getText()) + orden.getPrecioTotal();
+        principal.textFieldIngresosA.setText(String.valueOf(ingresos));
     }
     
 }

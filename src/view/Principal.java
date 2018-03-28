@@ -1503,7 +1503,7 @@ public class Principal extends javax.swing.JFrame {
         textFieldIngresosA.setBackground(new java.awt.Color(102, 102, 102));
         textFieldIngresosA.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         textFieldIngresosA.setForeground(new java.awt.Color(255, 255, 255));
-        textFieldIngresosA.setText("0.0");
+        textFieldIngresosA.setText("0");
         textFieldIngresosA.setBorder(null);
 
         labelIngresosA.setFont(new java.awt.Font("Calibri Light", 3, 24)); // NOI18N
@@ -1685,7 +1685,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void botonAgregarCarritoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoVActionPerformed
         controlador.agregarAlCarrito(this);
-
     }//GEN-LAST:event_botonAgregarCarritoVActionPerformed
 
     private void textFieldPrecioVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecioVActionPerformed
@@ -2074,7 +2073,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JTable tableTickets;
     public javax.swing.JTextField textFieldCedulaC;
     public javax.swing.JTextField textFieldClienteV;
-    private javax.swing.JTextField textFieldIngresosA;
+    public javax.swing.JTextField textFieldIngresosA;
     public javax.swing.JTextField textFieldPeliculaP;
     public javax.swing.JTextField textFieldPrecio2DT;
     public javax.swing.JTextField textFieldPrecio3DT;
