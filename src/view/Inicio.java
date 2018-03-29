@@ -2,18 +2,19 @@ package view;
 
 import controller.Controlador;
 import java.awt.event.KeyEvent;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
     Controlador controlador;
     
+    // Constructor
     public Inicio(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("../images/icono.png")).getImage());
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -222,7 +223,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelQuestionMouseClicked
 
     private void jLabelAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAcercaMouseClicked
-        JOptionPane.showMessageDialog(this, "Carlos Fontes & Rafael Quintero\n\t                      UNIMET\n             Ing. de Sistemas");
+        Icon icono = new ImageIcon(getClass().getResource("../images/logoCFRQ.png"));
+        JOptionPane.showMessageDialog(this, "Software elaborado por Carlos Fontes y Rafael Quintero\n       "
+                + "    Proyecto N° 2 - Estrucutra De Datos - UNIMET\n                             ©CF&RQ - MetroCine\n "
+                + "                               4 de Abril de 2018", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
     }//GEN-LAST:event_jLabelAcercaMouseClicked
 
     private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped

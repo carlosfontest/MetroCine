@@ -3,12 +3,12 @@ package model;
 import structures.ListaDoble;
 
 public class OrdenCompra {
-    private static int variable = 1;
     private ListaDoble<Ticket> tickets;
     private boolean pagada;
     private double precioTotal;
     private int numero;
-
+    // Variable auxiliar para poner el número a las ordenes
+    private static int variable = 1;
     public OrdenCompra(ListaDoble<Ticket> tickets) {
         this.numero = variable;
         variable++;
@@ -16,6 +16,7 @@ public class OrdenCompra {
         this.pagada = false;
     }
     
+    // Devuelve el precio Total dependiendo de si ya está pagada o no
     public double getPrecioTotal(){
         if(this.pagada){
             return this.precioTotal;
@@ -32,6 +33,7 @@ public class OrdenCompra {
         return pagada;
     }
     
+    // Calcula el precioTotal de una orden de compra
     public double calcularPrecioTotal(){
         if(this.tickets.getHead().getData() instanceof Ticket2D){
             return this.tickets.size()*((Ticket2D)this.tickets.getHead().getData()).getPrecio();
@@ -42,6 +44,7 @@ public class OrdenCompra {
         return this.tickets.size()*((Ticket4DX)this.tickets.getHead().getData()).getPrecio();
     }
 
+    // Setea pagada una orden de compra y calcula el precio del momento en que fue pagada
     public void setPagada(){
         this.pagada = true;
         this.precioTotal = calcularPrecioTotal();

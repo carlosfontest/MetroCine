@@ -13,7 +13,7 @@ public class Carrito extends javax.swing.JFrame {
     private Principal principal;
     private Controlador controlador;
     
-
+    // Constructor
     public Carrito() {
         this.ordenes = new Cola<>();
         initComponents();
@@ -22,6 +22,7 @@ public class Carrito extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    // Inicia el carrito
     public void iniciarCarrito(){
         Cliente cliente = controlador.clientes.buscarCliente(controlador.clientes.getRoot(), Long.parseLong(String.valueOf(principal.tableClientes.getValueAt(principal.tableClientes.getSelectedRow(), 1))));
         labelNombre.setText(cliente.getNombre());
@@ -42,6 +43,10 @@ public class Carrito extends javax.swing.JFrame {
         this.controlador = controlador;
     }
     
+    public Principal getPrincipal() {
+        return principal;
+    }
+    
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,10 +59,12 @@ public class Carrito extends javax.swing.JFrame {
         labelCedula = new javax.swing.JLabel();
         labelNombre1 = new javax.swing.JLabel();
         labelNombre = new javax.swing.JLabel();
+        botonPagar1 = new javax.swing.JButton();
         botonPagar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -86,7 +93,7 @@ public class Carrito extends javax.swing.JFrame {
         tableCarrito.setFocusable(false);
         jScrollPane1.setViewportView(tableCarrito);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 160));
 
         botonRegresar.setBackground(new java.awt.Color(153, 153, 153));
         botonRegresar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -113,6 +120,19 @@ public class Carrito extends javax.swing.JFrame {
         labelNombre.setText("Cliente");
         jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 220, -1));
 
+        botonPagar1.setBackground(new java.awt.Color(153, 153, 153));
+        botonPagar1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonPagar1.setForeground(new java.awt.Color(255, 255, 255));
+        botonPagar1.setText("Eliminar Orden");
+        botonPagar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonPagar1.setFocusPainted(false);
+        botonPagar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPagar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonPagar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 120, 30));
+
         botonPagar.setBackground(new java.awt.Color(153, 153, 153));
         botonPagar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         botonPagar.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,14 +153,14 @@ public class Carrito extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 674, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 240, 50));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 680, 50));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Equis.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,6 +177,9 @@ public class Carrito extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 328, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondoCarrito.png"))); // NOI18N
         fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -207,13 +230,19 @@ public class Carrito extends javax.swing.JFrame {
         controlador.minimizarCarrito(this);
     }//GEN-LAST:event_jLabel12MouseClicked
 
+    private void botonPagar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPagar1ActionPerformed
+        controlador.eliminarOrden(this);
+    }//GEN-LAST:event_botonPagar1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonPagar;
+    private javax.swing.JButton botonPagar1;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;

@@ -66,32 +66,31 @@ public class Controlador {
     
     public void abrirPrincipal(){
         // Abre la ventana del JFrame Principal
-        
         Principal principal = new Principal(this);
         principal.setVisible(true);
         
         // Creación de las Sucursales iniciales
-            Sucursal sucursal1 = new Sucursal("Country Club");
+            Sucursal sucursal1 = new Sucursal("La Bombilla");
                 this.crearSucursal(sucursal1, principal);
-            Sucursal sucursal2 = new Sucursal("Altamira Hills");
+            Sucursal sucursal2 = new Sucursal("Los Ocumitos");
                 this.crearSucursal(sucursal2, principal);
-            Sucursal sucursal3 = new Sucursal("La Lagunita");
+            Sucursal sucursal3 = new Sucursal("Sótanos del Ávila");
                 this.crearSucursal(sucursal3, principal);
                 
         // Creacion de las Películas iniciales
-            Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
+            Pelicula pelicula1 = new Pelicula("Proyecto: 20 khe", "Acción", "Español");
                 peliculas.addLast(pelicula1);
                 this.crearPelicula(pelicula1, principal);
-            Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
+            Pelicula pelicula2 = new Pelicula("Quintero Entero", "Aventura", "Inglés");
                 peliculas.addLast(pelicula2);
                 this.crearPelicula(pelicula2, principal);
-            Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
+            Pelicula pelicula3 = new Pelicula("Quevetronix", "Suspenso", "Francés");
                 peliculas.addLast(pelicula3);
                 this.crearPelicula(pelicula3, principal);
-            Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
+            Pelicula pelicula4 = new Pelicula("Rafushi vs Carlushi", "Amor", "Español");
                 peliculas.addLast(pelicula4);
                 this.crearPelicula(pelicula4, principal);
-            Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
+            Pelicula pelicula5 = new Pelicula("50 Sombras de Fontes", "Acción", "Inglés");
                 peliculas.addLast(pelicula5);
                 this.crearPelicula(pelicula5, principal);
             
@@ -149,25 +148,23 @@ public class Controlador {
                 this.mostrarClienteEnTablaClientes(cliente1, principal);
             Cliente cliente2 = new Cliente(21688326, "Rafael Quintero", "04243659125");
                 this.mostrarClienteEnTablaClientes(cliente2, principal);
-            Cliente cliente3 = new Cliente(12561795, "Armando Paredes", "04269517596");
+            Cliente cliente3 = new Cliente(12561795, "José Quevedo", "04269517596");
                 this.mostrarClienteEnTablaClientes(cliente3, principal);
-            Cliente cliente4 = new Cliente(2916256, "Pedro Picapiedra", "04164206969");
+            Cliente cliente4 = new Cliente(2916256, "Elsa Pito", "04164206969");
                 this.mostrarClienteEnTablaClientes(cliente4, principal);
             Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
                 this.mostrarClienteEnTablaClientes(cliente5, principal);
                 
             // Seteamos los precios iniciales de los Tickets
-            Ticket2D.setPrecio(10);
-                principal.textFieldPrecio2DT.setText("10");
-            Ticket3D.setPrecio(15);
-                principal.textFieldPrecio3DT.setText("15");
-            Ticket4DX.setPrecio(25);
-                principal.textFieldPrecio4DT.setText("25");
+            Ticket2D.setPrecio(10.0);
+                principal.textFieldPrecio2DT.setText("10.0");
+            Ticket3D.setPrecio(15.0);
+                principal.textFieldPrecio3DT.setText("15.0");
+            Ticket4DX.setPrecio(25.0);
+                principal.textFieldPrecio4DT.setText("25.0");
     }
     
     private void actualizarTablaSucursales(Principal principal){
-        // Obtenemos la cantidad de filas que hay en la tabla
-        int filas = principal.tableSucursales.getRowCount();
         int aux = 0;
         // Modificamos el valor en la tabla
         aux = Integer.parseInt(String.valueOf( ((DefaultTableModel)principal.tableSucursales.getModel()).getValueAt(principal.tableSucursales.getSelectedRow(), 0) ) );
@@ -175,7 +172,6 @@ public class Controlador {
     }
     
     public void agregarAlCarrito(Principal principal){
-        
         // Validamos que se haya elegido un Cliente, Sucursal, Sala y una cantidad de Tickets
         if(String.valueOf(principal.comboClientesV.getSelectedItem()).equals("Clientes")){
             JOptionPane.showMessageDialog(principal, "No puede procesar la compra si no elige un Cliente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -279,6 +275,17 @@ public class Controlador {
     public void botonAgregarPelicula(Principal principal){
         // Se pide el nombre por JOptionPane y se valida que el nombre sea adecuado (ni 0 caracteres, ni mayor a 20)
         String nombre = JOptionPane.showInputDialog("     Ingrese el nombre de la película\n        (No más de 20 caracteres)");
+        
+        // Se valida que la película no exista
+        NodoDoble peli = peliculas.getHead();
+        for (int i = 0; i < peliculas.size(); i++) {
+            if(nombre.equals(((Pelicula)peli.getData()).getNombre())){
+                JOptionPane.showMessageDialog(principal, "Esa película ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            peli = peli.getNext();
+        }
+        
         try {
             if(nombre.length() > 20 || nombre.length() == 0){
                 JOptionPane.showMessageDialog(principal, "Ingrese el nombre de la película siguiendo las instrucciones", "Error", JOptionPane.ERROR_MESSAGE);
@@ -288,6 +295,7 @@ public class Controlador {
             JOptionPane.showMessageDialog(principal, "Ingrese el nombre de la película siguiendo las instrucciones", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         // Declaramos los idiomas y los géneros
         String[] idiomas = {"Español", "Inglés", "Francés"};
         String[] generos = {"Acción", "Amor", "Suspenso", "Aventura"};
@@ -398,6 +406,7 @@ public class Controlador {
             return;
         }
         
+        // Se selecciona el cliente buscado en el ComboBox
         for (int i = 0; i < principal.comboClientesV.getItemCount(); i++) {
             if(String.valueOf(principal.comboClientesV.getItemAt(i)).equals(String.valueOf(cedulaBuscar)) ){
                 principal.comboClientesV.setSelectedIndex(i);
@@ -458,6 +467,11 @@ public class Controlador {
     }
     
     public void calcularPrecioVentas(Principal principal){
+        /* Calcula, en base al tipo de Sala que se haya seleccionado y la cantidadde entradas que el clinete quiera, el precio Total
+         * de la Orden de Compra y lo muestra en pantalla
+        */
+        
+        // Se validad todos los campos necesarios
         if( !String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala") && !String.valueOf(principal.comboSucursalesV.getSelectedItem()).equals("Sucursal") ){
             int numSucursal = Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem()));
             Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
@@ -479,6 +493,7 @@ public class Controlador {
     }
     
     public void cambiarSalaVentas(Principal principal){
+        // Pone el nombre de la película de la Sala que el cliente haya selecciopnado
         if(!String.valueOf(principal.comboSalasV.getSelectedItem()).equals("Sala")){
             int numSucursal = Integer.parseInt(String.valueOf(principal.comboSucursalesV.getSelectedItem()));
             Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal);
@@ -498,7 +513,6 @@ public class Controlador {
     
     public void cerrar(Principal principal){
         // Metodo para cerrar el sistema
-        
         try {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int result = JOptionPane.showConfirmDialog(null, "¿Desea cerrar el sistema?", "Salir", dialogButton);
@@ -512,7 +526,6 @@ public class Controlador {
     
     public void cerrarCarrito(Carrito carrito){
         // Metodo para cerrar el sistema
-        
         try {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int result = JOptionPane.showConfirmDialog(null, "¿Desea cerrar el sistema?", "Salir", dialogButton);
@@ -525,7 +538,8 @@ public class Controlador {
     }
     
     public void crearCliente(Principal principal){
-        boolean flag1, flag2; flag1=flag2=false;
+        // Variables auxiliares para poder validar todo de manera correcta
+        boolean flag1, flag2;
         
         // Validamos la cédula
         long cedula = 0;
@@ -693,9 +707,9 @@ public class Controlador {
         
     }
     
-    
-    // Método que solo se utiliza para crear las salas que vienen desde el inicio del programa
     private void crearSalaInicio(Sala sala, Sucursal sucursal, Principal principal){
+        // Método que solo se utiliza para crear las salas que vienen desde el inicio del programa
+        
         // Se inserta la Sala en el árbol respectivo
         sucursal.getSalas().insertarSala(sucursal.getSalas().getRoot(), sala);
         // Se muestra las Salas en la tabla
@@ -713,107 +727,65 @@ public class Controlador {
         this.agregarATablaSucursales(sucursal, (DefaultTableModel)principal.tableSucursales.getModel());
     }
     
+    public void eliminarOrden(Carrito carrito){
+        // Buscamos qué orden está seleccionada
+        if(carrito.tableCarrito.getSelectedRow() != -1){
+            if(String.valueOf( ((DefaultTableModel)carrito.tableCarrito.getModel()).getValueAt(carrito.tableCarrito.getSelectedRow(), 8) ).equals("Si")){
+                JOptionPane.showMessageDialog(carrito, "Esa orden de compra ya está pagada, no se puede eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            // Se guarda el numero de orden en una variable auxiliar
+            int numOrden = Integer.parseInt(String.valueOf( ((DefaultTableModel)carrito.tableCarrito.getModel()).getValueAt(carrito.tableCarrito.getSelectedRow(), 0) ) );
+            
+            String sala, sucursal, salaux, sucursaux;
+            OrdenCompra ordeaux = carrito.getOrdenes().buscarOrden(numOrden);
+            sala = String.valueOf(ordeaux.getTickets().getHead().getData().getSala().getNumero());
+            sucursal = String.valueOf(ordeaux.getTickets().getHead().getData().getSucursal().getUbicacion());
+            int tickets = ordeaux.getTickets().size();
+            int ticketaux;
+            
+            // Eliminamos la orden de la Cola de ordenes
+            carrito.getOrdenes().eliminarOrden(numOrden);
+            
+            DefaultTableModel model = (DefaultTableModel)carrito.tableCarrito.getModel();
+            
+            for (int i = 0; i < ((DefaultTableModel)carrito.tableCarrito.getModel()).getRowCount(); i++) {
+                String numOrdenAux = String.valueOf(model.getValueAt(i, 0));
+                //Consigue la fila donde está la orden que se desea eliminar
+                if( numOrdenAux.equals(String.valueOf(numOrden)) ){
+                    model.removeRow(i);
+                    break;
+                }
+            }
+            
+            DefaultTableModel modeloAdmin = (DefaultTableModel)carrito.getPrincipal().tableAdmin.getModel();
+            
+            // Asigna el nuevo precio a la tabla de Administrar
+            for (int i = 0; i < modeloAdmin.getRowCount(); i++) {
+                sucursaux = String.valueOf(modeloAdmin.getValueAt(i, 0));
+                salaux = String.valueOf(modeloAdmin.getValueAt(i, 1));
+                ticketaux = Integer.parseInt(String.valueOf(modeloAdmin.getValueAt(i, 2)));
+                
+                if(sucursaux.equals(sucursal) && salaux.equals(sala)){
+                    if(tickets == ticketaux){
+                        modeloAdmin.removeRow(i);
+                        break;
+                    }else{
+                        modeloAdmin.setValueAt(ticketaux - tickets, i, 2);
+                    }
+                }
+            }
+            
+            JOptionPane.showMessageDialog(carrito, "¡Orden de Compra eliminada exitosamente!", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(carrito, "Seleccione la orden de compra que quiere eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     public void iniciarPrograma(){
         // Inicia el sistema
-        
-        // CAMBIAR Principal POR Inicio
-        Principal inicio = new Principal(this);
+        Inicio inicio = new Inicio(this);
         inicio.setVisible(true);
-        
-        // SOLO ESTA ACA TEMPORALMENTE, EN REALIDAD VA EN ABRIR PRINCIPAL
-            // Creación de las Sucursales iniciales
-            Sucursal sucursal1 = new Sucursal("Country Club");
-                this.crearSucursal(sucursal1, inicio);
-            Sucursal sucursal2 = new Sucursal("Altamira Hills");
-                this.crearSucursal(sucursal2, inicio);
-            Sucursal sucursal3 = new Sucursal("La Lagunita");
-                this.crearSucursal(sucursal3, inicio);
-                
-        // Creacion de las Películas iniciales
-            Pelicula pelicula1 = new Pelicula("Matrix", "Acción", "Español");
-                peliculas.addLast(pelicula1);
-                this.crearPelicula(pelicula1, inicio);
-            Pelicula pelicula2 = new Pelicula("El Entierro", "Aventura", "Inglés");
-                peliculas.addLast(pelicula2);
-                this.crearPelicula(pelicula2, inicio);
-            Pelicula pelicula3 = new Pelicula("El Padrino", "Suspenso", "Francés");
-                peliculas.addLast(pelicula3);
-                this.crearPelicula(pelicula3, inicio);
-            Pelicula pelicula4 = new Pelicula("CF&RQ: Power", "Amor", "Español");
-                peliculas.addLast(pelicula4);
-                this.crearPelicula(pelicula4, inicio);
-            Pelicula pelicula5 = new Pelicula("Now You See Me", "Acción", "Inglés");
-                peliculas.addLast(pelicula5);
-                this.crearPelicula(pelicula5, inicio);
-            
-        // Creacion de las Salas iniciales
-            Sala2D sala1 = new Sala2D(1);
-                sala1.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala1, sucursal1, inicio);
-            Sala2D sala2 = new Sala2D(2);
-                sala2.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala2, sucursal1, inicio);
-            Sala3D sala3 = new Sala3D(3);
-                sala3.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala3, sucursal1, inicio);
-            Sala4DX sala4 = new Sala4DX(4);
-                sala4.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala4, sucursal1, inicio);
-            Sala4DX sala5 = new Sala4DX(5);
-                sala5.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala5, sucursal1, inicio);
-                
-            Sala4DX sala6 = new Sala4DX(1);
-                sala6.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala6, sucursal2, inicio);
-            Sala2D sala7 = new Sala2D(2);
-                sala7.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala7, sucursal2, inicio);
-            Sala3D sala8 = new Sala3D(3);
-                sala8.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala8, sucursal2, inicio);
-            Sala3D sala9 = new Sala3D(4);
-                sala9.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala9, sucursal2, inicio);
-            Sala2D sala10 = new Sala2D(5);
-                sala10.setPelicula(pelicula1);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala10, sucursal2, inicio);
-                
-            Sala3D sala11 = new Sala3D(1);
-                sala11.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala11, sucursal3, inicio);
-            Sala2D sala12 = new Sala2D(2);
-                sala12.setPelicula(pelicula2);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala12, sucursal3, inicio);
-            Sala4DX sala13 = new Sala4DX(3);
-                sala13.setPelicula(pelicula5);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala13, sucursal3, inicio);
-            Sala4DX sala14 = new Sala4DX(4);
-                sala14.setPelicula(pelicula3);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala14, sucursal3, inicio);
-            Sala3D sala15 = new Sala3D(5);
-                sala15.setPelicula(pelicula4);  // Seteamos la pelicula que tendrá la Sala
-                this.crearSalaInicio(sala15, sucursal3, inicio);
-                
-            Cliente cliente1 = new Cliente(26476344, "Carlos Fontes", "04122569675");
-                this.mostrarClienteEnTablaClientes(cliente1, inicio);
-            Cliente cliente2 = new Cliente(21688326, "Rafael Quintero", "04243659125");
-                this.mostrarClienteEnTablaClientes(cliente2, inicio);
-            Cliente cliente3 = new Cliente(12561795, "Armando Paredes", "04269517596");
-                this.mostrarClienteEnTablaClientes(cliente3, inicio);
-            Cliente cliente4 = new Cliente(2916256, "Pedro Picapiedra", "04164206969");
-                this.mostrarClienteEnTablaClientes(cliente4, inicio);
-            Cliente cliente5 = new Cliente(19532106, "Alfom Brita", "04245281496");
-                this.mostrarClienteEnTablaClientes(cliente5, inicio);
-                
-                
-            // Seteamos los precios iniciales de los Tickets
-            Ticket2D.setPrecio(10);
-                inicio.textFieldPrecio2DT.setText("10");
-            Ticket3D.setPrecio(15);
-                inicio.textFieldPrecio3DT.setText("15");
-            Ticket4DX.setPrecio(25);
-                inicio.textFieldPrecio4DT.setText("25");
     }
     
     public void iniciarRadioButons(Principal principal){
@@ -870,7 +842,7 @@ public class Controlador {
         }
     }
     
-    // INICIALIZACIÓN DE TABLAS
+    //----------------- INICIALIZACIÓN DE TABLAS -----------------
     public void iniciarTablaAdministrar(Principal principal){
         // Permitir la selección de solo una fila
         principal.tableAdmin.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -883,6 +855,7 @@ public class Controlador {
         // Altura de cada renglón
         principal.tableAdmin.setRowHeight(20);
     }
+    
     public void iniciarTablaCarrito(Carrito carrito){
         // Permitir la selección de solo una fila
         carrito.tableCarrito.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -901,6 +874,7 @@ public class Controlador {
         // Altura de cada renglón
         carrito.tableCarrito.setRowHeight(20);
     }
+    
     public void iniciarTablaClientes(Principal principal){
         // Permitir la selección de solo una fila
         principal.tableClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -914,6 +888,7 @@ public class Controlador {
         // Altura de cada renglón
         principal.tableClientes.setRowHeight(20);
     }
+    
     public void iniciarTablaPeliculas(Principal principal){
         // Permitir la selección de solo una fila
         principal.tablePeli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -927,6 +902,7 @@ public class Controlador {
         // Altura de cada renglón
         principal.tablePeli.setRowHeight(20);
     }
+    
     public void iniciarTablaSalas(Principal principal){
         ((DefaultTableModel)principal.tableSalas.getModel()).setRowCount(0);
         // Permitir la selección de solo una fila
@@ -941,6 +917,7 @@ public class Controlador {
         // Altura de cada renglón
         principal.tableSalas.setRowHeight(20);
     }
+    
     public void iniciarTablaSucursales(Principal principal){
         // Permitir la selección de solo una fila
         principal.tableSucursales.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -953,6 +930,7 @@ public class Controlador {
         // Altura de cada renglón
         principal.tableSucursales.setRowHeight(20);
     }
+    
     public void iniciarTablaTickets(Principal principal){
         // Permitir la selección de solo una fila
         principal.tableTickets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -962,23 +940,22 @@ public class Controlador {
         // Tamaño de cada columna
         principal.tableTickets.getColumnModel().getColumn(0).setPreferredWidth(100);
         principal.tableTickets.getColumnModel().getColumn(1).setPreferredWidth(92);
-        principal.tableTickets.getColumnModel().getColumn(2).setPreferredWidth(135);
+        principal.tableTickets.getColumnModel().getColumn(2).setPreferredWidth(110);
         principal.tableTickets.getColumnModel().getColumn(3).setPreferredWidth(40);
-        principal.tableTickets.getColumnModel().getColumn(4).setPreferredWidth(170);
+        principal.tableTickets.getColumnModel().getColumn(4).setPreferredWidth(140);
         principal.tableTickets.getColumnModel().getColumn(5).setPreferredWidth(80);
         // Altura de cada renglón
         principal.tableTickets.setRowHeight(20);
     }
+    //----------------- FIN INICIALIZACIÓN DE TABLAS -----------------
     
     public void minimizar(Principal principal){
         // Permite minimizar la ventana del sistema
-        
         principal.setState(view.Inicio.ICONIFIED);
     }
     
     public void minimizarCarrito(Carrito carrito){
         // Permite minimizar la ventana del sistema
-        
         carrito.setState(view.Inicio.ICONIFIED);
     }
     
@@ -1000,6 +977,8 @@ public class Controlador {
             principal.tablePeli.setValueAt(peliculas.buscarPelicula(peliculaModificar).getGenero() , principal.tablePeli.getSelectedRow(), 1);
             principal.tablePeli.clearSelection();
             principal.comboModificarPelicula.setSelectedIndex(0);
+            principal.comboGeneroP.setSelectedIndex(0);
+            principal.comboIdiomaP.setSelectedIndex(0);
         }else if(modificar.equals("Idioma")){
             String peliculaModificar = String.valueOf( ((DefaultTableModel)principal.tablePeli.getModel()).getValueAt(principal.tablePeli.getSelectedRow(), 0) );
             String idioma = (String)JOptionPane.showInputDialog(principal, "Seleccione el nuevo idioma de la Película", "Modificación Idioma", JOptionPane.QUESTION_MESSAGE, null, idiomas, idiomas[0]);
@@ -1007,6 +986,8 @@ public class Controlador {
             principal.tablePeli.setValueAt(peliculas.buscarPelicula(peliculaModificar).getIdioma(), principal.tablePeli.getSelectedRow(), 2);
             principal.tablePeli.clearSelection();
             principal.comboModificarPelicula.setSelectedIndex(0);
+            principal.comboGeneroP.setSelectedIndex(0);
+            principal.comboIdiomaP.setSelectedIndex(0);
         }
     }
     
@@ -1041,8 +1022,6 @@ public class Controlador {
     }
     
     private void mostrarOrdenEnTablaCarrito(Carrito carrito, OrdenCompra orden){
-        // numero orden, cant, sucursal, sala, tipo, peli, fecha, precio, pagada
-        
         // Se verifica si la orden está pagada o no
         String pago = "";
         String tipo = "";
@@ -1061,7 +1040,6 @@ public class Controlador {
         }
         
         //Se crea la orden en la tabla de Carrito
-        
         ((DefaultTableModel)carrito.tableCarrito.getModel()).addRow(new Object[]{
             orden.getNumero(), orden.getTickets().size(), ((Ticket)orden.getTickets().getHead().getData()).getSucursal().getUbicacion(), 
             ((Ticket)orden.getTickets().getHead().getData()).getSala().getNumero(), tipo, ((Ticket)orden.getTickets().getHead().getData()).getSala().getPelicula().getNombre(),
@@ -1107,15 +1085,15 @@ public class Controlador {
         principal.tablePeli.setRowSorter(tr);
         
         //Se evalúan los posibles casos de filtros
-        if(genero != "Género" || idioma != "Idioma"){
-           if(idioma != "Idioma"){
-               if(genero != "Género"){   
+        if(!genero.equals("Género") || !idioma.equals("Idioma")){
+           if(!idioma.equals("Idioma")){
+               if(!genero.equals("Género")){   
                 tr.setRowFilter(RowFilter.andFilter(filtros));
                }else{
                 tr.setRowFilter(RowFilter.regexFilter(idioma));
                }
            }else{
-               if(genero != "Género"){   
+               if(!genero.equals("Género")){   
                 tr.setRowFilter(RowFilter.regexFilter(genero));
                }
            }
@@ -1140,7 +1118,6 @@ public class Controlador {
         // Se determina la cantidad de salas que hay en la sucursal seleccionada para así saber cuantas filas habrán
         int cantFilas = sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().size(sucursales.buscarSucursal(sucursales.getRoot(), numSucursal).getSalas().getRoot());
         DefaultTableModel model = (DefaultTableModel)principal.tableSalas.getModel();
-        
         
         // Agregamos las salas a la Tabla
         for (int i = 0; i < cantFilas; i++) {
@@ -1218,12 +1195,14 @@ public class Controlador {
     }
     
     public void mostrarSoloSalas2D(Principal principal){
+        // Mostrará solo las Salas 2D
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
         int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
         
         DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
         modelo.setRowCount(0);
         
+        // Busca las salas 2D en el árbol de salas y las muestra en la tabla
         for (int i = 0; i < numSalas; i++) {
             if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala2D){
                 modelo.addRow(new Object[]{
@@ -1234,12 +1213,14 @@ public class Controlador {
     }
             
     public void mostrarSoloSalas3D(Principal principal){
+        // Mostrará solo las Salas 3D
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
         int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
         
         DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
         modelo.setRowCount(0);
         
+        // Busca las salas 3D en el árbol de salas y las muestra en la tabla
         for (int i = 0; i < numSalas; i++) {
             if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala3D){
                 modelo.addRow(new Object[]{
@@ -1251,12 +1232,14 @@ public class Controlador {
     }
             
     public void mostrarSoloSalas4DX(Principal principal){
+        // Mostrará solo las Salas 4DX
         Sucursal sucursal = sucursales.buscarSucursal(sucursales.getRoot(), Integer.parseInt(String.valueOf(principal.comboSucursalesSalas.getSelectedItem())));
         int numSalas = sucursal.getSalas().size(sucursal.getSalas().getRoot());
         
         DefaultTableModel modelo = (DefaultTableModel)principal.tableSalas.getModel();
         modelo.setRowCount(0);
         
+        // Busca las salas 4DX en el árbol de salas y las muestra en la tabla
         for (int i = 0; i < numSalas; i++) {
             if(sucursal.getSalas().buscarSala(sucursal.getSalas().getRoot(), i+1) instanceof Sala4DX){
                 modelo.addRow(new Object[]{

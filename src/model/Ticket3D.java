@@ -18,5 +18,4 @@ public class Ticket3D extends Ticket {
     public static void setPrecio(double precio) {
         Ticket3D.precio = precio;
     }
-    
 }

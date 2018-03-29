@@ -3,6 +3,7 @@ package view;
 import controller.Controlador;
 import static controller.Controlador.sucursales;
 import java.awt.Color;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -15,6 +16,7 @@ import model.Ticket4DX;
 public class Principal extends javax.swing.JFrame {
     Controlador controlador;
 
+    // Constructor
     public Principal(Controlador controlador) {
         this.controlador = controlador;
         UIManager.put("TabbedPane.selected", new Color(57,62,70));
@@ -35,6 +37,7 @@ public class Principal extends javax.swing.JFrame {
         this.controlador.iniciarTablaPeliculas(this);
         this.controlador.iniciarTablaTickets(this);
         
+        // Inicia los RadioButons
         this.controlador.iniciarRadioButons(this);
     }
     @SuppressWarnings("unchecked")
@@ -55,6 +58,7 @@ public class Principal extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         labelPrecioV = new javax.swing.JLabel();
         textFieldPrecioV = new javax.swing.JTextField();
+        jPanel22 = new javax.swing.JPanel();
         botonAgregarCarritoV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -65,6 +69,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         textFieldClienteV = new javax.swing.JTextField();
         labelNombreCliente = new javax.swing.JLabel();
+        labelTelefonoCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         comboSalasV = new javax.swing.JComboBox<>();
         labelMostrarPeli = new javax.swing.JLabel();
@@ -72,16 +77,19 @@ public class Principal extends javax.swing.JFrame {
         fecha3 = new javax.swing.JRadioButton();
         fecha4 = new javax.swing.JRadioButton();
         fecha5 = new javax.swing.JRadioButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
         labelCantidadTicketsV = new javax.swing.JLabel();
         spinnerTicketsV = new javax.swing.JSpinner();
+        jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         fondo1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         panelPeliculas = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
         botonModificarPeliculaP = new javax.swing.JButton();
+        comboModificarPelicula = new javax.swing.JComboBox<>();
         botonAgregarPeliculaP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePeli = new javax.swing.JTable();
@@ -90,60 +98,66 @@ public class Principal extends javax.swing.JFrame {
         comboGeneroP = new javax.swing.JComboBox<>();
         comboIdiomaP = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
-        comboModificarPelicula = new javax.swing.JComboBox<>();
         textFieldPeliculaP = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         botonBuscarPeliculaP = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        fondo2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        fondo2 = new javax.swing.JLabel();
         panelClientes = new javax.swing.JPanel();
-        botonCarritoC = new javax.swing.JButton();
-        botonModificar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        botonModificar = new javax.swing.JButton();
+        botonRegistrarC1 = new javax.swing.JButton();
+        botonCarritoC = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         textFieldCedulaC = new javax.swing.JTextField();
         botonBuscarClienteC = new javax.swing.JButton();
-        botonRegistrarC1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
         fondo3 = new javax.swing.JLabel();
         panelSalas = new javax.swing.JPanel();
+        comboPeliculasSa1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSalas = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        radio2D = new javax.swing.JRadioButton();
+        radio3D = new javax.swing.JRadioButton();
+        radio4D = new javax.swing.JRadioButton();
+        radioALL = new javax.swing.JRadioButton();
+        botonCambiarPeliculaSa1 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         comboSucursalesSalas = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        comboPeliculasSa1 = new javax.swing.JComboBox<>();
-        botonCambiarPeliculaSa1 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
-        radio2D = new javax.swing.JRadioButton();
-        radio3D = new javax.swing.JRadioButton();
-        radio4D = new javax.swing.JRadioButton();
-        radioALL = new javax.swing.JRadioButton();
+        jLabel27 = new javax.swing.JLabel();
         fondo4 = new javax.swing.JLabel();
         panelSucursales = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableSucursales = new javax.swing.JTable();
-        botonAgregarSucursalSu = new javax.swing.JButton();
-        botonModificarSucursalSu = new javax.swing.JButton();
-        botonCrearSalasSu = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        radioBoton3D = new javax.swing.JRadioButton();
-        radioBoton2D = new javax.swing.JRadioButton();
-        radioBoton4DX = new javax.swing.JRadioButton();
+        jPanel19 = new javax.swing.JPanel();
+        botonAgregarSucursalSu = new javax.swing.JButton();
+        botonModificarSucursalSu = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
+        radioBoton2D = new javax.swing.JRadioButton();
+        radioBoton3D = new javax.swing.JRadioButton();
+        radioBoton4DX = new javax.swing.JRadioButton();
+        botonCrearSalasSu = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
         fondo5 = new javax.swing.JLabel();
         panelTickets = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -165,6 +179,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
         fondo6 = new javax.swing.JLabel();
         panelAdministrar = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
@@ -179,6 +194,8 @@ public class Principal extends javax.swing.JFrame {
         label$1T1 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         fondo7 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -207,7 +224,7 @@ public class Principal extends javax.swing.JFrame {
         label$1T2.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$1T2.setForeground(new java.awt.Color(255, 255, 255));
         label$1T2.setText("$");
-        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
+        panelVentas.add(label$1T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
         botonBuscarClienteV.setBackground(new java.awt.Color(153, 153, 153));
         botonBuscarClienteV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -220,7 +237,7 @@ public class Principal extends javax.swing.JFrame {
                 botonBuscarClienteVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 80, 30));
+        panelVentas.add(botonBuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 80, 30));
 
         comboClientesV.setBackground(new java.awt.Color(153, 153, 153));
         comboClientesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -232,7 +249,7 @@ public class Principal extends javax.swing.JFrame {
                 comboClientesVActionPerformed(evt);
             }
         });
-        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 137, 107, 26));
+        panelVentas.add(comboClientesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 107, 26));
 
         comboSucursalesV.setBackground(new java.awt.Color(153, 153, 153));
         comboSucursalesV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -250,13 +267,13 @@ public class Principal extends javax.swing.JFrame {
                 comboSucursalesVActionPerformed(evt);
             }
         });
-        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 130, 26));
-        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 375, 60, 10));
+        panelVentas.add(comboSucursalesV, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 130, 26));
+        panelVentas.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 345, 60, 10));
 
         labelPrecioV.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
         labelPrecioV.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioV.setText("Precio Total");
-        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        panelVentas.add(labelPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
 
         textFieldPrecioV.setEditable(false);
         textFieldPrecioV.setBackground(new java.awt.Color(102, 102, 102));
@@ -265,12 +282,26 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecioV.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         textFieldPrecioV.setText("Precio");
         textFieldPrecioV.setBorder(null);
+        textFieldPrecioV.setFocusable(false);
         textFieldPrecioV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPrecioVActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 60, 26));
+        panelVentas.add(textFieldPrecioV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 60, 26));
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        panelVentas.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, 80));
 
         botonAgregarCarritoV.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarCarritoV.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -283,7 +314,7 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarCarritoVActionPerformed(evt);
             }
         });
-        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 140, 40));
+        panelVentas.add(botonAgregarCarritoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -297,18 +328,19 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Calibri Light", 0, 11)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
-        jTextArea1.setText("  Para ver la película pulse la flecha.");
+        jTextArea1.setText("  Para ver la película pulse en la flecha.");
         jTextArea1.setAlignmentX(1.0F);
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextArea1.setFocusable(false);
         jTextArea1.setMargin(new java.awt.Insets(22, 2, 2, 2));
-        panelVentas.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 160, 20));
+        panelVentas.add(jTextArea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 54, 170, 20));
 
         labelPelicula.setFont(new java.awt.Font("Calibri Light", 0, 15)); // NOI18N
         labelPelicula.setForeground(new java.awt.Color(255, 255, 255));
         labelPelicula.setText("-----------------------");
         labelPelicula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Película", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelVentas.add(labelPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 130, -1));
+        labelPelicula.setFocusable(false);
+        panelVentas.add(labelPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 130, -1));
 
         textFieldUbicacion.setEditable(false);
         textFieldUbicacion.setBackground(new java.awt.Color(102, 102, 102));
@@ -316,14 +348,15 @@ public class Principal extends javax.swing.JFrame {
         textFieldUbicacion.setForeground(new java.awt.Color(255, 255, 255));
         textFieldUbicacion.setText("-----------------------");
         textFieldUbicacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ubicación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        textFieldUbicacion.setFocusable(false);
         textFieldUbicacion.setVerifyInputWhenFocusTarget(false);
         textFieldUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldUbicacionActionPerformed(evt);
             }
         });
-        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 130, -1));
-        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 107, 10));
+        panelVentas.add(textFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 130, -1));
+        panelVentas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 107, 10));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -356,6 +389,13 @@ public class Principal extends javax.swing.JFrame {
         labelNombreCliente.setForeground(new java.awt.Color(255, 255, 255));
         labelNombreCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNombreCliente.setText("Nombre Cliente");
+        labelNombreCliente.setFocusable(false);
+
+        labelTelefonoCliente.setFont(new java.awt.Font("Calibri Light", 3, 13)); // NOI18N
+        labelTelefonoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        labelTelefonoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTelefonoCliente.setText("Teléfono Cliente");
+        labelTelefonoCliente.setFocusable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -366,16 +406,19 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(117, Short.MAX_VALUE))
             .addComponent(labelNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelTelefonoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(textFieldClienteV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(labelNombreCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(labelNombreCliente)
+                .addGap(2, 2, 2)
+                .addComponent(labelTelefonoCliente))
         );
 
-        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 90));
+        panelVentas.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 110));
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -439,7 +482,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 300, 110));
+        panelVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 300, 110));
 
         jPanel16.setBackground(new java.awt.Color(102, 102, 102));
         jPanel16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -448,7 +491,7 @@ public class Principal extends javax.swing.JFrame {
         botonesFecha.add(fecha3);
         fecha3.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
         fecha3.setForeground(new java.awt.Color(255, 255, 255));
-        fecha3.setText("03 / 04 / 2018");
+        fecha3.setText("03 de Abril de 2018 - 03/04/2018");
         fecha3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecha3ActionPerformed(evt);
@@ -459,7 +502,7 @@ public class Principal extends javax.swing.JFrame {
         botonesFecha.add(fecha4);
         fecha4.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
         fecha4.setForeground(new java.awt.Color(255, 255, 255));
-        fecha4.setText("04 / 04 / 2018");
+        fecha4.setText("04 de Abril de 2018 - 04/04/2018");
         fecha4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecha4ActionPerformed(evt);
@@ -470,10 +513,25 @@ public class Principal extends javax.swing.JFrame {
         botonesFecha.add(fecha5);
         fecha5.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
         fecha5.setForeground(new java.awt.Color(255, 255, 255));
-        fecha5.setText("05 / 04 / 2018");
+        fecha5.setText("05 de Abril de 2018 - 05/04/2018");
         fecha5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecha5ActionPerformed(evt);
+            }
+        });
+
+        labelCantidadTicketsV.setFont(new java.awt.Font("Calibri Light", 2, 16)); // NOI18N
+        labelCantidadTicketsV.setForeground(new java.awt.Color(255, 255, 255));
+        labelCantidadTicketsV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCantidadTicketsV.setText("Cantidad");
+        labelCantidadTicketsV.setFocusable(false);
+
+        spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+        spinnerTicketsV.setEnabled(false);
+        spinnerTicketsV.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinnerTicketsVStateChanged(evt);
             }
         });
 
@@ -485,9 +543,14 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fecha3)
-                    .addComponent(fecha4)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(fecha4)
+                        .addGap(38, 38, 38)
+                        .addComponent(labelCantidadTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(spinnerTicketsV, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                     .addComponent(fecha5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,13 +558,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(fecha3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha4)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelCantidadTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spinnerTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fecha4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fecha5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelVentas.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 110, 90));
+        panelVentas.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 410, 100));
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -517,46 +584,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 180, 50));
-
-        jPanel7.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        labelCantidadTicketsV.setFont(new java.awt.Font("Calibri Light", 2, 16)); // NOI18N
-        labelCantidadTicketsV.setForeground(new java.awt.Color(255, 255, 255));
-        labelCantidadTicketsV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCantidadTicketsV.setText("Cantidad");
-
-        spinnerTicketsV.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        spinnerTicketsV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
-        spinnerTicketsV.setEnabled(false);
-        spinnerTicketsV.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                spinnerTicketsVStateChanged(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(labelCantidadTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(spinnerTicketsV, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCantidadTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spinnerTicketsV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 7, Short.MAX_VALUE))
-        );
-
-        panelVentas.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 170, 50));
+        panelVentas.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 180, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -574,6 +602,9 @@ public class Principal extends javax.swing.JFrame {
         });
         panelVentas.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelVentas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
+
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelVentas.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -584,6 +615,22 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane2.addTab("Ventas", panelVentas);
 
         panelPeliculas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        panelPeliculas.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, 40));
+
+        jPanel20.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel20.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         botonModificarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
         botonModificarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -596,7 +643,11 @@ public class Principal extends javax.swing.JFrame {
                 botonModificarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonModificarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 80, 30));
+
+        comboModificarPelicula.setBackground(new java.awt.Color(153, 153, 153));
+        comboModificarPelicula.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        comboModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        comboModificarPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modificar", "Género", "Idioma" }));
 
         botonAgregarPeliculaP.setBackground(new java.awt.Color(153, 153, 153));
         botonAgregarPeliculaP.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -609,7 +660,32 @@ public class Principal extends javax.swing.JFrame {
                 botonAgregarPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(botonAgregarPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 130, 30));
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonModificarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(comboModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(botonAgregarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonModificarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboModificarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAgregarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        panelPeliculas.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 410, 60));
 
         tablePeli = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -663,6 +739,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Filtros");
+        jLabel23.setFocusable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -688,13 +765,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 250, 60));
-
-        comboModificarPelicula.setBackground(new java.awt.Color(153, 153, 153));
-        comboModificarPelicula.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboModificarPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        comboModificarPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modificar", "Género", "Idioma" }));
-        panelPeliculas.add(comboModificarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 100, 26));
+        panelPeliculas.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 250, 60));
 
         textFieldPeliculaP.setBackground(new java.awt.Color(102, 102, 102));
         textFieldPeliculaP.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -714,8 +785,8 @@ public class Principal extends javax.swing.JFrame {
                 textFieldPeliculaPActionPerformed(evt);
             }
         });
-        panelPeliculas.add(textFieldPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 110, 26));
-        panelPeliculas.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 90, -1));
+        panelPeliculas.add(textFieldPeliculaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 130, 26));
+        panelPeliculas.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 130, -1));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -737,9 +808,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addComponent(botonBuscarPeliculaP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,7 +820,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelPeliculas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 230, 60));
+        panelPeliculas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 250, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -767,9 +838,6 @@ public class Principal extends javax.swing.JFrame {
         });
         panelPeliculas.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
-        fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
-        panelPeliculas.add(fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setText("jButton3");
         jButton3.setBorder(null);
@@ -780,35 +848,15 @@ public class Principal extends javax.swing.JFrame {
         });
         panelPeliculas.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelPeliculas.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
+
+        fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
+        panelPeliculas.add(fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jTabbedPane2.addTab("Peliculas", panelPeliculas);
 
         panelClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        botonCarritoC.setBackground(new java.awt.Color(153, 153, 153));
-        botonCarritoC.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonCarritoC.setForeground(new java.awt.Color(255, 255, 255));
-        botonCarritoC.setText("Carrito");
-        botonCarritoC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonCarritoC.setFocusPainted(false);
-        botonCarritoC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCarritoCActionPerformed(evt);
-            }
-        });
-        panelClientes.add(botonCarritoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 90, 30));
-
-        botonModificar.setBackground(new java.awt.Color(153, 153, 153));
-        botonModificar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonModificar.setForeground(new java.awt.Color(255, 255, 255));
-        botonModificar.setText("Modificar");
-        botonModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonModificar.setFocusPainted(false);
-        botonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarActionPerformed(evt);
-            }
-        });
-        panelClientes.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 90, 30));
 
         tableClientes = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -829,13 +877,91 @@ public class Principal extends javax.swing.JFrame {
         tableClientes.setFocusable(false);
         jScrollPane4.setViewportView(tableClientes);
 
-        panelClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 550, 160));
+        panelClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 550, 190));
 
         jLabel5.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clientes.png"))); // NOI18N
         panelClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        panelClientes.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 311, 100, 10));
+        panelClientes.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 334, 100, 10));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 45, Short.MAX_VALUE)
+        );
+
+        panelClientes.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 298, -1, -1));
+
+        jPanel17.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        botonModificar.setBackground(new java.awt.Color(153, 153, 153));
+        botonModificar.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(255, 255, 255));
+        botonModificar.setText("Modificar");
+        botonModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonModificar.setFocusPainted(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+
+        botonRegistrarC1.setBackground(new java.awt.Color(153, 153, 153));
+        botonRegistrarC1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonRegistrarC1.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrarC1.setText("Registrar");
+        botonRegistrarC1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonRegistrarC1.setFocusPainted(false);
+        botonRegistrarC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarC1ActionPerformed(evt);
+            }
+        });
+
+        botonCarritoC.setBackground(new java.awt.Color(153, 153, 153));
+        botonCarritoC.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonCarritoC.setForeground(new java.awt.Color(255, 255, 255));
+        botonCarritoC.setText("Carrito");
+        botonCarritoC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCarritoC.setFocusPainted(false);
+        botonCarritoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCarritoCActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonRegistrarC1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonCarritoC, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRegistrarC1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCarritoC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelClientes.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 320, 60));
 
         jPanel8.setBackground(new java.awt.Color(102, 102, 102));
         jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -883,34 +1009,21 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(textFieldCedulaC, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonBuscarClienteC, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldCedulaC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscarClienteC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        panelClientes.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 220, 60));
-
-        botonRegistrarC1.setBackground(new java.awt.Color(153, 153, 153));
-        botonRegistrarC1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonRegistrarC1.setForeground(new java.awt.Color(255, 255, 255));
-        botonRegistrarC1.setText("Registrar");
-        botonRegistrarC1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonRegistrarC1.setFocusPainted(false);
-        botonRegistrarC1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegistrarC1ActionPerformed(evt);
-            }
-        });
-        panelClientes.add(botonRegistrarC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 90, 30));
+        panelClientes.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 220, 60));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -937,12 +1050,22 @@ public class Principal extends javax.swing.JFrame {
         });
         panelClientes.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelClientes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
+
         fondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelClientes.add(fondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane2.addTab("Clientes", panelClientes);
 
         panelSalas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        comboPeliculasSa1.setBackground(new java.awt.Color(153, 153, 153));
+        comboPeliculasSa1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        comboPeliculasSa1.setForeground(new java.awt.Color(255, 255, 255));
+        comboPeliculasSa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Películas" }));
+        comboPeliculasSa1.setFocusable(false);
+        panelSalas.add(comboPeliculasSa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 312, 130, 26));
 
         tableSalas = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -963,12 +1086,73 @@ public class Principal extends javax.swing.JFrame {
         tableSalas.setFocusable(false);
         jScrollPane2.setViewportView(tableSalas);
 
-        panelSalas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 540, 180));
+        panelSalas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 80, 540, 200));
 
         jLabel6.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salas.png"))); // NOI18N
         panelSalas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        radio2D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio2D);
+        radio2D.setForeground(new java.awt.Color(255, 255, 255));
+        radio2D.setText("2D");
+        radio2D.setFocusPainted(false);
+        radio2D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio2DActionPerformed(evt);
+            }
+        });
+        panelSalas.add(radio2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 313, -1, -1));
+
+        radio3D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio3D);
+        radio3D.setForeground(new java.awt.Color(255, 255, 255));
+        radio3D.setText("3D");
+        radio3D.setFocusPainted(false);
+        radio3D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio3DActionPerformed(evt);
+            }
+        });
+        panelSalas.add(radio3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 313, -1, -1));
+
+        radio4D.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radio4D);
+        radio4D.setForeground(new java.awt.Color(255, 255, 255));
+        radio4D.setText("4DX");
+        radio4D.setFocusPainted(false);
+        radio4D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio4DActionPerformed(evt);
+            }
+        });
+        panelSalas.add(radio4D, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 313, -1, -1));
+
+        radioALL.setBackground(new java.awt.Color(102, 102, 102));
+        buttonGroup2.add(radioALL);
+        radioALL.setForeground(new java.awt.Color(255, 255, 255));
+        radioALL.setText("All");
+        radioALL.setFocusPainted(false);
+        radioALL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioALLActionPerformed(evt);
+            }
+        });
+        panelSalas.add(radioALL, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 313, -1, -1));
+
+        botonCambiarPeliculaSa1.setBackground(new java.awt.Color(153, 153, 153));
+        botonCambiarPeliculaSa1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonCambiarPeliculaSa1.setForeground(new java.awt.Color(255, 255, 255));
+        botonCambiarPeliculaSa1.setText("Asignar");
+        botonCambiarPeliculaSa1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCambiarPeliculaSa1.setFocusPainted(false);
+        botonCambiarPeliculaSa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambiarPeliculaSa1ActionPerformed(evt);
+            }
+        });
+        panelSalas.add(botonCambiarPeliculaSa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 78, 30));
 
         jPanel9.setBackground(new java.awt.Color(102, 102, 102));
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -996,8 +1180,8 @@ public class Principal extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comboSucursalesSalas, 0, 154, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(comboSucursalesSalas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1007,7 +1191,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 180, 50));
+        panelSalas.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 100, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1028,121 +1212,37 @@ public class Principal extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(102, 102, 102));
         jPanel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        comboPeliculasSa1.setBackground(new java.awt.Color(153, 153, 153));
-        comboPeliculasSa1.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        comboPeliculasSa1.setForeground(new java.awt.Color(255, 255, 255));
-        comboPeliculasSa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Películas" }));
-
-        botonCambiarPeliculaSa1.setBackground(new java.awt.Color(153, 153, 153));
-        botonCambiarPeliculaSa1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonCambiarPeliculaSa1.setForeground(new java.awt.Color(255, 255, 255));
-        botonCambiarPeliculaSa1.setText("Cambiar Película");
-        botonCambiarPeliculaSa1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonCambiarPeliculaSa1.setFocusPainted(false);
-        botonCambiarPeliculaSa1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCambiarPeliculaSa1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(comboPeliculasSa1, 0, 136, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(botonCambiarPeliculaSa1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 234, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCambiarPeliculaSa1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboPeliculasSa1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 320, 60));
+        panelSalas.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 240, 50));
 
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        radio2D.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(radio2D);
-        radio2D.setForeground(new java.awt.Color(255, 255, 255));
-        radio2D.setText("2D");
-        radio2D.setFocusPainted(false);
-        radio2D.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radio2DActionPerformed(evt);
-            }
-        });
-
-        radio3D.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(radio3D);
-        radio3D.setForeground(new java.awt.Color(255, 255, 255));
-        radio3D.setText("3D");
-        radio3D.setFocusPainted(false);
-        radio3D.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radio3DActionPerformed(evt);
-            }
-        });
-
-        radio4D.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(radio4D);
-        radio4D.setForeground(new java.awt.Color(255, 255, 255));
-        radio4D.setText("4DX");
-        radio4D.setFocusPainted(false);
-        radio4D.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radio4DActionPerformed(evt);
-            }
-        });
-
-        radioALL.setBackground(new java.awt.Color(102, 102, 102));
-        buttonGroup2.add(radioALL);
-        radioALL.setForeground(new java.awt.Color(255, 255, 255));
-        radioALL.setText("All");
-        radioALL.setFocusPainted(false);
-        radioALL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioALLActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(radio2D)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radio3D)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radio4D)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioALL)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addGap(0, 174, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radio2D)
-                    .addComponent(radio3D)
-                    .addComponent(radio4D)
-                    .addComponent(radioALL))
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGap(0, 44, Short.MAX_VALUE)
         );
 
-        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 180, 50));
+        panelSalas.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 180, 50));
+
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelSalas.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
 
         fondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSalas.add(fondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1170,46 +1270,7 @@ public class Principal extends javax.swing.JFrame {
         tableSucursales.setFocusable(false);
         jScrollPane3.setViewportView(tableSucursales);
 
-        panelSucursales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 530, 200));
-
-        botonAgregarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
-        botonAgregarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonAgregarSucursalSu.setForeground(new java.awt.Color(255, 255, 255));
-        botonAgregarSucursalSu.setText("Agregar Sucursal");
-        botonAgregarSucursalSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonAgregarSucursalSu.setFocusPainted(false);
-        botonAgregarSucursalSu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarSucursalSuActionPerformed(evt);
-            }
-        });
-        panelSucursales.add(botonAgregarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 130, 30));
-
-        botonModificarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
-        botonModificarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonModificarSucursalSu.setForeground(new java.awt.Color(255, 255, 255));
-        botonModificarSucursalSu.setText("Modificar");
-        botonModificarSucursalSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonModificarSucursalSu.setFocusPainted(false);
-        botonModificarSucursalSu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarSucursalSuActionPerformed(evt);
-            }
-        });
-        panelSucursales.add(botonModificarSucursalSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 80, 30));
-
-        botonCrearSalasSu.setBackground(new java.awt.Color(153, 153, 153));
-        botonCrearSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        botonCrearSalasSu.setForeground(new java.awt.Color(255, 255, 255));
-        botonCrearSalasSu.setText("Crear Sala");
-        botonCrearSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonCrearSalasSu.setFocusPainted(false);
-        botonCrearSalasSu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCrearSalasSuActionPerformed(evt);
-            }
-        });
-        panelSucursales.add(botonCrearSalasSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 100, 30));
+        panelSucursales.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 530, 190));
 
         jLabel7.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -1232,20 +1293,62 @@ public class Principal extends javax.swing.JFrame {
         });
         panelSucursales.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
-        radioBoton3D.setBackground(new java.awt.Color(102, 102, 102));
-        grupoBotones.add(radioBoton3D);
-        radioBoton3D.setForeground(new java.awt.Color(255, 255, 255));
-        radioBoton3D.setText("3D");
-        radioBoton3D.setFocusPainted(false);
-        radioBoton3D.addActionListener(new java.awt.event.ActionListener() {
+        jPanel19.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel19.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        botonAgregarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
+        botonAgregarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonAgregarSucursalSu.setForeground(new java.awt.Color(255, 255, 255));
+        botonAgregarSucursalSu.setText("Agregar Sucursal");
+        botonAgregarSucursalSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonAgregarSucursalSu.setFocusPainted(false);
+        botonAgregarSucursalSu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioBoton3DActionPerformed(evt);
+                botonAgregarSucursalSuActionPerformed(evt);
             }
         });
-        panelSucursales.add(radioBoton3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 334, -1, -1));
+
+        botonModificarSucursalSu.setBackground(new java.awt.Color(153, 153, 153));
+        botonModificarSucursalSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonModificarSucursalSu.setForeground(new java.awt.Color(255, 255, 255));
+        botonModificarSucursalSu.setText("Modificar");
+        botonModificarSucursalSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonModificarSucursalSu.setFocusPainted(false);
+        botonModificarSucursalSu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarSucursalSuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAgregarSucursalSu, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botonModificarSucursalSu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAgregarSucursalSu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonModificarSucursalSu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelSucursales.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 260, 60));
+
+        jPanel14.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         radioBoton2D.setBackground(new java.awt.Color(102, 102, 102));
         grupoBotones.add(radioBoton2D);
+        radioBoton2D.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         radioBoton2D.setForeground(new java.awt.Color(255, 255, 255));
         radioBoton2D.setText("2D");
         radioBoton2D.setFocusPainted(false);
@@ -1254,10 +1357,22 @@ public class Principal extends javax.swing.JFrame {
                 radioBoton2DActionPerformed(evt);
             }
         });
-        panelSucursales.add(radioBoton2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+
+        radioBoton3D.setBackground(new java.awt.Color(102, 102, 102));
+        grupoBotones.add(radioBoton3D);
+        radioBoton3D.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        radioBoton3D.setForeground(new java.awt.Color(255, 255, 255));
+        radioBoton3D.setText("3D");
+        radioBoton3D.setFocusPainted(false);
+        radioBoton3D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBoton3DActionPerformed(evt);
+            }
+        });
 
         radioBoton4DX.setBackground(new java.awt.Color(102, 102, 102));
         grupoBotones.add(radioBoton4DX);
+        radioBoton4DX.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         radioBoton4DX.setForeground(new java.awt.Color(255, 255, 255));
         radioBoton4DX.setText("4DX");
         radioBoton4DX.setFocusPainted(false);
@@ -1266,23 +1381,54 @@ public class Principal extends javax.swing.JFrame {
                 radioBoton4DXActionPerformed(evt);
             }
         });
-        panelSucursales.add(radioBoton4DX, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, -1, -1));
 
-        jPanel14.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        botonCrearSalasSu.setBackground(new java.awt.Color(153, 153, 153));
+        botonCrearSalasSu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        botonCrearSalasSu.setForeground(new java.awt.Color(255, 255, 255));
+        botonCrearSalasSu.setText("Crear Sala");
+        botonCrearSalasSu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonCrearSalasSu.setFocusPainted(false);
+        botonCrearSalasSu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearSalasSuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(radioBoton2D)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioBoton3D)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioBoton4DX))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(botonCrearSalasSu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 84, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonCrearSalasSu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioBoton2D)
+                    .addComponent(radioBoton3D)
+                    .addComponent(radioBoton4DX))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelSucursales.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 70, 90));
+        panelSucursales.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 150, 80));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelSucursales.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
 
         fondo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelSucursales.add(fondo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1313,7 +1459,7 @@ public class Principal extends javax.swing.JFrame {
         tableTickets.setRowSelectionAllowed(false);
         jScrollPane5.setViewportView(tableTickets);
 
-        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 580, 220));
+        panelTickets.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 580, 200));
 
         jButton6.setForeground(new java.awt.Color(153, 153, 153));
         jButton6.setText("jButton6");
@@ -1328,12 +1474,12 @@ public class Principal extends javax.swing.JFrame {
         label$2T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$2T.setForeground(new java.awt.Color(255, 255, 255));
         label$2T.setText("$");
-        panelTickets.add(label$2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 330, -1, -1));
+        panelTickets.add(label$2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
 
         label$3T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$3T.setForeground(new java.awt.Color(255, 255, 255));
         label$3T.setText("$");
-        panelTickets.add(label$3T, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 330, -1, -1));
+        panelTickets.add(label$3T, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
         botonCambiarPrecio2DT.setBackground(new java.awt.Color(153, 153, 153));
         botonCambiarPrecio2DT.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
@@ -1346,7 +1492,7 @@ public class Principal extends javax.swing.JFrame {
                 botonCambiarPrecio2DTActionPerformed(evt);
             }
         });
-        panelTickets.add(botonCambiarPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 327, 68, 30));
+        panelTickets.add(botonCambiarPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 68, 30));
 
         jLabel8.setFont(new java.awt.Font("Meiryo UI", 0, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -1357,18 +1503,28 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecio3DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio3DT.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPrecio3DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "3D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelTickets.add(textFieldPrecio3DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 50, 40));
+        textFieldPrecio3DT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldPrecio3DTKeyTyped(evt);
+            }
+        });
+        panelTickets.add(textFieldPrecio3DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 50, 40));
 
         textFieldPrecio2DT.setBackground(new java.awt.Color(102, 102, 102));
         textFieldPrecio2DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio2DT.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPrecio2DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "2D", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        panelTickets.add(textFieldPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, 40));
+        textFieldPrecio2DT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldPrecio2DTKeyTyped(evt);
+            }
+        });
+        panelTickets.add(textFieldPrecio2DT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 50, 40));
 
         label$1T.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         label$1T.setForeground(new java.awt.Color(255, 255, 255));
         label$1T.setText("$");
-        panelTickets.add(label$1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 330, -1, -1));
+        panelTickets.add(label$1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1381,7 +1537,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 51, Short.MAX_VALUE)
         );
 
-        panelTickets.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+        panelTickets.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1394,7 +1550,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 51, Short.MAX_VALUE)
         );
 
-        panelTickets.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));
+        panelTickets.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
 
         jPanel10.setBackground(new java.awt.Color(102, 102, 102));
         jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -1427,6 +1583,11 @@ public class Principal extends javax.swing.JFrame {
         textFieldPrecio4DT.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         textFieldPrecio4DT.setForeground(new java.awt.Color(255, 255, 255));
         textFieldPrecio4DT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "4DX", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri Light", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        textFieldPrecio4DT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldPrecio4DTKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1452,7 +1613,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        panelTickets.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 550, 72));
+        panelTickets.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 550, 72));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1478,6 +1639,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelTickets.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelTickets.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
 
         fondo6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelTickets.add(fondo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1527,7 +1691,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administrar.png"))); // NOI18N
         panelAdministrar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        panelAdministrar.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 337, 80, 10));
+        panelAdministrar.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 80, 10));
 
         jPanel11.setBackground(new java.awt.Color(102, 102, 102));
         jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -1538,10 +1702,12 @@ public class Principal extends javax.swing.JFrame {
         textFieldIngresosA.setForeground(new java.awt.Color(255, 255, 255));
         textFieldIngresosA.setText("0.0");
         textFieldIngresosA.setBorder(null);
+        textFieldIngresosA.setFocusable(false);
 
         labelIngresosA.setFont(new java.awt.Font("Calibri Light", 3, 24)); // NOI18N
         labelIngresosA.setForeground(new java.awt.Color(255, 255, 255));
         labelIngresosA.setText("Ingresos");
+        labelIngresosA.setFocusable(false);
 
         label$1T1.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         label$1T1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1571,7 +1737,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelAdministrar.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 320, 70));
+        panelAdministrar.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 320, 70));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1589,6 +1755,17 @@ public class Principal extends javax.swing.JFrame {
         });
         panelAdministrar.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, -1));
 
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/copyright.png"))); // NOI18N
+        panelAdministrar.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 380, -1, -1));
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
+        panelAdministrar.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, -1, -1));
+
         fondo7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo3.png"))); // NOI18N
         panelAdministrar.add(fondo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -1598,7 +1775,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1618,17 +1795,66 @@ public class Principal extends javax.swing.JFrame {
     private void botonAgregarPeliculaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarPeliculaPActionPerformed
         controlador.botonAgregarPelicula(this);
     }//GEN-LAST:event_botonAgregarPeliculaPActionPerformed
+
     private void textFieldCedulaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCedulaCActionPerformed
     }//GEN-LAST:event_textFieldCedulaCActionPerformed
+
     private void botonCambiarPrecio4DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio4DTActionPerformed
-        Ticket4DX.setPrecio(Double.parseDouble(textFieldPrecio4DT.getText()));
+        Ticket4DX ticket = new Ticket4DX();
+        try {
+            if(Double.parseDouble(textFieldPrecio4DT.getText()) == ticket.getPrecio()){
+                return;
+            }else if(Double.parseDouble(textFieldPrecio4DT.getText()) <= 0){
+                JOptionPane.showMessageDialog(this, "El precio no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
+                textFieldPrecio4DT.setText(String.valueOf(ticket.getPrecio()));
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en el formato del número", "Error", JOptionPane.INFORMATION_MESSAGE);
+            textFieldPrecio4DT.setText(String.valueOf(ticket.getPrecio()));
+            return;
+        }
+        
+        Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio4DT.getText()));
         JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio4DTActionPerformed
+
     private void botonCambiarPrecio3DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio3DTActionPerformed
-        Ticket3D.setPrecio(Double.parseDouble(textFieldPrecio3DT.getText()));
+        Ticket3D ticket = new Ticket3D();
+        try {
+            if(Double.parseDouble(textFieldPrecio3DT.getText()) == ticket.getPrecio()){
+                return;
+            }else if(Double.parseDouble(textFieldPrecio3DT.getText()) <= 0){
+                JOptionPane.showMessageDialog(this, "El precio no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
+                textFieldPrecio3DT.setText(String.valueOf(ticket.getPrecio()));
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en el formato del número", "Error", JOptionPane.INFORMATION_MESSAGE);
+            textFieldPrecio3DT.setText(String.valueOf(ticket.getPrecio()));
+            return;
+        }
+        
+        Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio3DT.getText()));
         JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio3DTActionPerformed
+
     private void botonCambiarPrecio2DTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPrecio2DTActionPerformed
+        Ticket2D ticket = new Ticket2D();
+        try {
+            if(Double.parseDouble(textFieldPrecio2DT.getText()) == ticket.getPrecio()){
+                return;
+            }else if(Double.parseDouble(textFieldPrecio2DT.getText()) <= 0){
+                JOptionPane.showMessageDialog(this, "El precio no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
+                textFieldPrecio2DT.setText(String.valueOf(ticket.getPrecio()));
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en el formato del número", "Error", JOptionPane.INFORMATION_MESSAGE);
+            textFieldPrecio2DT.setText(String.valueOf(ticket.getPrecio()));
+            return;
+        }
+        
         Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio2DT.getText()));
         JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio2DTActionPerformed
@@ -1781,6 +2007,7 @@ public class Principal extends javax.swing.JFrame {
             controlador.mostrarSalasEnTablaSalas(this, numSucursal, false);
         }
         
+        // Se cambia los radioButons
         if(comboSucursalesSalas.getSelectedItem() == "Sucursal"){
             this.radio2D.setEnabled(false);
             this.radio3D.setEnabled(false);
@@ -1819,10 +2046,9 @@ public class Principal extends javax.swing.JFrame {
         // Buscamos que sucursal está seleccionada
         if(tableSucursales.getSelectedRow() != -1){
             int numSucursal = Integer.parseInt(String.valueOf( ((DefaultTableModel)tableSucursales.getModel()).getValueAt(tableSucursales.getSelectedRow(), 0) ) );
-            if(numSucursal != -1){
-                String nuevoNombre = JOptionPane.showInputDialog("Ingrese la nueva ubicación de la Sucursal");
-                controlador.modificarUbicacionSucursal(this, nuevoNombre, numSucursal);
-            }
+            // Se modifica la ubicacion de la Sucursal
+            String nuevoNombre = JOptionPane.showInputDialog("Ingrese la nueva ubicación de la Sucursal");
+            controlador.modificarUbicacionSucursal(this, nuevoNombre, numSucursal);
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione la Sucursal que quiere modificar", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1886,6 +2112,7 @@ public class Principal extends javax.swing.JFrame {
             long cedula = Long.parseLong(String.valueOf( ((DefaultTableModel)tableClientes.getModel()).getValueAt(tableClientes.getSelectedRow(), 1) ) );
             
             String nuevoTelefono = "";
+            // Se valida que el teléfono que se ingrese sea válido
             try {
             nuevoTelefono = JOptionPane.showInputDialog(this, "        Ingrese el teléfono del cliente", "Ingrese teléfono", JOptionPane.QUESTION_MESSAGE);
             if(!nuevoTelefono.matches("[0-9]*$")){
@@ -1911,13 +2138,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarC1ActionPerformed
 
     private void comboClientesVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClientesVActionPerformed
+        // Se verifica que está seleccionado en el ComboBox
         if(String.valueOf(comboClientesV.getSelectedItem()).equals("Clientes")){
             labelNombreCliente.setText("Nombre Cliente");
+            labelTelefonoCliente.setText("Teléfono Cliente");
             return;
         }
         
+        // Se modifican los label de información del cliente
         long cedula = Long.parseLong(String.valueOf(comboClientesV.getSelectedItem()));
         labelNombreCliente.setText(controlador.clientes.buscarCliente(controlador.clientes.getRoot(), cedula).getNombre());
+        labelTelefonoCliente.setText(controlador.clientes.buscarCliente(controlador.clientes.getRoot(), cedula).getTelefono());
     }//GEN-LAST:event_comboClientesVActionPerformed
 
     private void botonBuscarClienteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteCActionPerformed
@@ -1925,6 +2156,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarClienteCActionPerformed
 
     private void textFieldClienteVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldClienteVKeyTyped
+        // Validacion para que solo se ingresen numeros
         char validar = evt.getKeyChar();
         
         if(Character.isLetter(validar)){
@@ -1934,6 +2166,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldClienteVKeyTyped
 
     private void textFieldCedulaCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldCedulaCKeyTyped
+        // Validacion para que solo se ingresen numeros
         char validar = evt.getKeyChar();
         
         if(Character.isLetter(validar)){
@@ -1963,15 +2196,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_spinnerTicketsVStateChanged
 
     private void fecha3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha3ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fecha3ActionPerformed
 
     private void fecha4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha4ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fecha4ActionPerformed
 
     private void fecha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha5ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fecha5ActionPerformed
 
     private void jButton4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton4FocusGained
@@ -1992,6 +2222,43 @@ public class Principal extends javax.swing.JFrame {
     private void jTabbedPane2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane2FocusGained
         
     }//GEN-LAST:event_jTabbedPane2FocusGained
+
+    private void textFieldPrecio2DTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldPrecio2DTKeyTyped
+        // Validacion para que solo se ingresen numeros
+        char validar = evt.getKeyChar();
+        
+        if( (validar < '0' || validar > '9') && (validar != '\b') && (validar != '.')  ){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldPrecio2DTKeyTyped
+
+    private void textFieldPrecio3DTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldPrecio3DTKeyTyped
+        // Validacion para que solo se ingresen numeros
+        char validar = evt.getKeyChar();
+        
+        if( (validar < '0' || validar > '9') && (validar != '\b') && (validar != '.')  ){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldPrecio3DTKeyTyped
+
+    private void textFieldPrecio4DTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldPrecio4DTKeyTyped
+        // Validacion para que solo se ingresen numeros
+        char validar = evt.getKeyChar();
+        
+        if( (validar < '0' || validar > '9') && (validar != '\b') && (validar != '.')  ){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldPrecio4DTKeyTyped
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        Icon icono = new ImageIcon(getClass().getResource("../images/logoCFRQ.png"));
+        JOptionPane.showMessageDialog(this, "Software elaborado por Carlos Fontes y Rafael Quintero\n       "
+                + "    Proyecto N° 2 - Estrucutra De Datos - UNIMET\n                             ©CF&RQ - MetroCine\n "
+                + "                               4 de Abril de 2018", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
+    }//GEN-LAST:event_jLabel30MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarCarritoV;
@@ -2050,11 +2317,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2069,12 +2344,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2103,6 +2383,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JLabel labelPelicula;
     private javax.swing.JLabel labelPrecioV;
     private javax.swing.JLabel labelSalasFrecuentesA;
+    public javax.swing.JLabel labelTelefonoCliente;
     private javax.swing.JPanel panelAdministrar;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelPeliculas;

@@ -91,6 +91,7 @@ public class Cola <T>{
         }
     }
     
+    // Devuelve el tamaño de una cola
     public int size(){
         int size = 0;
         Cola<T> aux = new Cola<>();

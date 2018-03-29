@@ -1,6 +1,6 @@
 package model;
 
-import static controller.Controlador.sucursales;
+import controller.Controlador;
 import java.util.Random;
 import structures.ArbolBB;
 
@@ -15,9 +15,9 @@ public class Sucursal{
         
         /*Si el arbol no está vacío, se crea un código aleatorio de 4 dígitos. Si está 
         vacío, el código de la raiz sera 5420, para intentar balancear el árbol*/
-        if(sucursales.getRoot() != null){
+        if(Controlador.sucursales.getRoot() != null){
             //Se crea un código único
-            while(sucursales.estaCodigo(sucursales.getRoot(), code)){
+            while(Controlador.sucursales.estaCodigo(Controlador.sucursales.getRoot(), code)){
                 code = 1001 + r.nextInt(8999);
             }
         }else{
@@ -28,7 +28,6 @@ public class Sucursal{
         this.ubicacion = ubicacion;
         this.salas = new ArbolBB();
     }
-    
     
     public int getCodigo() {
         return codigo;
@@ -45,7 +44,4 @@ public class Sucursal{
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
-    
-    
 }
