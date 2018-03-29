@@ -1815,7 +1815,7 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         
-        Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio4DT.getText()));
+        Ticket4DX.setPrecio(Double.parseDouble(textFieldPrecio4DT.getText()));
         JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio4DTActionPerformed
 
@@ -1835,7 +1835,7 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         
-        Ticket2D.setPrecio(Double.parseDouble(textFieldPrecio3DT.getText()));
+        Ticket3D.setPrecio(Double.parseDouble(textFieldPrecio3DT.getText()));
         JOptionPane.showMessageDialog(this, "Cambio de precio exitoso", "Cambio de precio", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonCambiarPrecio3DTActionPerformed
 
