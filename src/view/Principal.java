@@ -687,6 +687,8 @@ public class Principal extends javax.swing.JFrame {
 
         panelPeliculas.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 410, 60));
 
+        jScrollPane1.setBorder(null);
+
         tablePeli = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
