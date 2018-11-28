@@ -77,7 +77,7 @@ public class Inicio extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(43, 43, 43));
         jTextFieldUsuario.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldUsuario.setText("Ingrese su usuario");
+        jTextFieldUsuario.setText("admin");
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -101,7 +101,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPasswordField.setBackground(new java.awt.Color(43, 43, 43));
         jPasswordField.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField.setText("jPasswordField1");
+        jPasswordField.setText("admin");
         jPasswordField.setBorder(null);
         jPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

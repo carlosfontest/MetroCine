@@ -817,11 +817,11 @@ public class Controlador {
                     loading.setVisible(true);
                     for (int i = 0; i <= 100; i++) {
                         // Tiempo que tardará la carga
-                        Thread.sleep(13);
+                        Thread.sleep(10);
                         loading.loadingBar.setValue(i);
 
                         if(i==100){
-                            Thread.sleep(1000);
+                            Thread.sleep(100);
                         }
                     }
                     loading.dispose();
